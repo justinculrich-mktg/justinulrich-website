@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home | JustinUlrich.com</title>
+<meta name="description" content="Justin Ulrich — marketing leader bringing creativity and strategy to impactful, results-driven experiences.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="logo" href="index.html">
+      <span class="logo-mark">JU</span>
+      <span class="logo-text">JUSTIN <b>ULRICH</b></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="volunteer.html">Volunteer</a></li>
+      <li><a href="references.html">References</a></li>
+      <li><a href="contact.html">Contact Me</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-copy">
+      <div class="eyebrow">Hi, I'm</div>
+      <h1>Justin Ulrich</h1>
+      <a href="about.html" class="btn">Get to Know Me</a>
+    </div>
+    <div class="hero-photo">
+      <img src="images/hero-photo.png" alt="Justin Ulrich">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-heading">What I Do</h2>
+    <p class="section-sub">I bring an element of fun and creativity to impactful experiences that drive real results.</p>
+    <div style="text-align:center;">
+      <a href="work.html" class="btn">See What I've Done</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="container">
+    <h2 class="section-heading">Giving Back</h2>
+    <p class="section-sub">I strongly believe in the importance of giving back. Here are some organizations I've supported.</p>
+    <div class="logo-row">
+      <img src="images/ccap.png" alt="C-CAP">
+      <img src="images/ecf.png" alt="Epicurean Charitable Fund">
+      <img src="images/bsa.png" alt="Boy Scouts of America">
+      <img src="images/tuf.jpg" alt="The Urban Farm">
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+      <a href="volunteer.html" class="btn">Where I Volunteer</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-heading">What Others Think of Me</h2>
+    <p class="section-sub">I've worked with a ton of folks over the years, across many industries. Here's a snapshot of what they said about me.</p>
+    <div style="max-width:560px;margin:0 auto;">
+      <img src="images/wordcloud.jpg" alt="Word cloud of strengths colleagues have endorsed Justin for">
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+      <a href="references.html" class="btn">See What Else They Say</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="container" style="text-align:center;">
+    <h2 class="section-heading">Looking to Build Your Team?<br>Here's How I Can Help</h2>
+    <a href="about.html" class="btn">Learn More About Me</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-contact">
+        <a href="tel:7204220874"><img src="images/icon-phone.png" alt="">720.422.0874</a>
+        <a href="mailto:JustinC.Ulrich@gmail.com">JustinC.Ulrich@gmail.com</a>
+        <a href="resume-justin-ulrich.pdf" target="_blank"><img src="images/icon-pdf.png" alt="" style="filter:none;width:18px;height:18px;">Download Resume</a>
+        <a href="https://www.linkedin.com/in/justinculrich" target="_blank"><img src="images/icon-linkedin.png" alt="" style="filter:none;width:20px;height:20px;">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-copy">&copy; <span id="year"></span> Justin Ulrich. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work | JustinUlrich.com</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="logo" href="index.html">
+      <span class="logo-mark">JU</span>
+      <span class="logo-text">JUSTIN <b>ULRICH</b></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="work.html" class="active">Work</a></li>
+      <li><a href="volunteer.html">Volunteer</a></li>
+      <li><a href="references.html">References</a></li>
+      <li><a href="contact.html">Contact Me</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <h1>From Plans to Execution &mdash; I Do It All.</h1>
+    <p>Want to see more? Check out some of my finished products below.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="work-grid">
+
+      <div class="work-item">
+        <img src="images/work-kiosk.jpg" alt="Kiosk Animation Video">
+        <div class="work-body">
+          <h3>Kiosk Animation Video</h3>
+          <p>Designed to give our pitch to those who lingered in front of our booth at the major show we attend every year. Created in PowerPoint with graphics from Adobe Illustrator.</p>
+        </div>
+      </div>
+
+      <div class="work-item">
+        <img src="images/work-averovision.jpg" alt="Avero Vision Creative">
+        <div class="work-body">
+          <h3>Avero Vision Creative</h3>
+          <p>Developed to give context to our new imagery style, demonstrating what the world looks like through the eyes of an Avero user.</p>
+        </div>
+      </div>
+
+      <div class="work-item">
+        <img src="images/work-logo.png" alt="Logo Creation">
+        <div class="work-body">
+          <h3>Logo Creation</h3>
+          <p>A sample from my portfolio of brand and logo design work.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="form-note" style="text-align:center;margin-top:40px;">This is a snapshot of a larger portfolio. Want the full walkthrough? <a href="contact.html" style="color:var(--orange);text-decoration:underline;">Get in touch</a> and I'll share more.</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-contact">
+        <a href="tel:7204220874"><img src="images/icon-phone.png" alt="">720.422.0874</a>
+        <a href="mailto:JustinC.Ulrich@gmail.com">JustinC.Ulrich@gmail.com</a>
+        <a href="resume-justin-ulrich.pdf" target="_blank"><img src="images/icon-pdf.png" alt="" style="filter:none;width:18px;height:18px;">Download Resume</a>
+        <a href="https://www.linkedin.com/in/justinculrich" target="_blank"><img src="images/icon-linkedin.png" alt="" style="filter:none;width:20px;height:20px;">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-copy">&copy; <span id="year"></span> Justin Ulrich. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volunteer | JustinUlrich.com</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="logo" href="index.html">
+      <span class="logo-mark">JU</span>
+      <span class="logo-text">JUSTIN <b>ULRICH</b></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="volunteer.html" class="active">Volunteer</a></li>
+      <li><a href="references.html">References</a></li>
+      <li><a href="contact.html">Contact Me</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <h1>Giving Back</h1>
+    <p>I strongly believe in the importance of giving back. Here's where I've spent my time.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="org-list">
+
+      <div class="org">
+        <img src="images/bsa.png" alt="Scouts BSA">
+        <div>
+          <h3>Scouts BSA</h3>
+          <p>Assistant Scoutmaster for Scouts BSA Troop 502 for over a year, leading and mentoring young men. Also served as Eagle Project Coordinator for 3 years, helping youth achieve Eagle Scout through community service projects.</p>
+        </div>
+      </div>
+
+      <div class="org">
+        <img src="images/ecf.png" alt="Epicurean Charitable Fund">
+        <div>
+          <h3>Epicurean Charitable Fund</h3>
+          <p>An organization of food, beverage, and hospitality executives providing scholarships and mentorship to students pursuing careers in hospitality or culinary arts. I led planning and execution of Avero's involvement, including scholarship selection and NYC trip coordination.</p>
+        </div>
+      </div>
+
+      <div class="org">
+        <img src="images/ccap.png" alt="C-CAP">
+        <div>
+          <h3>C-CAP</h3>
+          <p>An organization providing culinary training, career advising, and scholarships to break the cycle of poverty. I led Avero's involvement including scholarship parameters, winner selection, and NYC scholarship trips.</p>
+        </div>
+      </div>
+
+      <div class="org">
+        <img src="images/tuf.jpg" alt="The Urban Farm">
+        <div>
+          <h3>The Urban Farm</h3>
+          <p>A community garden at Stapleton enabling needy families to grow vegetables and interact with farm animals for therapeutic purposes.</p>
+        </div>
+      </div>
+
+      <div class="org" style="grid-template-columns:1fr;">
+        <div>
+          <h3>Elephant Talk</h3>
+          <p>A non-profit distributing over 50 tons of food weekly to struggling Denver Metro families. I researched philanthropic organizations for fundraising and helped distribute food to pantries during the holidays.</p>
+        </div>
+      </div>
+
+      <div class="org" style="grid-template-columns:1fr;">
+        <div>
+          <h3>Task Force</h3>
+          <p>A non-profit serving Douglas and Elbert counties, Colorado. I organized and led crews for major facility alterations.</p>
+        </div>
+      </div>
+
+      <div class="org" style="grid-template-columns:1fr;">
+        <div>
+          <h3>Tennyson Center for Children</h3>
+          <p>The Rocky Mountain region's treatment center and K-12 school for emotionally and crisis-affected children and youth experiencing abuse and neglect.</p>
+        </div>
+      </div>
+
+      <div class="org" style="grid-template-columns:1fr;border-bottom:none;">
+        <div>
+          <h3>SungateKids</h3>
+          <p>A facility-based, multidisciplinary program addressing child abuse investigations and treatment. I helped raise thousands for annual charity events and generated community awareness.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-contact">
+        <a href="tel:7204220874"><img src="images/icon-phone.png" alt="">720.422.0874</a>
+        <a href="mailto:JustinC.Ulrich@gmail.com">JustinC.Ulrich@gmail.com</a>
+        <a href="resume-justin-ulrich.pdf" target="_blank"><img src="images/icon-pdf.png" alt="" style="filter:none;width:18px;height:18px;">Download Resume</a>
+        <a href="https://www.linkedin.com/in/justinculrich" target="_blank"><img src="images/icon-linkedin.png" alt="" style="filter:none;width:20px;height:20px;">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-copy">&copy; <span id="year"></span> Justin Ulrich. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

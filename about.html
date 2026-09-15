@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me | JustinUlrich.com</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="logo" href="index.html">
+      <span class="logo-mark">JU</span>
+      <span class="logo-text">JUSTIN <b>ULRICH</b></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About Me</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="volunteer.html">Volunteer</a></li>
+      <li><a href="references.html">References</a></li>
+      <li><a href="contact.html">Contact Me</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <h1>Part Scientist. All Marketer. Part Artist.</h1>
+    <p>Here's how I can help. Looking to add some skills to your team?</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="skills-grid">
+      <div class="skill">
+        <img src="images/icon-tech.png" alt="">
+        <div>
+          <h3>I Love Technology</h3>
+          <p>Understanding new technologies and proficiency with them provides a unique skill set. Strategic mapping of high-level initiatives combined with graphic design execution, reporting, and analysis capabilities.</p>
+        </div>
+      </div>
+      <div class="skill">
+        <img src="images/icon-creativity.png" alt="">
+        <div>
+          <h3>Creativity</h3>
+          <blockquote>"Creativity is intelligence having fun." &mdash; Albert Einstein</blockquote>
+          <p>As markets evolve, tactics must adapt. Creative approaches to challenges drive organizational impact and differentiation in competitive landscapes.</p>
+        </div>
+      </div>
+      <div class="skill">
+        <img src="images/icon-innovation.png" alt="">
+        <div>
+          <h3>Innovation</h3>
+          <blockquote>"The most dangerous phrase in the English language is 'We've always done it this way.'" &mdash; Grace Hopper</blockquote>
+          <p>Challenging status quo thinking, identifying best practices, discovering new tools and communication vehicles that resonate with audiences.</p>
+        </div>
+      </div>
+      <div class="skill">
+        <img src="images/icon-lessismore.png" alt="">
+        <div>
+          <h3>Less Is More</h3>
+          <blockquote>"Many attempts to communicate are nullified by saying too much." &mdash; Robert Greenleaf</blockquote>
+          <p>Visual appeal combined with message simplicity cuts through industry clutter, captures attention, and generates interest.</p>
+        </div>
+      </div>
+      <div class="skill">
+        <img src="images/icon-motivates.png" alt="">
+        <div>
+          <h3>What Motivates Me</h3>
+          <p>My family &mdash; my wife and children &mdash; fuel my drive for continuous self-improvement and success.</p>
+        </div>
+      </div>
+      <div class="skill">
+        <img src="images/icon-fun.png" alt="">
+        <div>
+          <h3>Have Fun</h3>
+          <blockquote>"If you're not having fun, you're doing something wrong." &mdash; Groucho Marx</blockquote>
+          <p>Outdoor activities like off-roading, paintballing, rock climbing, and hiking keep me energized. Fun in professional settings builds camaraderie and sustains creativity.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" style="text-align:center;">
+  <div class="container">
+    <h2 class="section-heading">Let's Talk</h2>
+    <p class="section-sub">720.422.0874 &nbsp;&middot;&nbsp; JustinC.Ulrich@gmail.com</p>
+    <a href="resume-justin-ulrich.pdf" target="_blank" class="btn">Download Resume</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-contact">
+        <a href="tel:7204220874"><img src="images/icon-phone.png" alt="">720.422.0874</a>
+        <a href="mailto:JustinC.Ulrich@gmail.com">JustinC.Ulrich@gmail.com</a>
+        <a href="resume-justin-ulrich.pdf" target="_blank"><img src="images/icon-pdf.png" alt="" style="filter:none;width:18px;height:18px;">Download Resume</a>
+        <a href="https://www.linkedin.com/in/justinculrich" target="_blank"><img src="images/icon-linkedin.png" alt="" style="filter:none;width:20px;height:20px;">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-copy">&copy; <span id="year"></span> Justin Ulrich. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Me | JustinUlrich.com</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="logo" href="index.html">
+      <span class="logo-mark">JU</span>
+      <span class="logo-text">JUSTIN <b>ULRICH</b></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="volunteer.html">Volunteer</a></li>
+      <li><a href="references.html">References</a></li>
+      <li><a href="contact.html" class="active">Contact Me</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-header">
+  <div class="container">
+    <h1>You're One Step Closer to Creating the Perfect Team</h1>
+    <p>Let's talk. Send me a message below or shoot me an email to start the conversation.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="contact-wrap">
+
+      <div>
+        <div class="form-success" id="formSuccess">Your details were sent successfully!</div>
+        <form id="contactForm" action="https://formspree.io/f/JustinC.Ulrich@gmail.com" method="POST">
+          <div class="form-group">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message"></textarea>
+          </div>
+          <button type="submit" class="btn">Send</button>
+        </form>
+      </div>
+
+      <div class="contact-info-block">
+        <div class="contact-row"><img src="images/icon-phone.png" alt="">720.422.0874</div>
+        <div class="contact-row">JustinC.Ulrich@gmail.com</div>
+        <div class="contact-row"><img src="images/icon-pdf.png" alt="" style="filter:none;">
+          <a href="resume-justin-ulrich.pdf" target="_blank" style="text-decoration:underline;">Download My Resume</a>
+        </div>
+        <div class="contact-row"><img src="images/icon-linkedin.png" alt="" style="filter:none;">
+          <a href="https://www.linkedin.com/in/justinculrich" target="_blank" style="text-decoration:underline;">Connect on LinkedIn</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-contact">
+        <a href="tel:7204220874"><img src="images/icon-phone.png" alt="">720.422.0874</a>
+        <a href="mailto:JustinC.Ulrich@gmail.com">JustinC.Ulrich@gmail.com</a>
+        <a href="resume-justin-ulrich.pdf" target="_blank"><img src="images/icon-pdf.png" alt="" style="filter:none;width:18px;height:18px;">Download Resume</a>
+        <a href="https://www.linkedin.com/in/justinculrich" target="_blank"><img src="images/icon-linkedin.png" alt="" style="filter:none;width:20px;height:20px;">LinkedIn</a>
+      </div>
+    </div>
+    <div class="footer-copy">&copy; <span id="year"></span> Justin Ulrich. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', async function(e){
+  e.preventDefault();
+  const data = new FormData(form);
+  try{
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: {'Accept':'application/json'}
+    });
+    if(res.ok){
+      form.reset();
+      form.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } else {
+      alert('Something went wrong sending your message. Please email JustinC.Ulrich@gmail.com directly.');
+    }
+  } catch(err){
+    alert('Something went wrong sending your message. Please email JustinC.Ulrich@gmail.com directly.');
+  }
+});
+</script>
+</body>
+</html>
