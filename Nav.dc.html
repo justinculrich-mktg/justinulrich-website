@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="background:#1B2A41;width:100%;border-bottom:1px solid rgba(255,255,255,.28)">
+  <div style="max-width:1240px;margin:0 auto;padding:0 24px;min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:10px;padding-bottom:10px">
+    <a href="/" style="display:flex;align-items:center;flex:none">
+      <img src="./assets/justin-ulrich-logo-orange_white.png" alt="Justin Ulrich" style="height:29px;width:auto;display:block" />
+    </a>
+    <nav style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;row-gap:6px;justify-content:flex-end">
+      <a href="/" style="{{ s0 }}">Home</a>
+      <a href="/about" style="{{ s1 }}">About Me</a>
+      <a href="/work" style="{{ s2 }}">Work</a>
+      <a href="/volunteer" style="{{ s3 }}">Volunteer</a>
+      <a href="/references" style="{{ s4 }}">References</a>
+      <a href="/contact" style="{{ s5 }}">Contact Me</a>
+    </nav>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;about&quot;,&quot;work&quot;,&quot;volunteer&quot;,&quot;references&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const base = "font-family:Oswald,sans-serif;font-weight:300;font-size:23px;letter-spacing:.3px;text-decoration:none;white-space:nowrap;";
+    const order = ["home", "about", "work", "volunteer", "references", "contact"];
+    const active = this.props.active || "home";
+    const out = {};
+    order.forEach((k, i) => {
+      out["s" + i] = base + "color:" + (k === active ? "#CE7213" : "#FFFFFF");
+    });
+    return out;
+  }
+}
+</script>
+</body>
+</html>

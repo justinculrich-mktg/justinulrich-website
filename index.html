@@ -1,104 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home | JustinUlrich.com</title>
-<meta name="description" content="Justin Ulrich — marketing leader bringing creativity and strategy to impactful, results-driven experiences.">
-<link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Justin Ulrich | Marketing Leader, Denver CO</title>
+<meta name="description" content="Marketing leader in Denver, Colorado. Strategy, integrated campaigns, product marketing and creative execution.">
+<link rel="canonical" href="https://www.justinulrich.com/">
+<link rel="icon" type="image/png" href="./assets/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JustinUlrich.com">
+<meta property="og:title" content="Justin Ulrich | Marketing Leader, Denver CO">
+<meta property="og:description" content="Marketing leader in Denver, Colorado. Strategy, integrated campaigns, product marketing and creative execution.">
+<meta property="og:url" content="https://www.justinulrich.com/">
+<meta property="og:image" content="https://www.justinulrich.com/assets/hero-photo.png">
+<meta name="twitter:card" content="summary_large_image">
+<script src="./support.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet>
+  <title>Home | JustinUlrich.com</title>
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&amp;family=Figtree:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin:0; background:#FFFFFF; -webkit-font-smoothing:antialiased; }
+    a { color:#CE7213; }
+    a:hover { color:#E08A2E; }
+  </style>
+</helmet>
 
-<header class="site-header">
-  <nav class="nav">
-    <a class="logo" href="index.html">
-      <img src="images/logo.png" alt="Justin Ulrich" class="logo-img">
-    </a>
-    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="about.html">About Me</a></li>
-      <li><a href="work.html">Work</a></li>
-      <li><a href="volunteer.html">Volunteer</a></li>
-      <li><a href="references.html">References</a></li>
-      <li><a href="contact.html">Contact Me</a></li>
-    </ul>
-  </nav>
-</header>
+<div style="width:100%;overflow-x:hidden">
+  <dc-import name="Nav" active="home" hint-size="100%,72px"></dc-import>
 
-<section class="hero">
-  <div class="container">
-    <div class="hero-copy">
-      <div class="eyebrow">Hi, I'm</div>
-      <h1>Justin Ulrich</h1>
-      <a href="about.html" class="btn">Get to Know Me</a>
-    </div>
-    <div class="hero-photo">
-      <img src="images/hero-photo.png" alt="Justin Ulrich">
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <h2 class="section-heading">What I Do</h2>
-    <p class="section-sub">I bring an element of fun and creativity to impactful experiences that drive real results.</p>
-    <div style="text-align:center;">
-      <a href="work.html" class="btn">See What I've Done</a>
-    </div>
-  </div>
-</section>
-
-<section class="section-alt">
-  <div class="container">
-    <h2 class="section-heading">Giving Back</h2>
-    <p class="section-sub">I strongly believe in the importance of giving back. Here are some organizations I've supported.</p>
-    <div class="logo-row">
-      <img src="images/ccap.png" alt="C-CAP">
-      <img src="images/ecf.png" alt="Epicurean Charitable Fund">
-      <img src="images/bsa.png" alt="Boy Scouts of America">
-      <img src="images/tuf.jpg" alt="The Urban Farm">
-    </div>
-    <div style="text-align:center;margin-top:32px;">
-      <a href="volunteer.html" class="btn">Where I Volunteer</a>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <h2 class="section-heading">What Others Think of Me</h2>
-    <p class="section-sub">I've worked with a ton of folks over the years, across many industries. Here's a snapshot of what they said about me.</p>
-    <div style="max-width:560px;margin:0 auto;">
-      <img src="images/wordcloud.jpg" alt="Word cloud of strengths colleagues have endorsed Justin for">
-    </div>
-    <div style="text-align:center;margin-top:32px;">
-      <a href="references.html" class="btn">See What Else They Say</a>
-    </div>
-  </div>
-</section>
-
-<section class="section-alt">
-  <div class="container" style="text-align:center;">
-    <h2 class="section-heading">Looking to Build Your Team?<br>Here's How I Can Help</h2>
-    <a href="about.html" class="btn">Learn More About Me</a>
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-contact">
-        <a href="tel:7204220874"><img src="images/icon-phone.png" alt="">720.422.0874</a>
-        <a href="mailto:JustinC.Ulrich@gmail.com">JustinC.Ulrich@gmail.com</a>
-        <a href="resume-justin-ulrich.pdf" target="_blank"><img src="images/icon-pdf.png" alt="" style="filter:none;width:18px;height:18px;">Download Resume</a>
-        <a href="https://www.linkedin.com/in/justinculrich" target="_blank"><img src="images/icon-linkedin.png" alt="" style="filter:none;width:20px;height:20px;">LinkedIn</a>
+  <section data-screen-label="Hero" style="background:#1B2A41;position:relative;overflow:hidden;min-height:500px;display:flex;align-items:center">
+    <div style="max-width: 1103px; margin: 0 auto; padding: 36px 24px; width: 100%; box-sizing: border-box; display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 24px; align-items: center">
+      
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;z-index:2;width:max-content;max-width:100%;margin:0 auto">
+        <div style="font-family:Oswald,sans-serif;font-weight:300;font-size:30px;letter-spacing:1px;color:#6D8199;align-self:center">HI, I'M</div>
+        
+        <h1 style="font-family:Oswald,sans-serif;font-weight:500;font-size:56px;line-height:1.05;letter-spacing:.5px;color:#FFFFFF;margin:0 0 22px">JUSTIN ULRICH</h1><a href="/about" style="font-family:Oswald,sans-serif;font-weight:400;font-size:19px;letter-spacing:1.4px;color:#FFFFFF;background:#CE7213;border-radius:5px;padding:13px 40px;text-decoration:none;display:inline-block" style-hover="background:#B5620C">GET TO KNOW ME</a>
+      </div><div style="position:relative;min-height:330px">
+        <img src="./assets/21fe07_df3a034c3b9d4.png" alt="Justin Ulrich" style="position: absolute; left: -62px; width: 575px; min-width: 575px; max-width: none; height: 519px; max-height: 520px; object-fit: contain; object-position: top center; display: block; top: -81px">
       </div>
     </div>
-    <div class="footer-copy">&copy; <span id="year"></span> Justin Ulrich. All rights reserved.</div>
-  </div>
-</footer>
+  </section>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <section data-screen-label="What I Do" style="background:#FFFFFF">
+    <div style="max-width: 1060px; margin: 0 auto; padding: 34px 24px 0; display: grid; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); gap: 48px; align-items: center; width: 100%; box-sizing: border-box; height: 613px">
+      <div style="max-width:440px">
+        <h2 style="font-family:Oswald,sans-serif;font-weight:500;font-size:34px;letter-spacing:.5px;color:#2E3A47;margin:0 0 20px">WHAT I DO</h2>
+        <p style="font-family:Figtree,sans-serif;font-weight:400;font-size:19px;line-height:1.65;color:#4A5561;margin:0 0 30px;text-wrap:pretty">I bring an element of fun and creativity to impactful experiences that drive real results. Check out some examples of work I've done throughout my career.</p>
+        <a href="/work" style="font-family:Oswald,sans-serif;font-weight:400;font-size:18px;letter-spacing:1.2px;color:#FFFFFF;background:#CE7213;border-radius:5px;padding:12px 30px;text-decoration:none;display:inline-block" style-hover="background:#B5620C">SEE WHAT I'VE DONE</a>
+      </div>
+      <div style="display:flex;justify-content:center;position:relative;max-width:300px;margin:0 auto;width:100%">
+        <div style="width:100%;height:540px;border-radius:14px;z-index:1;background:#FFFFFF;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 10px 34px rgba(27,42,65,.16);border:1px solid #E7EAED">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;flex:none;border-bottom:1px solid #EDEFF1">
+            <div style="font-family:Oswald,sans-serif;font-weight:500;font-size:11px;letter-spacing:.6px;color:#16202B"></div>
+            <div style="display:flex;align-items:center;gap:9px">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#16202B" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#16202B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5 4.2 12.9a4.7 4.7 0 0 1 0-6.7 4.7 4.7 0 0 1 6.6 0l1.2 1.2 1.2-1.2a4.7 4.7 0 0 1 6.6 0 4.7 4.7 0 0 1 0 6.7Z"></path></svg>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;flex:none">
+            <div style="width:26px;height:26px;border-radius:50%;flex:none;background-color:#1B2A41;background-image:url('./assets/21fe07_df3a034c3b9d4.png');background-size:180%;background-position:50% 8%"></div>
+            <div style="min-width:0;flex:1">
+              <div style="font-family:Figtree,sans-serif;font-weight:600;font-size:10px;color:#16202B;line-height:1.2">justinulrich</div>
+              <div style="font-family:Figtree,sans-serif;font-weight:400;font-size:9px;color:#8A939D;line-height:1.2">Denver, Colorado</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:2px;flex:none;padding:0 2px">
+              <div style="width:3px;height:3px;border-radius:50%;background:#59636E"></div>
+              <div style="width:3px;height:3px;border-radius:50%;background:#59636E"></div>
+              <div style="width:3px;height:3px;border-radius:50%;background:#59636E"></div>
+            </div>
+          </div>
+          <div style="position:relative;width:100%;flex:1;min-height:0;display:flex">
+            <video src="./assets/homepage-phone.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" onClick="{{ toggleMute }}" style="width:100%;flex:1;min-height:0;object-fit:cover;display:block;background:#000000;cursor:pointer"></video>
+            <button type="button" onClick="{{ toggleMute }}" aria-label="Toggle sound" style="position:absolute;top:7px;right:7px;width:24px;height:24px;border:0;border-radius:50%;background:rgba(10,14,20,.55);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0" style-hover="background:rgba(10,14,20,.8)">
+              {{ soundIcon }}
+            </button>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:9px 11px 4px;flex:none">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#16202B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5 4.2 12.9a4.7 4.7 0 0 1 0-6.7 4.7 4.7 0 0 1 6.6 0l1.2 1.2 1.2-1.2a4.7 4.7 0 0 1 6.6 0 4.7 4.7 0 0 1 0 6.7Z"></path></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#16202B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.6c0 4.2-4 7.6-9 7.6a10 10 0 0 1-2.7-.4L4 21l1.4-4A7.2 7.2 0 0 1 3 11.6C3 7.4 7 4 12 4s9 3.4 9 7.6Z"></path></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#16202B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 3 11 14"></path><path d="M22 3 15 21l-4-7-7-4Z"></path></svg>
+            <div style="flex:1"></div>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#16202B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4.5L6 21Z"></path></svg>
+          </div>
+          <div style="padding:0 11px 8px;flex:none">
+            <div style="font-family:Figtree,sans-serif;font-weight:600;font-size:9.5px;color:#16202B;line-height:1.3">1,284 likes</div>
+            <div style="font-family:Figtree,sans-serif;font-weight:400;font-size:9.5px;color:#3D4650;line-height:1.35;margin-top:3px"><span style="font-weight:600">justinulrich</span> Part artist. Part scientist. All marketer.</div>
+          </div>
+          <div style="flex:none;border-top:1px solid #EDEFF1;padding:7px 11px 4px;display:flex;align-items:center;gap:8px;opacity:.55">
+            <div style="width:20px;height:20px;border-radius:50%;background:#D8DCE1;flex:none"></div>
+            <div style="flex:1;min-width:0">
+              <div style="height:5px;width:52px;border-radius:3px;background:#D8DCE1"></div>
+              <div style="height:4px;width:34px;border-radius:3px;background:#E4E7EA;margin-top:4px"></div>
+            </div>
+          </div>
+          <div style="margin-top:auto;flex:none;border-top:1px solid #EDEFF1;background:#FCFCFD;display:flex;align-items:center;justify-content:space-around;padding:6px 10px 10px">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="#16202B" aria-hidden="true"><path d="M12 3 3 10.5V21h6v-6h6v6h6V10.5Z"></path></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9AA3AC" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9AA3AC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><path d="m10 9 5 3-5 3Z"></path></svg>
+            <div style="width:13px;height:13px;border-radius:50%;background-color:#1B2A41;background-image:url('./assets/21fe07_df3a034c3b9d4.png');background-size:180%;background-position:50% 8%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <section data-screen-label="Giving Back" style="background:#F0F0F0">
+    
+  <div style="max-width: 1055px; margin: 0 auto; padding: 34px 24px; display: grid; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); gap: 48px; align-items: center; width: 100%; box-sizing: border-box; height: 463px">
+      <div style="max-width:440px">
+        <h2 style="font-family:Oswald,sans-serif;font-weight:500;font-size:34px;letter-spacing:.5px;color:#2E3A47;margin:0 0 20px">GIVING BACK</h2>
+        <p style="font-family:Figtree,sans-serif;font-weight:400;font-size:19px;line-height:1.65;color:#4A5561;margin:0 0 30px;text-wrap:pretty">I strongly believe in the importance of giving back. Here are some organizations I've supported.</p>
+        <a href="/volunteer" style="font-family:Oswald,sans-serif;font-weight:400;font-size:18px;letter-spacing:1.2px;color:#FFFFFF;background:#CE7213;border-radius:5px;padding:12px 30px;text-decoration:none;display:inline-block" style-hover="background:#B5620C">WHERE I VOLUNTEER</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px 26px; align-items: center; justify-items: center; min-width: 0; width: 100%; max-width: 439px; height: 392px">
+        <img src="./assets/140px-boy_scouts_of_america_universal_em.png" alt="Scouts BSA" style="max-width: 100%; max-height: 156px; width: 160px; height: 250px; object-fit: contain; display: block">
+        <img src="./assets/c-cap_logo_full_long_red.png" alt="C-CAP" style="max-width:100%;max-height:122px;width:auto;height:auto;object-fit:contain;display:block">
+        <img src="./assets/ecf-hdr-logo.png" alt="Epicurean Charitable Foundation" style="max-width:100%;max-height:156px;width:auto;height:auto;object-fit:contain;display:block">
+        <img src="./assets/tuflogo.jpg" alt="The Urban Farm at Stapleton" style="max-width:100%;max-height:146px;width:auto;height:auto;object-fit:contain;display:block">
+      </div>
+    </div></section><section data-screen-label="References" style="background:#FFFFFF">
+    <div style="max-width: 1055px; margin: 0 auto; padding: 62px 24px; display: grid; grid-template-columns: repeat(auto-fit,minmax(330px,1fr)); gap: 20px 28px; align-items: center; width: 100%; box-sizing: border-box; min-height: 379px; height: 463px">
+      <div style="max-width:440px">
+        <h2 style="font-family:Oswald,sans-serif;font-weight:500;font-size:34px;letter-spacing:.5px;color:#2E3A47;margin:0 0 20px">WHAT OTHERS THINK OF ME</h2>
+        <p style="font-family:Figtree,sans-serif;font-weight:400;font-size:19px;line-height:1.65;color:#4A5561;margin:0 0 30px;text-wrap:pretty">I've worked with a ton of folks over the years, across many industries. Here's a snapshot of what they said about me.</p>
+        <a href="/references" style="font-family:Oswald,sans-serif;font-weight:400;font-size:18px;letter-spacing:1.2px;color:#FFFFFF;background:#CE7213;border-radius:5px;padding:12px 30px;text-decoration:none;display:inline-block" style-hover="background:#B5620C">SEE WHAT ELSE THEY SAY</a>
+      </div>
+      <div style="display:flex;justify-content:center">
+        <img src="./assets/word-cloud_jpg.jpg" alt="Word cloud of endorsed strengths" style="width:100%;max-width:520px;height:auto;display:block">
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Build Your Team" style="background:#1B2A41;overflow:hidden">
+    <div style="padding:70px 0 74px;text-align:center">
+      <div style="font-family:Oswald,sans-serif;font-weight:300;font-size:30px;letter-spacing:.5px;color:#C4CEDA;margin:0 0 4px">LOOKING TO BUILD YOUR TEAM?</div>
+      <h2 style="font-family:Oswald,sans-serif;font-weight:500;font-size:42px;letter-spacing:.5px;color:#FFFFFF;margin:0 0 46px">HERE'S HOW I CAN HELP</h2>
+      <div style="display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:38px;margin:0 0 46px;max-width:1040px;margin-left:auto;margin-right:auto;padding:0 24px;box-sizing:border-box">
+        <img src="./assets/21fe07_97a9f36bcfb54.png" alt="" style="flex:1 1 0;min-width:0;width:100%;max-width:148px;height:auto;display:block">
+        <img src="./assets/21fe07_9324151cd2df4.png" alt="" style="flex:1 1 0;min-width:0;width:100%;max-width:148px;height:auto;display:block">
+        <img src="./assets/21fe07_a5c74170fe1a4.png" alt="" style="flex:1 1 0;min-width:0;width:100%;max-width:148px;height:auto;display:block">
+        <img src="./assets/21fe07_cc951d3c497a4.png" alt="" style="flex:1 1 0;min-width:0;width:100%;max-width:148px;height:auto;display:block">
+        <img src="./assets/21fe07_b4e024f5ea074.png" alt="" style="flex:1 1 0;min-width:0;width:100%;max-width:148px;height:auto;display:block">
+        <img src="./assets/21fe07_21bfe815845c4.png" alt="" style="flex:1 1 0;min-width:0;width:100%;max-width:148px;height:auto;display:block">
+      </div>
+      <a href="/about" style="font-family:Oswald,sans-serif;font-weight:400;font-size:18px;letter-spacing:1.2px;color:#FFFFFF;background:#CE7213;border-radius:5px;padding:12px 30px;text-decoration:none;display:inline-block" style-hover="background:#B5620C">LEARN MORE ABOUT ME</a>
+    </div>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,90px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { muted: true };
+  renderVals() {
+    const muted = this.state.muted;
+    const p = { width: 13, height: 13, viewBox: "0 0 24 24", fill: "none", stroke: "#FFFFFF", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" };
+    const speaker = React.createElement("path", { key: "s", d: "M11 5 6 9H3v6h3l5 4z" });
+    const icon = muted
+      ? React.createElement("svg", p, speaker, React.createElement("path", { key: "x1", d: "M17 9l4 6" }), React.createElement("path", { key: "x2", d: "M21 9l-4 6" }))
+      : React.createElement("svg", p, speaker, React.createElement("path", { key: "w1", d: "M16 8.5a5 5 0 0 1 0 7" }), React.createElement("path", { key: "w2", d: "M19 6a8.5 8.5 0 0 1 0 12" }));
+    return {
+      soundIcon: icon,
+      toggleMute: () => {
+        const v = document.querySelector("video");
+        const next = !this.state.muted;
+        if (v) { v.muted = next; if (!next) v.play().catch(() => {}); }
+        this.setState({ muted: next });
+      }
+    };
+  }
+  componentDidMount() {
+    const tryPlay = () => {
+      const v = document.querySelector("video");
+      if (v) { v.muted = true; v.play().catch(() => {}); }
+    };
+    tryPlay();
+    setTimeout(tryPlay, 400);
+  }
+}
+</script>
 </body>
 </html>

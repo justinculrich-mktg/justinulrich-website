@@ -1,112 +1,262 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Me | JustinUlrich.com</title>
-<link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Me | Justin Ulrich</title>
+<meta name="description" content="Who I am, how I work, and the skills I bring to a marketing team.">
+<link rel="canonical" href="https://www.justinulrich.com/about">
+<link rel="icon" type="image/png" href="./assets/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JustinUlrich.com">
+<meta property="og:title" content="About Me | Justin Ulrich">
+<meta property="og:description" content="Who I am, how I work, and the skills I bring to a marketing team.">
+<meta property="og:url" content="https://www.justinulrich.com/about">
+<meta property="og:image" content="https://www.justinulrich.com/assets/hero-photo.png">
+<meta name="twitter:card" content="summary_large_image">
+<script src="./support.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet>
+  <title>About Me | JustinUlrich.com</title>
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&amp;family=Figtree:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin:0; background:#FFFFFF; -webkit-font-smoothing:antialiased; }
+    a { color:#CE7213; }
+    a:hover { color:#E08A2E; }
+    @keyframes heroIn { from { opacity:0; } to { opacity:1; } }
+  </style>
+</helmet>
 
-<header class="site-header">
-  <nav class="nav">
-    <a class="logo" href="index.html">
-      <img src="images/logo.png" alt="Justin Ulrich" class="logo-img">
+<div style="width:100%;overflow-x:hidden">
+  <dc-import name="Nav" active="about" hint-size="100%,72px"></dc-import>
+
+  <section data-screen-label="Hero" style="background:#3F5B7A;padding:104px 24px 54px;text-align:center">
+    <div style="font-family:Oswald,sans-serif;font-weight:300;font-size:30px;letter-spacing:.8px;color:#1B2A41;margin:0 0 4px"><span style="display:inline-block;opacity:0;animation:heroIn .9s ease-out 0s both">PART ARTIST.</span><span style="display:inline-block;opacity:0;animation:heroIn .9s ease-out 1.5s both">&nbsp; PART SCIENTIST.</span></div>
+    <h1 style="font-family:Oswald,sans-serif;font-weight:500;font-size:40px;letter-spacing:.5px;color:#FFFFFF;margin:0 0 56px;opacity:0;animation:heroIn .9s ease-out 3s both">ALL MARKETER.</h1>
+    <a href="#skills" aria-label="Scroll down" style="display:inline-block;font-size:0;line-height:0;color:#1B2A41;text-decoration:none">
+      <svg width="64" height="28" viewBox="0 0 64 28" fill="none" aria-hidden="true"><path d="M3 3 L32 25 L61 3" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
     </a>
-    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" class="active">About Me</a></li>
-      <li><a href="work.html">Work</a></li>
-      <li><a href="volunteer.html">Volunteer</a></li>
-      <li><a href="references.html">References</a></li>
-      <li><a href="contact.html">Contact Me</a></li>
-    </ul>
-  </nav>
-</header>
+  </section>
 
-<section class="page-header hdr-blue">
-  <div class="container">
-    <h1>Part Scientist. All Marketer. Part Artist.</h1>
-    <p>Here's how I can help. Looking to add some skills to your team?</p>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="skills-grid">
-      <div class="skill">
-        <img src="images/icon-tech.png" alt="">
-        <div>
-          <h3>I Love Technology</h3>
-          <p>Understanding new technologies and proficiency with them provides a unique skill set. Strategic mapping of high-level initiatives combined with graphic design execution, reporting, and analysis capabilities.</p>
-        </div>
+  <section data-screen-label="Skills" id="skills" style="background:#3D4249;padding:56px 24px 64px;text-align:center">
+    <div style="font-family:Oswald,sans-serif;font-weight:300;font-size:24px;letter-spacing:.5px;color:#BFC5CC;margin:0 0 2px">LOOKING TO ADD SOME SKILLS TO YOUR TEAM?</div>
+    <h2 style="font-family:Oswald,sans-serif;font-weight:500;font-size:30px;letter-spacing:.5px;color:#FFFFFF;margin:0 0 42px">HERE'S HOW I CAN HELP</h2>
+    <div style="max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px 20px;justify-items:center;align-items:center">
+      <div onMouseEnter="{{ sIn0 }}" onMouseLeave="{{ sOut }}" style="position:relative;width:100%;max-width:126px;cursor:default">
+        <img src="./assets/21fe07_97a9f36bcfb54-2.png" alt="{{ sAlt0 }}" style="width:100%;height:auto;display:block">
+        <div style="position:absolute;left:0;right:0;top:0;bottom:0;border-radius:50%;background:rgba(206,114,19,.94);display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;transition:opacity .16s ease;font-family:Oswald,sans-serif;font-weight:500;font-size:12px;line-height:1.2;letter-spacing:.3px;color:#FFFFFF;opacity:0" style-hover="opacity:1">{{ sTxt0 }}</div>
       </div>
-      <div class="skill">
-        <img src="images/icon-creativity.png" alt="">
-        <div>
-          <h3>Creativity</h3>
-          <blockquote>"Creativity is intelligence having fun." &mdash; Albert Einstein</blockquote>
-          <p>As markets evolve, tactics must adapt. Creative approaches to challenges drive organizational impact and differentiation in competitive landscapes.</p>
-        </div>
+      <div onMouseEnter="{{ sIn1 }}" onMouseLeave="{{ sOut }}" style="position:relative;width:100%;max-width:126px;cursor:default">
+        <img src="./assets/21fe07_9324151cd2df4-2.png" alt="{{ sAlt1 }}" style="width:100%;height:auto;display:block">
+        <div style="position:absolute;left:0;right:0;top:0;bottom:0;border-radius:50%;background:rgba(206,114,19,.94);display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;transition:opacity .16s ease;font-family:Oswald,sans-serif;font-weight:500;font-size:12px;line-height:1.2;letter-spacing:.3px;color:#FFFFFF;opacity:0" style-hover="opacity:1">{{ sTxt1 }}</div>
       </div>
-      <div class="skill">
-        <img src="images/icon-innovation.png" alt="">
-        <div>
-          <h3>Innovation</h3>
-          <blockquote>"The most dangerous phrase in the English language is 'We've always done it this way.'" &mdash; Grace Hopper</blockquote>
-          <p>Challenging status quo thinking, identifying best practices, discovering new tools and communication vehicles that resonate with audiences.</p>
-        </div>
+      <div onMouseEnter="{{ sIn2 }}" onMouseLeave="{{ sOut }}" style="position:relative;width:100%;max-width:126px;cursor:default">
+        <img src="./assets/21fe07_a5c74170fe1a4-2.png" alt="{{ sAlt2 }}" style="width:100%;height:auto;display:block">
+        <div style="position:absolute;left:0;right:0;top:0;bottom:0;border-radius:50%;background:rgba(206,114,19,.94);display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;transition:opacity .16s ease;font-family:Oswald,sans-serif;font-weight:500;font-size:12px;line-height:1.2;letter-spacing:.3px;color:#FFFFFF;opacity:0" style-hover="opacity:1">{{ sTxt2 }}</div>
       </div>
-      <div class="skill">
-        <img src="images/icon-lessismore.png" alt="">
-        <div>
-          <h3>Less Is More</h3>
-          <blockquote>"Many attempts to communicate are nullified by saying too much." &mdash; Robert Greenleaf</blockquote>
-          <p>Visual appeal combined with message simplicity cuts through industry clutter, captures attention, and generates interest.</p>
-        </div>
+      <div onMouseEnter="{{ sIn3 }}" onMouseLeave="{{ sOut }}" style="position:relative;width:100%;max-width:126px;cursor:default">
+        <img src="./assets/21fe07_cc951d3c497a4-2.png" alt="{{ sAlt3 }}" style="width:100%;height:auto;display:block">
+        <div style="position:absolute;left:0;right:0;top:0;bottom:0;border-radius:50%;background:rgba(206,114,19,.94);display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;transition:opacity .16s ease;font-family:Oswald,sans-serif;font-weight:500;font-size:12px;line-height:1.2;letter-spacing:.3px;color:#FFFFFF;opacity:0" style-hover="opacity:1">{{ sTxt3 }}</div>
       </div>
-      <div class="skill">
-        <img src="images/icon-motivates.png" alt="">
-        <div>
-          <h3>What Motivates Me</h3>
-          <p>My family &mdash; my wife and children &mdash; fuel my drive for continuous self-improvement and success.</p>
-        </div>
+      <div onMouseEnter="{{ sIn4 }}" onMouseLeave="{{ sOut }}" style="position:relative;width:100%;max-width:126px;cursor:default">
+        <img src="./assets/21fe07_b4e024f5ea074-2.png" alt="{{ sAlt4 }}" style="width:100%;height:auto;display:block">
+        <div style="position:absolute;left:0;right:0;top:0;bottom:0;border-radius:50%;background:rgba(206,114,19,.94);display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;transition:opacity .16s ease;font-family:Oswald,sans-serif;font-weight:500;font-size:12px;line-height:1.2;letter-spacing:.3px;color:#FFFFFF;opacity:0" style-hover="opacity:1">{{ sTxt4 }}</div>
       </div>
-      <div class="skill">
-        <img src="images/icon-fun.png" alt="">
-        <div>
-          <h3>Have Fun</h3>
-          <blockquote>"If you're not having fun, you're doing something wrong." &mdash; Groucho Marx</blockquote>
-          <p>Outdoor activities like off-roading, paintballing, rock climbing, and hiking keep me energized. Fun in professional settings builds camaraderie and sustains creativity.</p>
-        </div>
+      <div onMouseEnter="{{ sIn5 }}" onMouseLeave="{{ sOut }}" style="position:relative;width:100%;max-width:126px;cursor:default">
+        <img src="./assets/21fe07_23bbe25cf7574.png" alt="{{ sAlt5 }}" style="width:100%;height:auto;display:block">
+        <div style="position:absolute;left:0;right:0;top:0;bottom:0;border-radius:50%;background:rgba(206,114,19,.94);display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;transition:opacity .16s ease;font-family:Oswald,sans-serif;font-weight:500;font-size:12px;line-height:1.2;letter-spacing:.3px;color:#FFFFFF;opacity:0" style-hover="opacity:1">{{ sTxt5 }}</div>
+      </div>
+      <div onMouseEnter="{{ sIn6 }}" onMouseLeave="{{ sOut }}" style="position:relative;width:100%;max-width:126px;cursor:default">
+        <img src="./assets/21fe07_a67c3083ada74.png" alt="{{ sAlt6 }}" style="width:100%;height:auto;display:block">
+        <div style="position:absolute;left:0;right:0;top:0;bottom:0;border-radius:50%;background:rgba(206,114,19,.94);display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;transition:opacity .16s ease;font-family:Oswald,sans-serif;font-weight:500;font-size:12px;line-height:1.2;letter-spacing:.3px;color:#FFFFFF;opacity:0" style-hover="opacity:1">{{ sTxt6 }}</div>
+      </div>
+      <div onMouseEnter="{{ sIn7 }}" onMouseLeave="{{ sOut }}" style="position:relative;width:100%;max-width:126px;cursor:default">
+        <img src="./assets/21fe07_67499ca7c8684.png" alt="{{ sAlt7 }}" style="width:100%;height:auto;display:block">
+        <div style="position:absolute;left:0;right:0;top:0;bottom:0;border-radius:50%;background:rgba(206,114,19,.94);display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;transition:opacity .16s ease;font-family:Oswald,sans-serif;font-weight:500;font-size:12px;line-height:1.2;letter-spacing:.3px;color:#FFFFFF;opacity:0" style-hover="opacity:1">{{ sTxt7 }}</div>
+      </div>
+      <div onMouseEnter="{{ sIn8 }}" onMouseLeave="{{ sOut }}" style="position:relative;width:100%;max-width:126px;cursor:default">
+        <img src="./assets/21fe07_412dcf7dd5a64.png" alt="{{ sAlt8 }}" style="width:100%;height:auto;display:block">
+        <div style="position:absolute;left:0;right:0;top:0;bottom:0;border-radius:50%;background:rgba(206,114,19,.94);display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;transition:opacity .16s ease;font-family:Oswald,sans-serif;font-weight:500;font-size:12px;line-height:1.2;letter-spacing:.3px;color:#FFFFFF;opacity:0" style-hover="opacity:1">{{ sTxt8 }}</div>
+      </div>
+      <div onMouseEnter="{{ sIn9 }}" onMouseLeave="{{ sOut }}" style="position:relative;width:100%;max-width:126px;cursor:default">
+        <img src="./assets/21fe07_c0367541c1054.png" alt="{{ sAlt9 }}" style="width:100%;height:auto;display:block">
+        <div style="position:absolute;left:0;right:0;top:0;bottom:0;border-radius:50%;background:rgba(206,114,19,.94);display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;transition:opacity .16s ease;font-family:Oswald,sans-serif;font-weight:500;font-size:12px;line-height:1.2;letter-spacing:.3px;color:#FFFFFF;opacity:0" style-hover="opacity:1">{{ sTxt9 }}</div>
       </div>
     </div>
-  </div>
-</section>
+    <div style="max-width:620px;margin:26px auto 0;min-height:62px">
+      <div style="font-family:Oswald,sans-serif;font-weight:500;font-size:19px;letter-spacing:.5px;color:#E8A765;line-height:1.2">{{ skillTitle }}</div>
+      <p style="font-family:Figtree,sans-serif;font-weight:400;font-size:15px;line-height:1.55;color:#DDE1E5;margin:6px 0 0;text-wrap:pretty">{{ skillBody }}</p>
+    </div>
+  </section>
 
-<section class="section-alt" style="text-align:center;">
-  <div class="container">
-    <h2 class="section-heading">Let's Talk</h2>
-    <p class="section-sub">720.422.0874 &nbsp;&middot;&nbsp; JustinC.Ulrich@gmail.com</p>
-    <a href="resume-justin-ulrich.pdf" target="_blank" class="btn">Download Resume</a>
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-contact">
-        <a href="tel:7204220874"><img src="images/icon-phone.png" alt="">720.422.0874</a>
-        <a href="mailto:JustinC.Ulrich@gmail.com">JustinC.Ulrich@gmail.com</a>
-        <a href="resume-justin-ulrich.pdf" target="_blank"><img src="images/icon-pdf.png" alt="" style="filter:none;width:18px;height:18px;">Download Resume</a>
-        <a href="https://www.linkedin.com/in/justinculrich" target="_blank"><img src="images/icon-linkedin.png" alt="" style="filter:none;width:20px;height:20px;">LinkedIn</a>
+  <section data-screen-label="I Love Technology" style="background:#FFFFFF">
+    <div style="max-width: 960px; margin: 0 auto; padding: 56px 24px 48px; width: 100%; box-sizing: border-box">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px 48px;align-items:start;margin:0 0 34px">
+        <div style="max-width:330px">
+          <h2 style="font-family:Oswald,sans-serif;font-weight:500;font-size:24px;letter-spacing:.5px;color:#2E3A47;margin:0 0 14px">I LOVE TECHNOLOGY</h2>
+          <p style="font-family: Figtree,sans-serif; font-weight: 400; font-size: 15px; line-height: 1.62; color: #5A646F; margin: 0; text-wrap: pretty; width: 378px; height: 173px">Understanding new technologies, and being versed in using them has given me a unique skill set that's hard to come by. Not only do I strategically map out high-level, short- and long-term initiatives, but I can also execute with full graphic design capabilities, along with follow-up reporting and analysis.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 34px;align-items:center;justify-items:center">
+          <img src="./assets/21fe07_eab3a95adf934.jpg" alt="Adobe Illustrator" style="max-width:100%;max-height:62px;width:auto;height:auto;object-fit:contain;display:block">
+          <img src="./assets/21fe07_a53ed862a9ca4.png" alt="Eloqua" style="max-width:100%;max-height:48px;width:auto;height:auto;object-fit:contain;display:block">
+          <img src="./assets/21fe07_b3789f8375614.png" alt="HubSpot" style="max-width:100%;max-height:52px;width:auto;height:auto;object-fit:contain;display:block">
+          <img src="./assets/21fe07_502aee8c23184.png" alt="Adobe Photoshop" style="max-width:100%;max-height:62px;width:auto;height:auto;object-fit:contain;display:block">
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:30px 34px;align-items:center;justify-items:center">
+        <img src="./assets/slack-logo.png" alt="Slack" style="max-width:100%;max-height:52px;width:auto;height:auto;object-fit:contain;display:block">
+        <img src="./assets/dialoguetech.png" alt="DialogTech" style="max-width:100%;max-height:34px;width:auto;height:auto;object-fit:contain;display:block">
+        <img src="./assets/21fe07_9adb13300fd64.png" alt="Cerqo" style="max-width:100%;max-height:34px;width:auto;height:auto;object-fit:contain;display:block">
+        <img src="./assets/trello-logo-blue.png" alt="Trello" style="max-width:100%;max-height:38px;width:auto;height:auto;object-fit:contain;display:block">
+        <img src="./assets/21fe07_d5d578f559254.png" alt="Landbot.io" style="max-width:100%;max-height:34px;width:auto;height:auto;object-fit:contain;display:block">
+        <img src="./assets/zapier-logo.png" alt="Zapier" style="max-width:100%;max-height:36px;width:auto;height:auto;object-fit:contain;display:block">
+        <img src="./assets/totango-logo.jpeg" alt="Totango" style="max-width:100%;max-height:32px;width:auto;height:auto;object-fit:contain;display:block">
+        <img src="./assets/hootsuite-logo.jpg" alt="Hootsuite" style="max-width:100%;max-height:36px;width:auto;height:auto;object-fit:contain;display:block">
       </div>
     </div>
-    <div class="footer-copy">&copy; <span id="year"></span> Justin Ulrich. All rights reserved.</div>
-  </div>
-</footer>
+  </section>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <div style="background:#E6E6E6;padding:22px 24px">
+    <div style="max-width: 960px; margin: 0 auto; font-family: Oswald,sans-serif; font-size: 23px; letter-spacing: .4px; line-height: 1.35; width: 100%">
+      <span style="font-weight:300;color:#7E8893">"CREATIVITY IS </span><span style="font-weight:500;color:#3D4650">INTELLIGENCE HAVING FUN."</span><span style="font-weight:300;font-size:15px;color:#CE7213;margin-left:12px">~ALBERT EINSTEIN</span>
+    </div>
+  </div>
+
+  <section data-screen-label="Creativity" style="background:#FFFFFF">
+    <div style="max-width: 960px; margin: 0 auto; padding: 44px 24px; display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 40px; align-items: center; width: 100%; box-sizing: border-box">
+      <img src="./assets/21fe07_30d452aed0af4.png" alt="" style="width: 447px; height: 173px; display: block">
+      <div style="max-width:330px">
+        <h2 style="font-family:Oswald,sans-serif;font-weight:500;font-size:24px;letter-spacing:.5px;color:#2E3A47;margin:0 0 14px">CREATIVITY</h2>
+        <p style="font-family: Figtree,sans-serif; font-weight: 400; font-size: 15px; line-height: 1.62; color: #5A646F; margin: 0; text-wrap: pretty; width: 397px; height: 216px">As markets and segments evolve, so must the tactics we employ. I continually assess my approach to ensure I tackle challenges in the most effective and efficient way possible. Doing something just because it's easy that way isn't good enough. I approach opportunities creatively - that's what makes life fun. Because of this, any organization I support tends to show up in a big way in anything we do.</p>
+      </div>
+    </div>
+  </section>
+
+  <div style="background:#E6E6E6;padding:22px 24px">
+    <div style="max-width: 960px; margin: 0 auto; font-family: Oswald,sans-serif; font-size: 23px; letter-spacing: .4px; line-height: 1.4; width: 100%">
+      <div style="font-weight: 300; color: #7E8893">"THE MOST DANGEROUS PHRASE IN THE ENGLISH LANGUAGE IS</div>
+      <div style="padding-left:14%"><span style="font-weight:500;color:#3D4650">'WE'VE ALWAYS DONE IT THIS WAY.'"</span><span style="font-weight:300;font-size:15px;color:#CE7213;margin-left:12px">~GRACE HOPPER</span></div>
+    </div>
+  </div>
+
+  <section data-screen-label="Innovation" style="background:#FFFFFF">
+    <div style="max-width: 960px; margin: 0 auto; padding: 44px 24px; display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 40px; align-items: center; width: 100%; box-sizing: border-box">
+      <div style="max-width:330px">
+        <h2 style="font-family:Oswald,sans-serif;font-weight:500;font-size:24px;letter-spacing:.5px;color:#2E3A47;margin:0 0 14px">INNOVATION</h2>
+        <p style="font-family: Figtree,sans-serif; font-weight: 400; font-size: 15px; line-height: 1.62; color: #5A646F; margin: 0; text-wrap: pretty; max-width: 375px">I'm rarely comfortable maintaining the status quo. "Because we've always done it that way" is not an excuse to keep doing so. Too often do folks fall prey to this type of thinking, and actually keep themselves from reaching their full potential. I default to identifying best practices, discovering or creating new tools and vehicles for reaching my audience, and communicating in a way that resonates them.</p>
+      </div>
+      <img src="./assets/1six6469_0353.jpg" alt="" style="width: 100%; max-width: 446px; height: auto; display: block">
+    </div>
+  </section>
+
+  
+
+  <div style="background:#E6E6E6;padding:22px 24px">
+    
+  <div style="max-width: 960px; margin: 0 auto; font-family: Oswald,sans-serif; font-size: 23px; letter-spacing: .4px; line-height: 1.4; width: 100%">
+      
+      <div style="font-weight: 300; color: #7E8893">"MANY ATTEMPTS TO COMMUNICATE ARE NULLIFIED</div><div style="padding-left:14%"><span style="font-weight:500;color:#3D4650">BY SAYING TOO MUCH."</span><span style="font-weight:300;font-size:15px;color:#CE7213;margin-left:12px">~ROBERT GREENLEAF</span></div>
+    </div></div><section data-screen-label="Less Is More" style="background:#FFFFFF">
+    <div style="max-width: 960px; margin: 0 auto; padding: 52px 24px 44px; display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 40px; align-items: center; width: 100%; box-sizing: border-box">
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:400px;margin-top:-60px">
+        <img src="./assets/21fe07_0a60fac521e44.jpg" alt="" style="width:100%;height:auto;display:block">
+        <img src="./assets/21fe07_f8ec08c35bed4.jpg" alt="" style="width:100%;height:auto;display:block">
+        <img src="./assets/21fe07_56d0504bee654.jpg" alt="" style="width:100%;height:auto;display:block">
+      </div>
+      <div style="max-width:340px">
+        <h2 style="font-family:Oswald,sans-serif;font-weight:500;font-size:24px;letter-spacing:.5px;color:#2E3A47;margin:0 0 14px">LESS IS MORE</h2>
+        <p style="font-family: Figtree,sans-serif; font-weight: 400; font-size: 15px; line-height: 1.62; color: #5A646F; margin: 0; text-wrap: pretty; width: 100%">My wife and I let our daughters know their beauty lies within them. I look at communications similarly. There is beauty in communications, and it lies within the message. When communicating, I apply visual appeal to grab the attention of my audience, and simplicity in crafting the message. Doing so allows me to surgically cut through industry clutter, pique the viewer's interest, and leave them wanting to know more about what I'm offering.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="What Motivates Me" style="background:#3D4249;margin-top:6px">
+    
+  <div style="max-width: 960px; margin: 0 auto; padding: 26px 24px; display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 40px; align-items: center; width: 100%; box-sizing: border-box; min-height: 308px">
+      <div style="max-width:420px">
+        <h2 style="font-family:Oswald,sans-serif;font-weight:500;font-size:24px;letter-spacing:.5px;color:#FFFFFF;margin:0 0 14px">WHAT MOTIVATES ME</h2>
+        <p style="font-family: Figtree,sans-serif; font-weight: 400; font-size: 14px; line-height: 1.6; color: #DDE1E5; margin: 0 0 14px; text-wrap: pretty; max-width: 386px">I've always been motivated for genuine reasons. The sense of accomplishment in any task I tackle is great; however, I enjoy knowing that what I accomplished not only had an impact, but that I was able to improve myself in the process.</p>
+        <p style="font-family: Figtree,sans-serif; font-weight: 400; font-size: 14px; line-height: 1.6; color: #DDE1E5; margin: 0; text-wrap: pretty; max-width: 381px">But my main motivation is my family. My wife is amazing, and my kiddos are such a joy to be around. It's because of them that I have such a strong drive to succeed. They are what fuel my drive to put forth my best effort in all that I do.</p>
+      </div>
+      <div style="display:flex;justify-content:center">
+        <img src="./assets/21fe07_d35f9b83261c4.jpg" alt="" style="width:100%;max-width:340px;height:auto;display:block;margin:-56px 0;border:7px solid #FFFFFF;box-sizing:border-box;box-shadow:0 14px 34px rgba(0,0,0,.3);position:relative;z-index:2">
+      </div>
+    </div></section>
+
+  <div style="background:#E6E6E6;padding:22px 24px;margin-top:56px">
+    <div style="max-width: 960px; margin: 0 auto; font-family: Oswald,sans-serif; font-size: 23px; letter-spacing: .4px; line-height: 1.4; width: 100%">
+      <div style="font-weight: 300; color: #7E8893">"IF YOU'RE NOT HAVING FUN,</div>
+      <div style="padding-left:14%"><span style="font-weight:500;color:#3D4650">YOU'RE DOING SOMETHING WRONG."</span><span style="font-weight:300;font-size:15px;color:#CE7213;margin-left:12px">~GROUCHO MARX</span></div>
+    </div>
+  </div>
+
+  <section data-screen-label="Have Fun" style="background:#FFFFFF">
+    <div style="max-width: 960px; margin: 0 auto; padding: 52px 24px 56px; display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 40px; align-items: center; width: 100%; box-sizing: border-box">
+      <div style="max-width:330px">
+        <h2 style="font-family:Oswald,sans-serif;font-weight:500;font-size:24px;letter-spacing:.5px;color:#2E3A47;margin:0 0 14px">HAVE FUN</h2>
+        <p style="font-family: Figtree,sans-serif; font-weight: 400; font-size: 15px; line-height: 1.62; color: #5A646F; margin: 0 0 14px; text-wrap: pretty; width: 396px; height: 94px">Life's too short not to have fun. You can find me off-roading, paintballing, rock climbing, hiking - I love to be outdoors, and I love to have fun! But not just in my free time.</p>
+        <p style="font-family: Figtree,sans-serif; font-weight: 400; font-size: 15px; line-height: 1.62; color: #5A646F; margin: 0; text-wrap: pretty; width: 361px; height: 160px">Anyone who's worked with me knows I love to utilize my creativity and vision to lead innovative marketing initiatives – and I make sure we have fun in the process. Having fun builds camaraderie and keeps the creativity alive - and it's contagious!</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,auto);gap:0px;max-width:1000px;margin:0 auto;width:100%">
+        <img src="./assets/skills-icons-20.png" alt="" style="grid-column:1;grid-row:1;width:100%;max-width:468px;height:auto;display:block;justify-self:center;margin:-21px">
+        <img src="./assets/skills-icons-18.png" alt="" style="grid-column:3;grid-row:1;width:100%;max-width:468px;height:auto;display:block;justify-self:center;margin:-21px">
+        <img src="./assets/skills-icons-16.png" alt="" style="grid-column:2;grid-row:2;width:100%;max-width:468px;height:auto;display:block;justify-self:center;margin:-21px">
+        <img src="./assets/skills-icons-17.png" alt="" style="grid-column:1;grid-row:3;width:100%;max-width:468px;height:auto;display:block;justify-self:center;margin:-21px">
+        <img src="./assets/skills-icons-19.png" alt="" style="grid-column:3;grid-row:3;width:100%;max-width:468px;height:auto;display:block;justify-self:center;margin:-21px">
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="CTA" style="background:#E6E6E6;padding:44px 24px 48px;text-align:center">
+    <div style="font-family:Oswald,sans-serif;font-weight:300;font-size:24px;letter-spacing:.5px;color:#7E8893;margin:0 0 2px">ENOUGH ABOUT ME -</div>
+    <h2 style="font-family:Oswald,sans-serif;font-weight:500;font-size:30px;letter-spacing:.5px;color:#3D4650;margin:0 0 24px;text-wrap:pretty">CHECK OUT SOME OF THE WORK I'VE DONE.</h2>
+    <a href="/work" style="font-family:Oswald,sans-serif;font-weight:400;font-size:16px;letter-spacing:1.2px;color:#FFFFFF;background:#CE7213;border-radius:4px;padding:10px 46px;text-decoration:none;display:inline-block" style-hover="background:#B5620C">SEE MY WORK</a>
+  </section>
+
+  <dc-import name="Footer" hint-size="100%,90px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { skill: null };
+
+  skills() {
+    return [
+      ["Creative Visionary", "I create engaging plans, always assessing new ways to do things."],
+      ["Hands-On Leader", "I create the vision and the plan, and I jump in to get things done."],
+      ["Project Management", "I create the plan, and outline milestones for timely completion."],
+      ["Interpersonal Skills", "I default to being collaborative, and I'm fun to work with."],
+      ["Eye for Design", "I've got a creative eye, and the skills to deliver on my vision."],
+      ["Detail Oriented", "I naturally gravitate to the details, ensuring all bases are covered."],
+      ["Problem Solver", "I identify problems, and work through creative solutions to addressing them."],
+      ["Strategic Mindset", "I start with the strategy, and ensure everything else ladders up."],
+      ["Goal Driven", "I keep my eyes on the prize, and ensure my team stays motivated as well."],
+      ["Nunchuck Skills", "Napoleon Dynamite's not the only one with a broad skill set."]
+    ];
+  }
+
+  renderVals() {
+    const list = this.skills();
+    const i = this.state.skill;
+    const active = i === null ? null : list[i];
+    const out = {};
+    list.forEach((s, idx) => {
+      out["sIn" + idx] = () => this.setState({ skill: idx });
+      out["sTxt" + idx] = s[0].toUpperCase();
+      out["sAlt" + idx] = s[0];
+    });
+    out.sOut = () => this.setState({ skill: null });
+    out.skillTitle = active ? active[0].toUpperCase() : "";
+    out.skillBody = active ? active[1] : "";
+    return out;
+  }
+}
+</script>
 </body>
 </html>
