@@ -29,6 +29,8 @@
     body { margin:0; background:#FFFFFF; -webkit-font-smoothing:antialiased; }
     a { color:#CE7213; }
     a:hover { color:#E08A2E; }
+    #podcast-track { scrollbar-width:none; }
+    #podcast-track::-webkit-scrollbar { display:none; }
   </style>
 </helmet>
 
@@ -53,16 +55,33 @@
         <div style="font-family:Figtree,sans-serif;font-size:15px;color:#4A5561;min-width:190px;text-align:center">{{ slideLabel }}</div>
         <button type="button" onClick="{{ next }}" aria-label="Next example" style="font-family:Oswald,sans-serif;font-size:22px;line-height:1;color:#FFFFFF;background:#1B2A41;border:0;width:40px;height:40px;cursor:pointer" style-hover="background:#CE7213">›</button>
       </div>
-      <div style="max-width:620px;margin:14px auto 0;min-height:66px">
-        <div style="font-family:Oswald,sans-serif;font-weight:500;font-size:19px;letter-spacing:.4px;color:#2E3A47">{{ slideTitle }}</div>
-        <p style="font-family:Figtree,sans-serif;font-size:15px;line-height:1.6;color:#4A5561;margin:6px 0 0;text-wrap:pretty">{{ slideBody }}</p>
+    </div>
+  </section>
+
+  <section data-screen-label="Podcast" style="background:#161B2E">
+    <div style="padding:50px 24px 34px">
+      <div style="max-width:700px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center">
+        <p style="font-family:Oswald,sans-serif;font-weight:500;font-size:13px;letter-spacing:1.6px;color:#9BB6E0;margin:15px 0 -3px;text-transform:uppercase">Host &amp; Producer</p>
+        <img src="https://evocalize.com/images/wp/2023/08/marketing_lab_logo.webp" alt="The Local Marketing Lab" style="display:block;height:84px;width:auto;margin:0 0 16px">
+        <p style="font-family:Figtree,sans-serif;font-size:16px;line-height:1.7;color:#C7CEDB;margin:0;text-wrap:pretty">I host and produce this show for Evocalize end to end — booking guests, shaping the conversations, and turning each episode into content people enjoy.</p>
+      </div>
+    </div>
+    <div style="padding:26px 0 34px">
+      <div style="max-width:1000px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:10px">
+        <button type="button" aria-label="Scroll episodes left" onClick="{{ podcastPrev }}" style="flex:0 0 auto;font-family:Oswald,sans-serif;font-size:20px;line-height:1;color:#FFFFFF;background:rgba(255,255,255,.08);border:0;border-radius:50%;width:38px;height:38px;cursor:pointer" style-hover="background:#CE7213">‹</button>
+        <div id="podcast-track" style="flex:1 1 auto;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 10px">
+          {{ podcastTiles }}
+        </div>
+        <button type="button" aria-label="Scroll episodes right" onClick="{{ podcastNext }}" style="flex:0 0 auto;font-family:Oswald,sans-serif;font-size:20px;line-height:1;color:#FFFFFF;background:rgba(255,255,255,.08);border:0;border-radius:50%;width:38px;height:38px;cursor:pointer" style-hover="background:#CE7213">›</button>
+      </div>
+      <div style="text-align:center;margin-top:28px">
+        <a href="https://evocalize.com/resource-center/local-marketing-lab-podcast/" target="_blank" rel="noopener" style="display:inline-block;font-family:Oswald,sans-serif;font-weight:500;font-size:15px;letter-spacing:.4px;color:#FFFFFF;background:#CE7213;border-radius:999px;padding:13px 28px;text-decoration:none" style-hover="background:#E08A2E">Browse all episodes →</a>
       </div>
     </div>
   </section>
 
   <section data-screen-label="Finished Products" style="background:#FFFFFF">
     <div style="max-width:1000px;margin:0 auto;padding:26px 24px 14px">
-      <p style="font-family: Oswald,sans-serif; font-weight: 300; font-size: 36px; line-height: 38.8px; color: #4A5561; margin: 0 0 20px; max-width: 996px">Want to see more?<br>Check out some of my finished products below.</p>
       <a href="https://pub-bc8f6a2cf6154e4d90616851a25b359f.r2.dev/RZR%20ProXP%20Brochure.pdf" target="_blank" rel="noopener" style="display:block;max-width:630px;margin:0 auto">
         <img src="./assets/pro-xp-cover.png" alt="RZR Pro XP launch book" style="width:100%;height:auto;display:block">
       </a>
@@ -253,6 +272,34 @@ class Component extends DCLogic {
       v.play().catch(() => {});
     } else { v.pause(); }
   }
+  podcastEpisodes() {
+    return [
+      { title: "Authentic social media marketing for loan officers", guest: "Hannah McManus", date: "Sep 10, 2025", img: "https://artwork.captivate.fm/2377bfed-90da-4415-bb2b-04283bc8eac6/Podcast-Thumbnail-Hannah-McManus.jpg", link: "https://evocalize.com/podcast/social-media-marketing-for-loan-officers/" },
+      { title: "Ways to build your mortgage referral network for lead gen", guest: "Adam Smith", date: "Sep 4, 2025", img: "https://artwork.captivate.fm/ddcdbf3f-0908-4975-9446-952cbb93c9fd/Podcast-Thumbnail-Adam-Smith.jpg", link: "https://evocalize.com/podcast/mortgage-referral-network-for-lead-gen/" },
+      { title: "Digital marketing for mortgage: What actually works", guest: "Drew Gillett", date: "Aug 13, 2025", img: "https://artwork.captivate.fm/01c18a77-0e9d-4856-b40e-6b07ba6645f9/WrgA9JL-be3CCh3RkH-cdV1W.jpg", link: "https://evocalize.com/podcast/digital-marketing-for-mortgage/" },
+      { title: "Getting started with video marketing for loan officers", guest: "Mandy Phillips", date: "Jun 18, 2025", img: "https://artwork.captivate.fm/4cb86390-ed5c-4994-b6e6-1b1d01298628/29WNU0RCAsvskZ1KarV7eCVn.jpg", link: "https://evocalize.com/podcast/video-marketing-for-loan-officers/" },
+      { title: "How to become a valuable mortgage partner", guest: "Eric Mitchell", date: "May 14, 2025", img: "https://artwork.captivate.fm/c5a84bc4-ec2f-45a1-b9fe-84acf6b334d6/JRqje6WMrYk0DAmzlk4GizzU.jpg", link: "https://evocalize.com/podcast/how-to-become-a-valuable-mortgage-partner/" },
+      { title: "13 conversations that drive mortgage success", guest: "Steve Kyles", date: "Mar 26, 2025", img: "https://artwork.captivate.fm/13f59dfe-224f-4e3c-bdec-ecfd11ca91a7/bAQ-OzOV3T9odQFuUchHvWOC.jpg", link: "https://evocalize.com/podcast/13-conversations-that-drive-mortgage-success/" },
+      { title: "The power of personalization in local mortgage marketing", guest: "Ellen Duncan", date: "Mar 19, 2025", img: "https://artwork.captivate.fm/b791bdc7-3ba1-4430-bfeb-ef79bbd2c8b3/B1RE5OIUdFQDfMUul_bdwi5v.jpg", link: "https://evocalize.com/podcast/personalization-in-local-mortgage-marketing/" },
+      { title: "2 powerful ways loan officers can earn customer trust", guest: "Rachel Witt", date: "Feb 12, 2025", img: "https://artwork.captivate.fm/693dd963-c5ba-4d91-9fcd-c4411a8107a8/tBd9jpGTLeWHGBVXYUj_vEqa.jpg", link: "https://evocalize.com/podcast/ways-loan-officers-earn-customer-trust/" }
+    ];
+  }
+  podcastTile(ep, key) {
+    return React.createElement("a", {
+      key, href: ep.link, target: "_blank", rel: "noopener",
+      style: { flex: "0 0 220px", scrollSnapAlign: "start", display: "block", textDecoration: "none", background: "#171C30", borderRadius: "10px", overflow: "hidden" }
+    },
+      React.createElement("img", { src: ep.img, alt: ep.title, style: { width: "100%", aspectRatio: "1/1", objectFit: "cover", display: "block" } }),
+      React.createElement("div", { style: { padding: "12px 14px 16px" } },
+        React.createElement("p", { style: { fontFamily: "Oswald,sans-serif", fontWeight: 500, fontSize: "11px", letterSpacing: ".6px", color: "#CE7213", margin: "0 0 6px", textTransform: "uppercase" } }, ep.date + " · " + ep.guest),
+        React.createElement("p", { style: { fontFamily: "Figtree,sans-serif", fontSize: "14px", lineHeight: 1.4, color: "#FFFFFF", margin: 0, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" } }, ep.title)
+      )
+    );
+  }
+  podcastScroll(dir) {
+    const el = document.getElementById("podcast-track");
+    if (el) el.scrollBy({ left: dir * 236, behavior: "smooth" });
+  }
   icon(paths, size) {
     const p = { width: size || 14, height: size || 14, viewBox: "0 0 24 24", fill: "none", stroke: "#FFFFFF", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" };
     return React.createElement("svg", p, paths.map((d, k) => React.createElement("path", { key: k, d })));
@@ -374,6 +421,14 @@ class Component extends DCLogic {
   componentWillUnmount() {
     if (this._kick) document.removeEventListener("visibilitychange", this._kick);
   }
+  openEp(idx) {
+    document.querySelectorAll("video").forEach((v) => { if (!v.paused) v.pause(); });
+    this.setState({ ep: idx });
+  }
+  closeEp() {
+    this.setState({ ep: null });
+    if (this._kick) this._kick();
+  }
   epUrls() {
     const B = "https://pub-bc8f6a2cf6154e4d90616851a25b359f.r2.dev/";
     return [
@@ -392,13 +447,13 @@ class Component extends DCLogic {
     return {
       epOpen: ep != null,
       epSrc: ep != null ? this.epUrls()[ep] : "",
-      openEp0: () => this.setState({ ep: 0 }),
-      openEp1: () => this.setState({ ep: 1 }),
-      openEp2: () => this.setState({ ep: 2 }),
-      openEp3: () => this.setState({ ep: 3 }),
-      openPx0: () => this.setState({ ep: 4 }),
-      openPx1: () => this.setState({ ep: 5 }),
-      closeEp: () => this.setState({ ep: null }),
+      openEp0: () => this.openEp(0),
+      openEp1: () => this.openEp(1),
+      openEp2: () => this.openEp(2),
+      openEp3: () => this.openEp(3),
+      openPx0: () => this.openEp(4),
+      openPx1: () => this.openEp(5),
+      closeEp: () => this.closeEp(),
       stopEp: (e) => e.stopPropagation(),
       slideImg: s.video ? this.videoSlide(s) : React.createElement("img", {
         src: s.src,
@@ -409,7 +464,10 @@ class Component extends DCLogic {
       slideBody: s.body,
       slideLabel: this.state.i + 1 + " / " + list.length,
       prev: () => this.go(-1),
-      next: () => this.go(1)
+      next: () => this.go(1),
+      podcastTiles: this.podcastEpisodes().map((ep, k) => this.podcastTile(ep, k)),
+      podcastPrev: () => this.podcastScroll(-1),
+      podcastNext: () => this.podcastScroll(1)
     };
   }
 }
