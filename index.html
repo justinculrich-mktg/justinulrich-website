@@ -41,7 +41,8 @@
       <div style="display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;z-index:2;width:max-content;max-width:100%;margin:0 auto">
         <div style="font-family:Oswald,sans-serif;font-weight:300;font-size:30px;letter-spacing:1px;color:#6D8199;align-self:center">HI, I'M</div>
         
-        <h1 style="font-family:Oswald,sans-serif;font-weight:500;font-size:56px;line-height:1.05;letter-spacing:.5px;color:#FFFFFF;margin:0 0 22px">JUSTIN ULRICH</h1><a href="/about" style="font-family:Oswald,sans-serif;font-weight:400;font-size:19px;letter-spacing:1.4px;color:#FFFFFF;background:#CE7213;border-radius:5px;padding:13px 40px;text-decoration:none;display:inline-block" style-hover="background:#B5620C">GET TO KNOW ME</a>
+        <h1 style="font-family:Oswald,sans-serif;font-weight:500;font-size:56px;line-height:1.05;letter-spacing:.5px;color:#FFFFFF;margin:0 0 22px">JUSTIN ULRICH</h1>
+        <a href="/about" style="font-family:Oswald,sans-serif;font-weight:400;font-size:19px;letter-spacing:1.4px;color:#FFFFFF;background:#CE7213;border-radius:5px;padding:13px 40px;text-decoration:none;display:inline-block" style-hover="background:#B5620C">GET TO KNOW ME</a>
       </div><div style="position:relative;min-height:330px">
         <img src="./assets/21fe07_df3a034c3b9d4.png" alt="Justin Ulrich" style="position: absolute; left: -62px; width: 575px; min-width: 575px; max-width: none; height: 519px; max-height: 520px; object-fit: contain; object-position: top center; display: block; top: -81px">
       </div>
@@ -52,7 +53,7 @@
     <div style="max-width: 1060px; margin: 0 auto; padding: 34px 24px 0; display: grid; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); gap: 48px; align-items: center; width: 100%; box-sizing: border-box; height: 613px">
       <div style="max-width:440px">
         <h2 style="font-family:Oswald,sans-serif;font-weight:500;font-size:34px;letter-spacing:.5px;color:#2E3A47;margin:0 0 20px">WHAT I DO</h2>
-        <p style="font-family:Figtree,sans-serif;font-weight:400;font-size:19px;line-height:1.65;color:#4A5561;margin:0 0 30px;text-wrap:pretty">I bring an element of fun and creativity to impactful experiences that drive real results. Check out some examples of work I've done throughout my career.</p>
+        <p style="font-family:Figtree,sans-serif;font-weight:400;font-size:19px;line-height:1.65;color:#4A5561;margin:0 0 30px;text-wrap:pretty">I build scalable B2B SaaS growth engines that drive pipeline, revenue, and market expansion. From a $2B off-road brand to SaaS demand gen built from scratch, I lead with strategy and execute with craft.</p>
         <a href="/work" style="font-family:Oswald,sans-serif;font-weight:400;font-size:18px;letter-spacing:1.2px;color:#FFFFFF;background:#CE7213;border-radius:5px;padding:12px 30px;text-decoration:none;display:inline-block" style-hover="background:#B5620C">SEE WHAT I'VE DONE</a>
       </div>
       <div style="display:flex;justify-content:center;position:relative;max-width:300px;margin:0 auto;width:100%">
@@ -113,6 +114,19 @@
 
   
 
+  <section data-screen-label="Results" style="background:#1B2A41">
+    <div style="max-width:1060px;margin:0 auto;padding:50px 24px 54px;text-align:center">
+      <h2 style="font-family:Oswald,sans-serif;font-weight:500;font-size:30px;letter-spacing:.5px;color:#FFFFFF;margin:0 0 12px">OUTCOMES OVER OUTPUTS</h2>
+      <p style="font-family:Figtree,sans-serif;font-size:17px;line-height:1.6;color:#B7C2D0;margin:0 auto 40px;max-width:620px;text-wrap:pretty">15 years building and leading marketing functions that actually move the needle.</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 0 44px">
+        {{ companyButtons }}
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:32px;max-width:760px;margin:0 auto">
+        {{ companyStats }}
+      </div>
+    </div>
+  </section>
+
   <section data-screen-label="Giving Back" style="background:#F0F0F0">
     
   <div style="max-width: 1055px; margin: 0 auto; padding: 34px 24px; display: grid; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); gap: 48px; align-items: center; width: 100%; box-sizing: border-box; height: 463px">
@@ -161,7 +175,36 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { muted: true };
+  state = { muted: true, company: 0 };
+  companies() {
+    return [
+      { name: "Career", stats: [["$840M+", "Pipeline Generated"], ["$350M+", "Revenue Generated"]] },
+      { name: "Evocalize", stats: [["$32M", "Marketing-Sourced Pipeline"], ["$12M", "Marketing-Sourced Revenue"], ["200%", "YoY Pipeline Growth"]] },
+      { name: "Team Engine", stats: [["$2M", "Marketing-Sourced Pipeline"], ["$1M", "Marketing-Sourced Revenue"], ["15x", "Inbound Lead Growth"]] },
+      { name: "Signpost", stats: [["$25M", "Marketing-Sourced Pipeline"], ["$10M", "Marketing-Sourced Revenue"], ["17x", "Lead Volume Growth"]] },
+      { name: "Polaris", stats: [["$450M", "Marketing-Sourced Pipeline"], ["$140M", "Marketing-Sourced Revenue"], ["150K", "Leads Generated"]] },
+      { name: "Avero", stats: [["$4M", "Marketing-Sourced Pipeline"], ["$2M", "Marketing-Sourced Revenue"], ["0→1", "Marketing Org Built From Scratch"]] },
+      { name: "Vantiv", stats: [["$30M", "Marketing-Sourced Pipeline"], ["$18M", "Marketing-Sourced Revenue"], ["6,000+", "New Customers Acquired"]] },
+      { name: "tw telecom", stats: [["$300M", "Marketing-Sourced Pipeline"], ["$150M", "Marketing-Sourced Revenue"], ["#1", "Performer, 2 Years Running"]] }
+    ];
+  }
+  companyBtn(c, idx) {
+    const active = this.state.company === idx;
+    return React.createElement("button", {
+      key: idx, type: "button", onClick: () => this.setState({ company: idx }),
+      style: {
+        fontFamily: "Oswald,sans-serif", fontWeight: 500, fontSize: "13px", letterSpacing: ".6px",
+        color: active ? "#1B2A41" : "#FFFFFF", background: active ? "#E8A765" : "rgba(255,255,255,.08)",
+        border: 0, borderRadius: "999px", padding: "10px 20px", cursor: "pointer", textTransform: "uppercase"
+      }
+    }, c.name);
+  }
+  companyStat(stat, idx) {
+    return React.createElement("div", { key: idx },
+      React.createElement("div", { style: { fontFamily: "Oswald,sans-serif", fontWeight: 600, fontSize: "42px", color: "#E8A765", lineHeight: 1 } }, stat[0]),
+      React.createElement("div", { style: { fontFamily: "Figtree,sans-serif", fontSize: "14px", color: "#B7C2D0", marginTop: "8px" } }, stat[1])
+    );
+  }
   renderVals() {
     const muted = this.state.muted;
     const p = { width: 13, height: 13, viewBox: "0 0 24 24", fill: "none", stroke: "#FFFFFF", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" };
@@ -169,6 +212,8 @@ class Component extends DCLogic {
     const icon = muted
       ? React.createElement("svg", p, speaker, React.createElement("path", { key: "x1", d: "M17 9l4 6" }), React.createElement("path", { key: "x2", d: "M21 9l-4 6" }))
       : React.createElement("svg", p, speaker, React.createElement("path", { key: "w1", d: "M16 8.5a5 5 0 0 1 0 7" }), React.createElement("path", { key: "w2", d: "M19 6a8.5 8.5 0 0 1 0 12" }));
+    const list = this.companies();
+    const active = list[this.state.company];
     return {
       soundIcon: icon,
       toggleMute: () => {
@@ -176,7 +221,9 @@ class Component extends DCLogic {
         const next = !this.state.muted;
         if (v) { v.muted = next; if (!next) v.play().catch(() => {}); }
         this.setState({ muted: next });
-      }
+      },
+      companyButtons: list.map((c, idx) => this.companyBtn(c, idx)),
+      companyStats: active.stats.map((s, idx) => this.companyStat(s, idx))
     };
   }
   componentDidMount() {

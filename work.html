@@ -49,11 +49,11 @@
           {{ slideImg }}
         </div>
         <img src="./assets/monitor-frame.png" alt="" style="width:100%;height:auto;display:block;position:relative;z-index:2;pointer-events:none">
+        <button type="button" onClick="{{ prev }}" aria-label="Previous example" style="position:absolute;left:0;top:36.4%;transform:translateY(-50%);font-family:Oswald,sans-serif;font-size:132px;line-height:1;color:#FFFFFF;background:transparent;border:0;padding:0;cursor:pointer;z-index:3;transition:transform .15s ease,text-shadow .15s ease" style-hover="transform:translateY(calc(-50% - 2px));text-shadow:0 6px 10px rgba(0,0,0,.35)">‹</button>
+        <button type="button" onClick="{{ next }}" aria-label="Next example" style="position:absolute;right:0;top:36.4%;transform:translateY(-50%);font-family:Oswald,sans-serif;font-size:132px;line-height:1;color:#FFFFFF;background:transparent;border:0;padding:0;cursor:pointer;z-index:3;transition:transform .15s ease,text-shadow .15s ease" style-hover="transform:translateY(calc(-50% - 2px));text-shadow:0 6px 10px rgba(0,0,0,.35)">›</button>
       </div>
-      <div style="max-width:620px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:20px">
-        <button type="button" onClick="{{ prev }}" aria-label="Previous example" style="font-family:Oswald,sans-serif;font-size:22px;line-height:1;color:#FFFFFF;background:#1B2A41;border:0;width:40px;height:40px;cursor:pointer" style-hover="background:#CE7213">‹</button>
-        <div style="font-family:Figtree,sans-serif;font-size:15px;color:#4A5561;min-width:190px;text-align:center">{{ slideLabel }}</div>
-        <button type="button" onClick="{{ next }}" aria-label="Next example" style="font-family:Oswald,sans-serif;font-size:22px;line-height:1;color:#FFFFFF;background:#1B2A41;border:0;width:40px;height:40px;cursor:pointer" style-hover="background:#CE7213">›</button>
+      <div style="max-width:620px;margin:0 auto;text-align:center">
+        <div style="font-family:Figtree,sans-serif;font-size:15px;color:#4A5561">{{ slideLabel }}</div>
       </div>
     </div>
   </section>
@@ -64,6 +64,24 @@
         <p style="font-family:Oswald,sans-serif;font-weight:500;font-size:13px;letter-spacing:1.6px;color:#9BB6E0;margin:15px 0 -3px;text-transform:uppercase">Host &amp; Producer</p>
         <img src="https://evocalize.com/images/wp/2023/08/marketing_lab_logo.webp" alt="The Local Marketing Lab" style="display:block;height:84px;width:auto;margin:0 0 16px">
         <p style="font-family:Figtree,sans-serif;font-size:16px;line-height:1.7;color:#C7CEDB;margin:0;text-wrap:pretty">I host and produce this show for Evocalize end to end — booking guests, shaping the conversations, and turning each episode into content people enjoy.</p>
+        <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px;margin:28px 0 0">
+          <span style="font-family:Oswald,sans-serif;font-weight:500;font-size:13px;letter-spacing:1.2px;color:#FFFFFF;text-transform:uppercase">Listen on</span>
+          <a href="https://open.spotify.com/show/302o07eQ7jETBElW42c8Da" target="_blank" rel="noopener" aria-label="Listen on Spotify" style="display:block;width:40px;height:40px" style-hover="opacity:.8">
+            <img src="https://evocalize.com/images/wp/2023/08/spotify_icon.webp" alt="Listen on Spotify" style="width:100%;height:100%;display:block">
+          </a>
+          <a href="https://podcasts.apple.com/us/podcast/the-local-marketing-lab/id1705924943" target="_blank" rel="noopener" aria-label="Listen on Apple Podcasts" style="display:block;width:40px;height:40px" style-hover="opacity:.8">
+            <img src="https://evocalize.com/images/wp/2023/08/apple_podcasts_icon.webp" alt="Listen on Apple Podcasts" style="width:100%;height:100%;display:block">
+          </a>
+          <a href="https://www.youtube.com/@evocalize" target="_blank" rel="noopener" aria-label="Listen on YouTube" style="display:block;width:40px;height:40px" style-hover="opacity:.8">
+            <img src="https://evocalize.com/images/wp/2023/08/youtube_icon.webp" alt="Listen on YouTube" style="width:100%;height:100%;display:block">
+          </a>
+          <a href="https://music.amazon.com/podcasts/392f0122-f4da-47d2-a0d6-b7cb78a326b3/the-local-marketing-lab" target="_blank" rel="noopener" aria-label="Listen on Amazon Music" style="display:block;width:40px;height:40px" style-hover="opacity:.8">
+            <img src="https://evocalize.com/images/wp/2023/08/amazon_music_app_icon_white.webp" alt="Listen on Amazon Music" style="width:100%;height:100%;display:block">
+          </a>
+          <a href="https://pandora.app.link/2zotg9fk6Hb" target="_blank" rel="noopener" aria-label="Listen on Pandora" style="display:block;width:40px;height:40px" style-hover="opacity:.8">
+            <img src="https://evocalize.com/images/wp/2023/08/pandora_app_icon.webp" alt="Listen on Pandora" style="width:100%;height:100%;display:block">
+          </a>
+        </div>
       </div>
     </div>
     <div style="padding:26px 0 34px">
