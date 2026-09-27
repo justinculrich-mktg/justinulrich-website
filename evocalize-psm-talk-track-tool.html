@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PSM Talk-Track Tool · powered by Evocalize</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Evocalize brand palette
+       brand palette */
+    --ink:#211e2a;            /* deepest slate-purple */
+    --indigo:#322e3c;         /* slate-purple */
+    --indigo-line:#46415a;    /* card border / divider */
+    --sky:#cf64a4;            /* magenta accent (deck) */
+    --cyan:#cf64a4;           /* magenta accent (deck) */
+    --blue:#6f86db;           /* blue gradient pole (deck) */
+    --lav:#eef0f4;            /* light text */
+    --pale:#e7d6ec;           /* pale lavender subtitle */
+    --label:#8b86a0;          /* muted labels */
+    /* working surfaces (kept light for live-call readability) */
+    --paper:#ffffff;
+    --soft:#f4f5fb;
+    --text:#1a2030;
+    --mute:#6b7185;
+    --line:#e4e5f1;
+    /* play-type accents (brand family) */
+    --t-blueprint:#2a72d4;
+    --t-feature:#16a37a;
+    --t-deleg:#6c63d6;
+    --shadow:0 1px 2px rgba(20,22,60,.06),0 10px 28px rgba(20,22,60,.08);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    color:var(--text);
+    background:var(--soft);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px;margin:0 auto;padding:0 16px 72px}
+
+  /* ---------- Branded header ---------- */
+  header.top{
+    background:linear-gradient(135deg,#262232 0%,#322e3c 55%,#3b3650 100%);
+    color:var(--lav);
+    border-radius:0 0 22px 22px;
+    padding:22px 26px 26px;
+    margin:0 -16px 4px;
+    box-shadow:var(--shadow);
+    position:relative;overflow:hidden;
+  }
+  header.top:after{ /* subtle concentric arcs, brand decoration */
+    content:"";position:absolute;right:-90px;top:-90px;width:240px;height:240px;
+    border-radius:50%;border:1.5px solid rgba(207,100,164,.22);
+    box-shadow:0 0 0 22px rgba(207,100,164,.09),0 0 0 48px rgba(111,134,219,.06);
+    pointer-events:none;
+  }
+  .lockup{display:block;height:50px;width:auto;max-width:100%;margin-bottom:16px;position:relative;z-index:1}
+  .eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--sky);margin:0}
+  header.top h1{font-size:26px;margin:5px 0 6px;font-weight:800;letter-spacing:-.01em;position:relative;z-index:1;display:inline-block;
+    background:linear-gradient(90deg,#e985bc 0%,#b07fd4 50%,#6f86db 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .sub{color:var(--pale);font-size:14.5px;margin:0;max-width:640px;font-weight:300;position:relative;z-index:1}
+
+  /* ---------- sticky picker (segment + goal) ---------- */
+  .picker{
+    position:sticky;top:0;z-index:20;
+    background:var(--soft);
+    padding:16px 0 12px;
+    border-bottom:1px solid var(--line);
+  }
+  .picker .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--label);margin:0 0 9px;font-weight:700}
+  .segs{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+  .seg{
+    cursor:pointer;border:1.5px solid var(--line);background:var(--paper);
+    border-radius:13px;padding:12px 12px;text-align:left;transition:.15s;font-family:inherit;
+  }
+  .seg:hover{border-color:var(--sky)}
+  .seg .nm{font-weight:600;font-size:15px;color:var(--text)}
+  .seg .sz{font-size:12px;color:var(--mute);margin-top:2px;font-weight:300}
+  .seg.active{border-color:var(--indigo);background:linear-gradient(135deg,#322e3c,#3b3650);color:#fff;box-shadow:var(--shadow)}
+  .seg.active .nm{color:#fff}
+  .seg.active .sz{color:#c8cdf0}
+
+  /* goal tabs (value-based) — distinct class from the in-card .goal box */
+  .gtabs{display:flex;gap:7px;overflow-x:auto;margin-top:12px;padding-bottom:2px;-webkit-overflow-scrolling:touch}
+  .gtab{
+    cursor:pointer;white-space:nowrap;border:1.5px solid var(--line);background:var(--paper);color:var(--text);
+    border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;font-family:inherit;transition:.15s;
+  }
+  .gtab:hover{border-color:var(--sky)}
+  .gtab.active{border-color:var(--sky);background:linear-gradient(135deg,#322e3c,#3b3650);color:#fff;box-shadow:var(--shadow)}
+  .gtab.ref{border-style:dashed;color:var(--mute)}
+  .gtab.ref:hover{border-color:var(--indigo-line);color:var(--indigo)}
+  .gtab.ref.active{border-style:solid;border-color:var(--indigo-line);background:linear-gradient(135deg,#46415a,#5b5470);color:#fff}
+  .gdiv{flex:none;width:1px;align-self:stretch;background:var(--line);margin:2px 5px}
+  .tag.obj{background:#b04a86}
+  .tag.love{background:#cf64a4;color:#fff}
+
+  .segmeta{
+    background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--indigo-line);border-radius:14px;
+    padding:14px 18px;margin:16px 0 8px;box-shadow:var(--shadow);
+  }
+  .segmeta .who{font-size:14.5px;color:var(--text)}
+  .segmeta .who b{color:var(--indigo)}
+  .segmeta .opt{font-size:13.5px;color:var(--mute);margin-top:5px}
+  .segmeta .opt b{color:var(--text)}
+
+  /* goal hero */
+  .goalhero{
+    background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--sky);border-radius:14px;
+    padding:16px 18px;margin:10px 0 6px;box-shadow:var(--shadow);
+  }
+  .goalhero .ey{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--sky);font-weight:700;margin:0 0 4px}
+  .goalhero h2{font-size:21px;margin:0 0 6px;font-weight:800;letter-spacing:-.01em;color:var(--indigo)}
+  .goalhero .state{font-size:14px;color:var(--text);font-weight:300;margin:0 0 12px}
+  .goalhero .openlbl{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--label);font-weight:700;margin:0 0 6px}
+
+  .countbar{display:flex;align-items:center;gap:10px;margin:20px 2px 8px}
+  .countbar .t{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--label);font-weight:700}
+  .countbar .ln{flex:1;height:1px;background:var(--line)}
+  .expandall{
+    border:1.5px solid var(--line);background:var(--paper);color:var(--mute);cursor:pointer;font-family:inherit;
+    border-radius:999px;padding:5px 12px;font-size:11px;font-weight:600;letter-spacing:.02em;transition:.15s;
+  }
+  .expandall:hover{border-color:var(--sky);color:var(--indigo)}
+
+  /* ---------- play card ---------- */
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:18px;
+    margin:14px 0;box-shadow:var(--shadow);overflow:hidden;position:relative;
+  }
+  .card-head{padding:16px 46px 14px 20px;cursor:pointer;user-select:none}
+  .card-head:hover h2{color:var(--t-blueprint)}
+  .tags{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:9px}
+  .tag{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px;color:#fff}
+  .tag.blueprint{background:var(--t-blueprint)}
+  .tag.feature{background:var(--t-feature)}
+  .tag.deleg{background:var(--t-deleg)}
+  .tag.pri{background:rgba(207,100,164,.12);color:#a83b80;border:1.5px solid var(--sky)}
+  .tag.fit{background:transparent;color:var(--mute);border:1.5px solid var(--line)}
+  .card h2{font-size:19px;margin:0;font-weight:700;letter-spacing:-.01em;color:var(--indigo);transition:.15s}
+  .headgoal{font-size:13px;color:var(--mute);margin:5px 0 0;font-weight:300}
+  .headgoal b{color:var(--text);font-weight:600}
+
+  /* collapse chevron + behavior */
+  .chev{
+    position:absolute;right:16px;top:18px;width:26px;height:26px;border-radius:8px;
+    display:grid;place-items:center;color:var(--label);background:var(--soft);
+    transition:transform .18s ease, background .15s;
+  }
+  .chev svg{width:13px;height:13px}
+  .card-head:hover .chev{background:rgba(80,192,234,.14);color:var(--indigo)}
+  .card.collapsed .chev{transform:rotate(-90deg)}
+  .card.collapsed .card-body{display:none}
+  .card.collapsed .headgoal{display:block}
+
+  /* four-block framework */
+  .block{padding:4px 20px 0}
+  .block + .block{margin-top:4px}
+  .bhead{display:flex;align-items:center;gap:9px;margin:14px 0 8px}
+  .bnum{
+    flex:none;width:22px;height:22px;border-radius:7px;display:grid;place-items:center;
+    font-size:11px;font-weight:700;color:#fff;
+  }
+  .b-know .bnum{background:var(--indigo-line)}
+  .b-say  .bnum{background:var(--sky)}
+  .b-show .bnum{background:var(--t-feature)}
+  .b-do   .bnum{background:var(--t-deleg)}
+  .btitle{font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--text)}
+  .btitle span{color:var(--mute);font-weight:400;letter-spacing:0;text-transform:none;font-size:12px;margin-left:4px}
+
+  .know p{margin:0 0 7px;font-size:14px;color:var(--text);font-weight:300}
+  .know p:last-child{margin-bottom:2px}
+  .know p b{font-weight:600;color:var(--text)}
+
+  /* say = talk tracks */
+  .tt{
+    position:relative;background:linear-gradient(135deg,#2b2838,#3a3550);color:#fff;border-radius:12px;
+    padding:14px 50px 14px 18px;font-size:15px;line-height:1.5;margin:0 0 8px;font-weight:300;
+  }
+  .tt:before{content:"\201C";position:absolute;left:7px;top:0;font-size:32px;color:var(--sky);font-family:Georgia,serif;opacity:.7}
+  .tt .ttq{position:relative}
+  .copy{
+    position:absolute;top:10px;right:10px;border:none;cursor:pointer;font-family:inherit;
+    background:rgba(255,255,255,.12);color:#d6ecf7;border-radius:8px;padding:6px 9px;font-size:11px;font-weight:600;transition:.15s;
+  }
+  .copy:hover{background:rgba(255,255,255,.22);color:#fff}
+  .copy.done{background:var(--sky);color:#0c121f}
+
+  /* show + do lists */
+  .blist{margin:2px 0 6px;padding-left:0;list-style:none}
+  .blist li{position:relative;padding-left:24px;margin:6px 0;font-size:14px;color:var(--text);font-weight:300}
+  .show .blist li:before{content:"";position:absolute;left:2px;top:7px;width:9px;height:9px;border-radius:2px;border:2px solid var(--t-feature)}
+  .do .blist li:before{content:"\2713";position:absolute;left:0;top:-1px;color:var(--t-deleg);font-weight:700;font-size:15px}
+
+  .goal{
+    background:rgba(108,99,214,.07);border:1px solid rgba(108,99,214,.25);border-radius:10px;
+    padding:9px 13px;margin:2px 0 10px;font-size:13.5px;color:#3f3a78;
+  }
+  .goal b{color:#2f2a63}
+
+  .watch{
+    background:#fff8ec;border:1px solid #f0e0bd;border-radius:11px;padding:11px 14px;margin:8px 20px 18px;
+    font-size:13.5px;color:#6b551f;font-weight:300;
+  }
+  .watch b{color:#5a4514;font-weight:600}
+
+  .budgetbox{background:rgba(22,163,122,.07);border:1px solid rgba(22,163,122,.28);border-radius:11px;padding:11px 14px;margin:8px 20px 4px;font-size:13.5px;color:#12613f;font-weight:300}
+  .budgetbox b{color:#0e4d32;font-weight:600}
+
+  footer{margin-top:30px;text-align:center;color:var(--mute);font-size:12px;line-height:1.7;font-weight:300}
+  footer b{color:var(--text);font-weight:600}
+  footer .ev{color:var(--indigo);font-weight:600}
+
+  @media (max-width:560px){
+    .segs{grid-template-columns:1fr}
+    header.top h1{font-size:22px}
+    .block,.card-head{padding-left:16px;padding-right:16px}
+    .card-head{padding-right:46px}
+    .watch{margin-left:16px;margin-right:16px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <p class="eyebrow">Partner Success Enablement</p>
+    <h1>PSM Talk-Track Tool</h1>
+    <p class="sub">Pick who you're meeting, then what they're trying to do. For every feature you get what to know, what to say, what to show, and what to do &mdash; ready to use live on the call.</p>
+  </header>
+
+  <div class="picker">
+    <p class="lbl">1. Who are you meeting with?</p>
+    <div class="segs" id="segs"></div>
+    <p class="lbl" style="margin-top:14px">2. What are they trying to do?</p>
+    <div class="gtabs" id="goals"></div>
+  </div>
+
+  <div id="segmeta"></div>
+  <div id="goalhero"></div>
+
+  <div class="countbar">
+    <span class="t" id="countt">Features that deliver this</span>
+    <span class="ln"></span>
+    <button class="expandall" id="expandall" type="button">Expand all</button>
+  </div>
+  <div id="cards"></div>
+
+  <footer>
+    <span class="ev">Evocalize</span> &middot; Partner Success Playbook. Built for live PSM conversations.<br/>
+    <b>What to Show</b> items are suggested demos and leave-behinds &mdash; confirm available collateral with your Evocalize contact, and that Impersonation is enabled for the team, before promising them in a meeting.<br/>
+  </footer>
+</div>
+
+<script>
+
+/* ---------- Feature library ----------
+   Each feature is framed in four blocks:
+   know  -> What to Know  (product understanding)
+   say   -> What to Say   (value props, copyable)
+   show  -> What to Show  (demos / collateral to use or leave behind)
+   goal  -> headline objective for "What to Do"
+   doo   -> What to Do    (push checklist)
+   watch -> watch-out callout
+*/
+const FEATURES = {
+  multiproperty:{
+    name:"Automated Multi-Property Ad", type:"blueprint", typeLabel:"Blueprint",
+    budget:"Minimum is $500/mo for the Automated Property Ad. Platform data: listing leads run ~$5 in the efficient range, but cost per lead climbs once you push past ~$150 on any one property — so spread the budget across the team's active listings rather than overloading one. Give it a 2–4 week runway to clear Meta's learning phase before judging.",
+    img:"play-multiproperty.jpg",
+    know:[
+      "An always-on Facebook and Instagram ad that promotes a feed of listings. It draws on the brokerage's listings in the agent's area &mdash; so even an agent with none of their own still has inventory to run. Meta automatically decides which listing to show each buyer, so agents don't hand-pick individual properties.",
+      "It's the <b>lowest-effort way to keep every active listing working</b>. No new ad each time a property comes on &mdash; one budget runs continuously, generating mostly buyer leads with the occasional seller lead."
+    ],
+    say:[
+      "Every listing you have becomes a buyer-lead magnet, working around the clock &mdash; one always-on budget instead of a new ad each time a property comes on."
+    ],
+    show:[
+      "Pull up the team's live listing feed so they see their own inventory powering the ad.",
+      "Show sample Multi-Property Ad with listings rotating automatically."
+    ],
+    shot:"Sample Multi-Property ad, listings rotating automatically",
+    goal:"Get them to launch one Automated Multi-Property Ad on a recurring monthly budget.",
+    doo:[
+      "Set up one Automated Multi-Property Ad with a recurring monthly budget.",
+      "Pair it with Quick Automations so the feed stays current as listings change."
+    ],
+    watch:"Listing selection is automatic, not manual. If an agent worries about promoting a teammate's listing, remind them they get the leads rather than someone else."
+  },
+  singleproperty:{
+    name:"Single Property Ad", type:"blueprint", typeLabel:"Blueprint",
+    budget:"Concentrate spend on the one home over its active window: ~$40–50 buys roughly 7 leads at about $5 each, and pushing much past ~$150 on a single property drives the cost per lead up as you exhaust its local audience. Got more to spend? Run more listings rather than overloading one. Aim for at least $200/month across all listing programs. Bundle the SmartSite, which adds the ~$25/mo retargeting pixel. Confirm current minimums with Evocalize.",
+    img:"play-singleproperty.jpg",
+    know:[
+      "A Facebook and Instagram ad focused on a single listing &mdash; its photos, price, and details &mdash; driving buyers to a lead form and SmartSite. Best for a fresh launch or a priority property.",
+      "It's the go-to for putting real budget behind <b>one home</b>. Pairs naturally with a ListingMotion video and a SmartSite for a complete listing launch."
+    ],
+    say:[
+      "Put your full budget behind one home &mdash; its photos, price, and details in front of buyers nearby, driving straight to a branded page and lead form."
+    ],
+    show:[
+      "Build a Single Property ad live on one of the agent's real listings.",
+      "<a href=\"https://jessebelafonte-123412312.smartsites.campaignconnect.ai/listings/af8de8a5-67d6-4a68-ba60-383e33e6a9bc\" target=\"_blank\" rel=\"noopener\">Show SmartSite example</a>"
+    ],
+    shot:"A Single Property ad with the listing's photos, price, and details",
+    goal:"Get the agent to launch a Single Property Ad on their newest or priority listing.",
+    doo:[
+      "Launch on listing day while interest is highest.",
+      "Bundle with ListingMotion and a SmartSite for a full launch.",
+      "Enable Co-Marketing to split the cost with a lender."
+    ],
+    watch:"For agents juggling many listings, the Automated Multi-Property Ad is lower-effort. Use Single Property for new or priority launches."
+  },
+  brand:{
+    name:"Brand Ad", type:"blueprint", typeLabel:"Blueprint",
+    budget:"Recommend $100–200/month, always-on. Platform data: that band hits the lowest cost per 1,000 impressions (~$0.90) and delivers 100k+ impressions a month — enough reach and frequency to build recognition. Under ~$50/mo you pay a steep premium for too little reach. Brand compounds slowly, so don't judge it on a short test or expect a next-day lead spike.",
+    img:"play-brand.jpg",
+    know:[
+      "A Facebook and Instagram ad that markets the agent's personal brand &mdash; headshot, tagline, and reputation &mdash; rather than a specific listing.",
+      "Awareness compounds. A <b>steady brand presence supports every other play</b> and is how agents win listings from sellers who 'already knew' them."
+    ],
+    say:[
+      "This ad promotes you, not a property &mdash; so when someone in your area is ready to buy or sell, you're the name they already trust."
+    ],
+    show:[
+      "Show an example brand ad with the agent's headshot and tagline."
+    ],
+    shot:"An example brand ad with the agent's headshot and tagline",
+    goal:"Get the agent to set a modest always-on Brand Ad so their presence never goes dark.",
+    doo:[
+      "Set a modest always-on budget so presence never goes dark.",
+      "Refresh creative regularly to avoid fatigue.",
+      "Run it alongside listing and lead-gen ads, not instead of them."
+    ],
+    watch:"Brand is a longer game than lead gen &mdash; set expectations that it builds recognition over time, not next-day leads."
+  },
+  event:{
+    name:"Event Ad", type:"blueprint", typeLabel:"Blueprint",
+    budget:"Fund the one to two weeks before the event with enough daily budget to build attendance in a short window; Co-Marketing can split the cost.",
+    img:"play-event.jpg",
+    know:[
+      "A Facebook and Instagram ad that promotes an event &mdash; open house, buyer/seller seminar, or client appreciation &mdash; and collects RSVPs or leads.",
+      "It <b>fills the room and captures attendees</b> you can keep working long after the event is over."
+    ],
+    say:[
+      "Running an open house or seminar? Put it in front of the right people nearby and turn everyone who's interested into a lead you can follow up with."
+    ],
+    show:[
+      "Build an Event ad for an upcoming open house or seminar.",
+      "Show the RSVP / lead capture and how Co-Marketing can co-fund it."
+    ],
+    shot:"An Event ad promoting an open house with RSVP capture",
+    goal:"Get the agent to launch an Event Ad one to two weeks ahead of their next event.",
+    doo:[
+      "Launch one to two weeks ahead so there's time to build attendance.",
+      "Enable Co-Marketing so a lender can co-fund the event.",
+      "For an open house, pair with a ListingMotion video of the home."
+    ],
+    watch:"Give enough lead time before the event date &mdash; a last-minute launch won't reach enough people."
+  },
+  recruiting:{
+    name:"Recruiting", type:"blueprint", typeLabel:"Blueprint", fit:"Team leads & growth offices",
+    budget:"Sustained budget over a longer funnel — recruiting converts slower than buyer or seller leads, so don't judge it on a quick test.",
+    know:[
+      "A Facebook and Instagram blueprint built to attract and recruit agents to the team or brokerage, rather than generate consumer leads.",
+      "Team leads and growth-focused offices care about headcount. Recruiting ads <b>turn marketing spend into an agent pipeline</b> using the same engine they already use for listings."
+    ],
+    say:[
+      "Growing your team? Point the same ad engine you use to win clients at agents in your market &mdash; your pitch runs on autopilot while you focus on closing the ones who reply."
+    ],
+    show:[
+      "Show example recruiting creative that speaks to agent value props: splits, tools, culture, support.",
+      "Walk through the Recruiting blueprint setup.",
+      "Leave behind: a recruiting program overview for the team lead."
+    ],
+    shot:"Example recruiting creative speaking to splits, tools, culture, support",
+    goal:"Get growth-minded leads to stand up a Recruiting program with a sustained budget.",
+    doo:[
+      "Identify team leads and admins with growth goals and set up a Recruiting program.",
+      "Use creative that speaks to agent value props: splits, tools, culture, support.",
+      "Set a sustained budget &mdash; recruiting is a longer funnel than buyer or seller leads."
+    ],
+    watch:"Best fit for Small Team and Large Team leads. Rarely relevant for Solo agents unless they're looking to grow a team."
+  },
+  comarketing:{
+    name:"Co-Marketing", type:"feature", typeLabel:"Feature",
+    img:"play-comarketing.jpg",
+    know:[
+      "A blueprint setting that lets an agent co-brand a program with a partner &mdash; a lender or loan officer &mdash; who shares the cost and appears on the ad. It's all-or-nothing at the program level, not per-listing.",
+      "It <b>splits ad cost, deepens the agent-lender relationship, and can unlock larger budgets</b>."
+    ],
+    say:[
+      "Bring your lender in and split the cost of ads you're already running &mdash; you reach the same buyers for half the spend, and every campaign deepens a referral relationship."
+    ],
+    show:[
+      "Show how a co-branded ad looks with the lender's logo and name on it.",
+      "Walk through the co-marketing invite flow.",
+      "Leave behind: a co-marketing one-pager the agent can forward to their lender."
+    ],
+    shot:"A co-branded ad showing the lender's logo and name alongside the agent's",
+    goal:"Get the agent to enable co-marketing and invite a trusted lender to co-fund a program.",
+    doo:[
+      "Enable co-marketing on eligible blueprints such as Single Property, Brand, and Event ads.",
+      "Coach agents to invite a trusted lender or partner to co-fund programs."
+    ],
+    watch:"Co-marketing is a setting, not a separate blueprint. Turning it on applies to the entire program."
+  },
+  listingmotion:{
+    name:"ListingMotion", type:"feature", typeLabel:"Feature", love:true,
+    img:"play-listingmotion.jpg",
+    know:[
+      "AI-generated listing videos. In a few clicks the agent turns a listing into a short animated video and attaches it to a program, unlocking richer placements like Reels and Stories.",
+      "Video outperforms static creative and is hard for agents to produce on their own. ListingMotion <b>makes pro-grade listing video effortless</b> &mdash; a strong add-on for any listing launch."
+    ],
+    say:[
+      "Turn any listing into a scroll-stopping video in under a minute &mdash; no editing skills. It's how you get into Reels and Stories, where buyers actually stop and static photos get skipped."
+    ],
+    show:[
+      "See a ListingMotion example video: <a href=\"https://content.evocalize.com/hubfs/Videos/ListingMotion%20Example-1.mp4\" target=\"_blank\" rel=\"noopener\">watch the sample</a>.",
+      "Live demo: generate a video preview on one of the agent's real listings in under a minute.",
+      "Note: the video is generated once the ad is launched &mdash; demo the builder live, but don't promise a shareable sample-video link beforehand."
+    ],
+    shot:"Before/after — static photo ad vs. the ListingMotion video in Reels/Stories",
+    goal:"Get the agent to make ListingMotion the default add-on for every listing launch.",
+    doo:[
+      "Demo the video builder live and have the agent generate a preview on a real listing.",
+      "Make ListingMotion the default add-on for listing launches.",
+      "Bundle it into a Launch a Listing play: paid media, a SmartSite, and a ListingMotion video.",
+      "Reuse the downloaded video in an open-house or Event ad."
+    ],
+    watch:"Generate previews on listings the agent genuinely intends to promote, rather than mass-generating to browse."
+  },
+  quickautomations:{
+    name:"Quick Automations", type:"feature", typeLabel:"Feature", fit:"Team leads only",
+    img:"play-quickautomations.jpg",
+    know:[
+      "Rule-based automations that auto-launch a program when a trigger fires &mdash; e.g. a new listing appearing &mdash; so agents don't start a campaign manually each time. Rules can be scoped to the user's own listings.",
+      "This removes the number-one adoption gap: agents forgetting to launch. It <b>turns the platform into set-it-and-forget-it</b>, driving consistent recurring spend."
+    ],
+    say:[
+      "Take a new listing and its ad launches itself &mdash; no logging in, nothing to remember. It's how your most consistent agents stay in market on every listing without lifting a finger."
+    ],
+    show:[
+      "Walk through an example “new listing → auto-launch” rule end to end."
+    ],
+    shot:"The automation rule builder: a “new listing → auto-launch” rule",
+    goal:"Get the agent to turn on a Quick Automation for new listings, scoped to their listings.",
+    doo:[
+      "Turn on a Quick Automation for new listings so a listing ad launches automatically on the listing date.",
+      "Scope rules to the agent's own listings to avoid promoting teammates' properties.",
+      "Pair with the Automated Multi-Property Ad for full coverage."
+    ],
+    watch:""
+  },
+  smartsites:{
+    name:"SmartSites", type:"feature", typeLabel:"Feature",
+    img:"play-smartsites.jpg",
+    know:[
+      "A dedicated, branded landing page created automatically with a listing ad. Meta optimizes delivery across both the lead form and the landing page. (Real estate: a listing and agent page. Mortgage: a loan-officer profile with theme pages.)",
+      "It's now part of the <b>standard single-property add flow for every user</b> &mdash; not a beta, no extra cost, nothing extra to build. It gives every campaign a real destination, captures more leads, and lifts performance through dual optimization. At launch it supports images; mixed image and video is on the near-term roadmap."
+    ],
+    say:[
+      "Your ad now sends buyers to a branded page built for this listing, not just a form — so you capture more leads and Meta delivers better.",
+      "Agents get pitched a lot of landing-page tools. The difference: this is built right into the ad you're already launching, it costs you nothing extra, and it's the only one where Meta optimizes the ad and the page together.",
+      "It also drops a retargeting pixel, so everyone who visits the page keeps seeing you across Facebook and Instagram — agents react really well to that, and it's often what tips them into using it."
+    ],
+    show:[
+      "Walk through an example SmartSite &mdash; the real one isn't created until the ad launches, so show a sample: <a href=\"https://jessebelafonte-123412312.smartsites.campaignconnect.ai/listings/af8de8a5-67d6-4a68-ba60-383e33e6a9bc\" target=\"_blank\" rel=\"noopener\">View the sample</a>."
+    ],
+    shot:"A live SmartSite — the branded landing page the listing ad points to",
+    goal:"Get every listing ad defaulting to include a SmartSite.",
+    doo:[
+      "Default listing ads to include a SmartSite &mdash; it's now standard in the single-property add flow.",
+      "Walk through an example SmartSite (the real page is generated when the ad launches).",
+      "Use SmartSite performance as the hook for a follow-up optimization conversation."
+    ],
+    watch:"Launches with image support; mixed image/video is on the roadmap. It's standard for all users now &mdash; no beta flag and no added cost &mdash; so don't frame it as new or as an upsell. Heads-up: agents have asked to see retargeting/audience numbers in reporting, and that isn't surfaced yet &mdash; don't promise those figures."
+  },
+  imp_small:{
+    name:"Impersonation", type:"deleg", typeLabel:"Delegation", fit:"Team leads, admins & ops",
+    img:"play-impersonation.jpg",
+    know:[
+      "Evocalize can enable a team lead, admin, or designated manager to act on behalf of their agents &mdash; launch programs, fix setup, and manage campaigns &mdash; so adoption doesn't depend on every agent logging in. Every session is logged and audited.",
+      "It's <b>set up by Evocalize support, not self-serve</b>. For a small team it's scoped to specific members."
+    ],
+    say:[
+      "Adoption shouldn't hinge on your busiest agents logging in. We can have Evocalize set your team lead up to run marketing on their behalf — with every action tracked.",
+      "Email to partner support (copy/paste): Hi team — please enable impersonation for [team name] so [lead name] can manage marketing for [specific agents / the whole team]. Thanks!"
+    ],
+    show:[
+      "Describe what the lead can do once enabled: launch and manage programs on an agent's behalf.",
+      "Point to the audit log that tracks every session."
+    ],
+    shot:"The act-as interface and the session audit log",
+    goal:"Get the team lead enabled (via Evocalize support) to run marketing on behalf of their agents.",
+    doo:[
+      "Confirm who should run marketing on behalf of agents (team lead / admin).",
+      "Email partner support to request impersonation access — use the copy/paste template above.",
+      "Once enabled, have the lead standardize core programs for each agent (Multi-Property, automations, ListingMotion)."
+    ],
+    watch:"PSMs can't grant impersonation — request it via partner support. Access is full (no view-only tier), so scope the request deliberately."
+  },
+  imp_ent:{
+    name:"Impersonation (at scale)", type:"deleg", typeLabel:"Delegation", fit:"Admins & regional leads",
+    img:"play-impersonation.jpg",
+    know:[
+      "The same capability at scale: Evocalize can enable the partner admin and multiple designated managers (regional leads, marketing/ops staff) to act on behalf of agents across the org &mdash; scoped to specific users or everyone, including future users. Every session is logged and audited.",
+      "It's <b>configured by Evocalize support, not self-serve</b> &mdash; and it's the biggest lever for org-wide activation."
+    ],
+    say:[
+      "You can't make adoption depend on hundreds of agents logging in. We can have Evocalize enable your regional leads to launch on everyone's behalf — every action logged to the real person.",
+      "Email to partner support (copy/paste): Hi team — please enable impersonation across [org name], with [names] as managers scoped to [specific users / everyone, incl. future users]. Thanks!"
+    ],
+    show:[
+      "Describe what enabled managers can do: launch baseline programs across their agents.",
+      "Point to the audit trail that logs every session to the real person."
+    ],
+    shot:"The multi-manager admin structure and the audit trail",
+    goal:"Get the admin structure enabled (via Evocalize support) so managers can activate campaigns across the org.",
+    doo:[
+      "Map who should be a manager and at what scope (specific users vs. everyone).",
+      "Email partner support to request the impersonation setup — use the copy/paste template above.",
+      "Stand up a repeatable activation motion where managers launch baseline programs across their books."
+    ],
+    watch:"PSMs can't grant impersonation — request it via partner support. A brand-new agent who has never logged in may not be impersonatable yet; flag those in the same request."
+  }
+};
+
+/* ---------- Segments ---------- */
+const SEGMENTS = {
+  solo:{
+    name:"Solo", size:"1 user",
+    who:"An individual agent operating their own account, with no team to manage.",
+    optimize:"Self-serve adoption, automation, recurring spend."
+  },
+  small:{
+    name:"Small Team", size:"2 to 10 users",
+    who:"A team lead or admin plus a roster of agents.",
+    optimize:"Team-lead leverage, consistency across agents, delegation."
+  },
+  enterprise:{
+    name:"Large Team", size:"11+ users",
+    who:"A large team, office, or brokerage group with an admin layer.",
+    optimize:"Governance, scaled activation, multi-manager delegation."
+  }
+};
+
+/* ---------- Goals (value-based). Each feature: key, seg (segments shown), pri (segments to 'lead with') ---------- */
+const ALL=["solo","small","enterprise"];
+const GOALS = {
+  grow:{
+    name:"Grow your business",
+    statement:"Keep new leads coming in every week and make the platform do the work.",
+    say:{
+      solo:["Let's build a marketing engine that runs whether or not you log in &mdash; always-on ads bringing you new buyer leads every week."],
+      small:["Let's build an engine your team runs from the top &mdash; always-on lead flow, plus one seat that can launch it for every agent."],
+      enterprise:["Let's stand up a lead engine that scales across the org &mdash; always-on ads, launched on everyone's behalf, without waiting on agents to log in."]
+    },
+    features:[
+      {key:"multiproperty", seg:ALL, pri:ALL},
+      {key:"quickautomations", seg:["small","enterprise"], pri:[]},
+      {key:"imp_small", seg:["small"], pri:[]},
+      {key:"imp_ent", seg:["enterprise"], pri:[]},
+      {key:"comarketing", seg:ALL, pri:[]},
+      {key:"recruiting", seg:["small","enterprise"], pri:[]}
+    ]
+  },
+  launch:{
+    name:"Launch a new listing",
+    statement:"Give every new listing maximum exposure the moment it hits the market.",
+    say:{
+      solo:["When you take a new listing, let's launch it everywhere automatically &mdash; a dedicated ad, a scroll-stopping video, and a branded page buyers land on."],
+      small:["Let's make a new-listing launch automatic for every agent &mdash; a dedicated ad, a video, and a branded page, without anyone having to remember."],
+      enterprise:["Let's standardize a new-listing launch across the org so every agent's listing goes out the same, high-quality way, automatically."]
+    },
+    features:[
+      {key:"singleproperty", seg:ALL, pri:ALL},
+      {key:"listingmotion", seg:ALL, pri:[]},
+      {key:"smartsites", seg:ALL, pri:[]},
+      {key:"quickautomations", seg:["small","enterprise"], pri:[]}
+    ]
+  },
+  brand:{
+    name:"Build your brand",
+    statement:"Become the name buyers and sellers in your market already know.",
+    say:{
+      solo:["Let's keep you top-of-mind in your farm area &mdash; a steady brand presence so when someone's ready to move, you're the agent they call first."],
+      small:["Let's keep every agent on your team visible in their market &mdash; steady brand presence so your name is the one clients already know."],
+      enterprise:["Let's put a consistent brand presence behind every agent in the org &mdash; visibility that compounds across your whole footprint."]
+    },
+    features:[
+      {key:"brand", seg:ALL, pri:ALL},
+      {key:"listingmotion", seg:ALL, pri:[]},
+      {key:"smartsites", seg:ALL, pri:[]},
+      {key:"comarketing", seg:ALL, pri:[]}
+    ]
+  },
+  winlistings:{
+    name:"Win more listings",
+    statement:"Attract sellers and walk into listing presentations as the obvious choice.",
+    say:{
+      solo:["Here's exactly how I'll market your home &mdash; an always-on ad engine, a custom video, and a dedicated site. Show that at the table and you win the listing before you leave."],
+      small:["Give every agent the same listing-presentation story &mdash; a proven marketing engine, video, and a dedicated site &mdash; so the whole team wins more listings."],
+      enterprise:["Arm every agent in the org with the same seller pitch &mdash; a standardized, best-in-class marketing package they can show in any listing presentation."]
+    },
+    features:[
+      {key:"brand", seg:ALL, pri:ALL},
+      {key:"multiproperty", seg:ALL, pri:[]},
+      {key:"listingmotion", seg:ALL, pri:[]},
+      {key:"smartsites", seg:ALL, pri:[]}
+    ]
+  },
+  event:{
+    name:"Promote an event",
+    statement:"Fill the room for open houses, seminars, and client events.",
+    say:{
+      solo:["Running an open house or event? Let's put it in front of the right people in the area and capture everyone who's interested as a lead."],
+      small:["Any agent running an event should be able to fill the room &mdash; let's make event promotion a one-click play for the team."],
+      enterprise:["Let's make event promotion a repeatable, on-brand play any agent in the org can launch to fill the room and capture leads."]
+    },
+    features:[
+      {key:"event", seg:ALL, pri:ALL},
+      {key:"comarketing", seg:ALL, pri:[]},
+      {key:"listingmotion", seg:ALL, pri:[]}
+    ]
+  }
+};
+
+/* ---------- Reference panels (segment-independent) ---------- */
+const REFERENCE = {
+  objections:{
+    name:"Handling pushback",
+    intro:"Real objections agents raised on recent calls with Larry — and the line that turns each one. Works for any segment or goal.",
+    items:[
+      {label:"“Is it even working? I'm not getting leads.”",
+       heard:"Jurglyn Bangayan, ~2 weeks in with 4 clicks: “Because we haven't gotten any leads.”",
+       say:"Give it a real runway — a couple weeks and a handful of clicks isn't enough signal yet. If results are soft it's almost always the creative or the budget, not the channel, and both are easy to fix. Let me set a benchmark so we know what good looks like.",
+       note:"Set the timeframe expectation before launch, not after."},
+      {label:"“Am I just wasting money?”",
+       heard:"Andrew Leaf: “We're wary of the cost… $600 a month, I want to make sure it's working.”",
+       say:"Let's get more out of the assets you already own before we add a dollar. If something isn't serving you don't pay for it — and I'll shift budget out of whatever's underperforming into brand or a single-property ad.",
+       note:"Pair with the Budget guidance tab."},
+      {label:"“I don't want junk leads.”",
+       heard:"Shane Haas: “Some of the leads I've gotten are really just stale.”",
+       say:"The SmartSite adds a qualifying questionnaire that thins out the tire-kickers, and the retargeting pixel keeps working the people who visited but never filled out a form — so you're not just buying raw form-fills.",
+       note:""},
+      {label:"“I don't even want leads — I want exposure.”",
+       heard:"Brittney Bell: “I don't care about a lead… I want the ad to be effective in getting in front of the consumers shopping for this kind of home.”",
+       say:"Then let's not optimize for the phone ringing — let's optimize for reach and brand. The ad puts you in front of the right buyers, and the retargeting pixel keeps you in front of everyone who engages, lead form or not.",
+       note:"Larry's most-used pivot: when an agent resists leads, sell branding + retargeting."},
+      {label:"“I'm buried — I don't have time for this.”",
+       heard:"Brittney Bell: “Five listings in the next week and a half… I don't have time for that.”",
+       say:"This is set-and-forget. Turn on the automation and every new listing gets an ad on its own — just upload the listing raw and I'll handle the copy for you.",
+       note:"Lead with Quick Automations and offer to write the copy."},
+      {label:"“Can I target specific buyers, neighborhoods, or schools?”",
+       heard:"Jordan Harris asked about targeting private schools.",
+       say:"Real estate runs under Meta's housing rules, so demographic and interest targeting is off the table by law. What you've got is radius plus any audience list you upload — and that CSV targeting is actually your sharpest tool.",
+       note:"Know this cold — it's a legal guardrail (HUD / Meta special ad category). Never promise interest targeting."},
+      {label:"“I don't want to build another landing page.”",
+       heard:"Andrew Leaf: “I'm loath to build another landing page. I see the value in bringing people to our own website.”",
+       say:"The SmartSite isn't a replacement for your site — it's an addition the ad builds automatically, and it's the piece Meta optimizes against. Nothing for you to build.",
+       note:""},
+      {label:"“What if I leave my brokerage?”",
+       heard:"Shane Haas asked how this works if he changes brokerages.",
+       say:"This can move with you — we can stand up a standalone account, and plenty of other brokerages run on the same engine.",
+       note:""}
+    ]
+  }
+};
+
+/* ---------- Render ---------- */
+let curSeg = localStorage.getItem("psm_seg"); if(!curSeg||!SEGMENTS[curSeg]) curSeg="solo";
+let curGoal = localStorage.getItem("psm_goal"); if(!curGoal||(!GOALS[curGoal]&&!REFERENCE[curGoal])) curGoal="launch";
+
+const chevSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+const extSVG  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+
+const segWrap = document.getElementById("segs");
+Object.entries(SEGMENTS).forEach(([key,s])=>{
+  const b=document.createElement("button");
+  b.className="seg"+(key===curSeg?" active":"");
+  b.dataset.key=key;
+  b.innerHTML='<div class="nm">'+s.name+'</div><div class="sz">'+s.size+'</div>';
+  b.addEventListener("click",()=>{curSeg=key;localStorage.setItem("psm_seg",key);renderAll();});
+  segWrap.appendChild(b);
+});
+
+const goalWrap = document.getElementById("goals");
+["launch","grow","brand","winlistings","event"].map(k=>[k,GOALS[k]]).forEach(([key,g])=>{
+  const b=document.createElement("button");
+  b.className="gtab"+(key===curGoal?" active":"");
+  b.dataset.key=key;
+  b.textContent=g.name;
+  b.addEventListener("click",()=>{curGoal=key;localStorage.setItem("psm_goal",key);renderAll();});
+  goalWrap.appendChild(b);
+});
+const gdiv=document.createElement("span"); gdiv.className="gdiv"; goalWrap.appendChild(gdiv);
+Object.entries(REFERENCE).forEach(([key,r])=>{
+  const b=document.createElement("button");
+  b.className="gtab ref"+(key===curGoal?" active":"");
+  b.dataset.key=key;
+  b.textContent=r.name;
+  b.addEventListener("click",()=>{curGoal=key;localStorage.setItem("psm_goal",key);renderAll();});
+  goalWrap.appendChild(b);
+});
+
+function esc(t){return t.replace(/&(?!amp;|lt;|gt;|mdash;|ldquo;|rdquo;|#\d+;)/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+function renderAll(){
+  document.querySelectorAll(".seg").forEach(el=>el.classList.toggle("active",el.dataset.key===curSeg));
+  document.querySelectorAll(".gtab").forEach(el=>el.classList.toggle("active",el.dataset.key===curGoal));
+
+  const segmetaEl=document.getElementById("segmeta");
+  const heroEl=document.getElementById("goalhero");
+  const cards=document.getElementById("cards");
+  const countt=document.getElementById("countt");
+  cards.innerHTML="";
+
+  if(GOALS[curGoal]){
+    const s=SEGMENTS[curSeg], g=GOALS[curGoal];
+    countt.textContent="Features that deliver this";
+
+    segmetaEl.innerHTML=
+      '<div class="segmeta">'+
+        '<div class="who"><b>'+s.name+' · '+s.size+'.</b> '+s.who+'</div>'+
+        '<div class="opt"><b>Optimize for:</b> '+s.optimize+'</div>'+
+      '</div>';
+
+    const sayLines=(g.say[curSeg]||g.say.solo);
+    const opener=sayLines.map(t=>(
+      '<div class="tt"><span class="ttq">'+esc(t)+'</span>'+
+      '<button class="copy" data-txt="'+encodeURIComponent(t)+'">Copy</button></div>'
+    )).join("");
+    heroEl.innerHTML=
+      '<div class="goalhero">'+
+        '<p class="ey">The agent wants to</p>'+
+        '<h2>'+g.name+'</h2>'+
+        '<p class="state">'+esc(g.statement)+'</p>'+
+        '<p class="openlbl">Open with this</p>'+opener+
+      '</div>';
+
+    g.features.filter(f=>f.seg.includes(curSeg)).forEach(f=>{
+      const d=FEATURES[f.key];
+      const isPri=(f.pri||[]).includes(curSeg);
+      const priTag = isPri ? '<span class="tag pri">Lead with this</span>' : '';
+      const fitTag = d.fit ? '<span class="tag fit">'+esc(d.fit)+'</span>' : '';
+      const loveTag = d.love ? '<span class="tag love">Agents Love This</span>' : '';
+
+      const knowHtml = d.know.map(k=>'<p>'+k+'</p>').join("");
+      const sayHtml = d.say.map(t=>(
+        '<div class="tt"><span class="ttq">'+esc(t)+'</span>'+
+        '<button class="copy" data-txt="'+encodeURIComponent(t)+'">Copy</button></div>'
+      )).join("");
+      const showHtml = '<ul class="blist">'+d.show.map(x=>'<li>'+x+'</li>').join("")+'</ul>';
+      const doHtml = '<div class="goal"><b>Goal:</b> '+d.goal+'</div>'+
+                     '<ul class="blist">'+d.doo.map(x=>'<li>'+x+'</li>').join("")+'</ul>';
+      const budgetHtml = d.budget ? '<div class="budgetbox"><b>Budget:</b> '+esc(d.budget)+'</div>' : '';
+      const shotHtml = d.screenshot ? '<figure class="shot"><img src="'+d.screenshot+'" alt="'+esc(d.screenshotCap||"")+'" onerror="this.parentNode.style.display=\'none\'"><figcaption>'+esc(d.screenshotCap||"")+'</figcaption></figure>' : '';
+      const videoHtml = d.video ? '<figure class="shot"><video controls preload="metadata" playsinline style="width:100%;border-radius:12px;border:1px solid var(--line)" src="'+d.video+'"></video><figcaption>'+esc(d.videoCap||"")+'</figcaption></figure>' : '';
+      const linkHtml = '';
+
+      const card=document.createElement("div");
+      card.className="card collapsed"; // default: collapsed
+      card.innerHTML=
+        '<div class="card-head">'+
+          '<div class="chev">'+chevSVG+'</div>'+
+          '<div class="tags"><span class="tag '+d.type+'">'+d.typeLabel+'</span>'+priTag+fitTag+loveTag+'</div>'+
+          '<h2>'+d.name+'</h2>'+
+          '<p class="headgoal"><b>Goal:</b> '+d.goal+'</p>'+
+        '</div>'+
+        '<div class="card-body">'+
+          '<div class="block b-know know"><div class="bhead"><span class="bnum">1</span><span class="btitle">What to Know <span>the product</span></span></div>'+knowHtml+'</div>'+
+          '<div class="block b-say"><div class="bhead"><span class="bnum">2</span><span class="btitle">What to Say <span>value props</span></span></div>'+sayHtml+'</div>'+
+          '<div class="block b-show show"><div class="bhead"><span class="bnum">3</span><span class="btitle">What to Show <span>demos &amp; leave-behinds</span></span></div>'+showHtml+shotHtml+videoHtml+'</div>'+
+          '<div class="block b-do do"><div class="bhead"><span class="bnum">4</span><span class="btitle">What to Do <span>drive the action</span></span></div>'+doHtml+'</div>'+
+          budgetHtml+
+          linkHtml+
+          (d.watch ? '<div class="watch"><b>Watch-out:</b> '+esc(d.watch)+'</div>' : '')+
+        '</div>';
+
+      card.querySelector(".card-head").addEventListener("click",()=>{
+        card.classList.toggle("collapsed");
+        updateExpandLabel();
+      });
+
+      cards.appendChild(card);
+    });
+  } else {
+    /* ---- Reference view: objections or budget ---- */
+    const r=REFERENCE[curGoal];
+    segmetaEl.innerHTML="";
+    heroEl.innerHTML=
+      '<div class="goalhero">'+
+        '<p class="ey">Reference · applies across segments</p>'+
+        '<h2>'+esc(r.name)+'</h2>'+
+        '<p class="state">'+esc(r.intro)+'</p>'+
+      '</div>';
+
+    if(curGoal==="objections"){
+      countt.textContent="Objections & the line that turns them";
+      r.items.forEach(it=>{
+        const noteHtml = it.note ? '<div class="watch"><b>Tip:</b> '+esc(it.note)+'</div>' : '';
+        const card=document.createElement("div");
+        card.className="card collapsed";
+        card.innerHTML=
+          '<div class="card-head">'+
+            '<div class="chev">'+chevSVG+'</div>'+
+            '<div class="tags"><span class="tag obj">Objection</span></div>'+
+            '<h2>'+esc(it.label)+'</h2>'+
+            '<p class="headgoal">'+esc(it.heard)+'</p>'+
+          '</div>'+
+          '<div class="card-body">'+
+            '<div class="block b-say"><div class="bhead"><span class="bnum">&#10003;</span><span class="btitle">Say this <span>preempt it</span></span></div>'+
+              '<div class="tt"><span class="ttq">'+esc(it.say)+'</span><button class="copy" data-txt="'+encodeURIComponent(it.say)+'">Copy</button></div>'+
+            '</div>'+
+            noteHtml+
+          '</div>';
+        card.querySelector(".card-head").addEventListener("click",()=>{
+          card.classList.toggle("collapsed");
+          updateExpandLabel();
+        });
+        cards.appendChild(card);
+      });
+    }
+  }
+
+  // bind copy buttons across the hero + all cards
+  document.querySelectorAll(".copy").forEach(btn=>{
+    btn.addEventListener("click",async(e)=>{
+      e.preventDefault();
+      const txt=decodeURIComponent(btn.dataset.txt);
+      try{await navigator.clipboard.writeText(txt);}catch(_){
+        const ta=document.createElement("textarea");ta.value=txt;document.body.appendChild(ta);ta.select();
+        try{document.execCommand("copy");}catch(__){} document.body.removeChild(ta);
+      }
+      const old=btn.textContent;btn.textContent="Copied";btn.classList.add("done");
+      setTimeout(()=>{btn.textContent=old;btn.classList.remove("done");},1200);
+    });
+  });
+
+  updateExpandLabel();
+}
+
+/* ---------- Expand / collapse all ---------- */
+const expandBtn=document.getElementById("expandall");
+function anyCollapsed(){return !!document.querySelector(".card.collapsed");}
+function updateExpandLabel(){expandBtn.textContent=anyCollapsed()?"Expand all":"Collapse all";}
+expandBtn.addEventListener("click",()=>{
+  const expand=anyCollapsed();
+  document.querySelectorAll(".card").forEach(c=>c.classList.toggle("collapsed",!expand));
+  updateExpandLabel();
+});
+
+renderAll();
+</script>
+</body>
+</html>
