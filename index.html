@@ -1232,7 +1232,7 @@ class Component extends DCLogic {
       })(),
       stop: e => e.stopPropagation(),
       steps: steps.map(([t, d], i) => ({ n: "0" + (i + 1), title: t.toUpperCase(), body: d, active: i === si, inactive: i !== si, pick: () => this.setState({ step: i }), enter: () => this.setState({ step: i, paused: true }), leave: () => this.setState({ paused: false }) })),
-      others: companies.filter(c => ["Team Engine", "Signpost", "Vantiv", "tw telecom"].includes(c.name)).map(c => ({ name: c.name, stats: c.stats.map(([value, label]) => ({ value, label })) })),
+      others: ["tw telecom", "Vantiv", "Signpost", "Team Engine"].map(n => companies.find(c => c.name === n)).filter(Boolean).map(c => ({ name: c.name, stats: c.stats.map(([value, label]) => ({ value, label })) })),
       typer: React.createElement(this.Typer, { lines: ["Build demand gen from scratch", "Launch a new generation of product", "Grow pipeline 200% year over year", "Stand up the martech stack", "Turn a brand into a growth engine"] }),
       c840: C(840, "$", "M+"), c350: C(350, "$", "M+"), c15: C(15, "", ""), c150: C(150, "", "K"), c8: C(8, "", "")
     };
