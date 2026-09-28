@@ -135,7 +135,7 @@ a:hover{color:#FFFFFF}
 <div style="font-family:Oswald,sans-serif;font-size:14px;letter-spacing:3px;color:#E8A765">HOW I WORK</div>
 <h2 style="margin:0;font-family:Oswald,sans-serif;font-weight:600;font-size:60px;line-height:1">LEAD WITH STRATEGY.<br><span style="color:#E08A2E;text-shadow:0 0 30px rgba(206,114,19,.55)">EXECUTE WITH CRAFT.</span></h2>
 </div>
-<div style="width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;position:relative">
+<div data-steps="" style="width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;position:relative">
 <div style="position:absolute;left:6%;right:6%;top:50%;height:1px;background:rgba(232,167,101,.25)"></div>
 <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
 <div style="display:contents">
@@ -1115,7 +1115,16 @@ class Component extends DCLogic {
     }, 400);
     this._esc = e => { if (e.key === "Escape") this.closeDomModal(); };
     document.addEventListener("keydown", this._esc);
-    this._stepT = setInterval(() => this.setState(s => s.paused ? null : ({ step: (s.step + 1) % 4 })), 2800);
+    // Hold on step 1 until the cards have been scrolled into view, then start rotating.
+    this._stepT = setInterval(() => {
+      if (!this._stepsSeen) {
+        const g = document.querySelector("[data-steps]"); if (!g) return;
+        const r = g.getBoundingClientRect();
+        if (r.top < window.innerHeight * .75 && r.bottom > 0) this._stepsSeen = true;
+        return;
+      }
+      this.setState(s => s.paused ? null : ({ step: (s.step + 1) % 4 }));
+    }, 2800);
     const play = () => document.querySelectorAll("video").forEach(v => { v.muted = true; v.play().catch(() => {}); });
     play(); setTimeout(play, 500);
   }
