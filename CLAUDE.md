@@ -12,11 +12,22 @@ and `assets/` (images, `assets/pdfs/`, favicon, one video).
 Each page holds an `<x-dc>` template and a `<script type="text/x-dc" data-dc-script>` with a
 `class Component` supplying logic. `{{ name }}` holes resolve from `renderVals()`.
 
+## Homepage (Claude Design)
+
+- `index.html` was rebuilt in Claude Design and is built differently from the other pages.
+  Edit it directly.
+- It uses `support-v2.js`. All other pages still use `support.js`. Keep both files.
+- Images are cached for a year. To replace one, give it a new filename or bump the `?v=3`
+  query on its URL in `index.html` (e.g. to `?v=4`), or visitors keep seeing the old image.
+- New files go in `assets/`. Large videos go in R2 (see Media).
+- Claude Design keeps its own copy of the site. After pushing changes here, remind the user to
+  ask Claude Design to sync from GitHub before editing there.
+
 ## Rules
 
 - **Inline `style=""` only.** No stylesheets, no CSS classes. Pseudo-states via
   `style-hover` / `style-active` / `style-focus`.
-- **Never edit `support.js`** — it's generated.
+- **Never edit `support.js` or `support-v2.js`**: both are generated.
 - **No expressions in `{{ }}`** — dotted lookups only. Compute in `renderVals()`.
 - **No fixed pixel widths/heights on containers.** Use `max-width` so they collapse at narrow
   viewports. Don't combine a fixed `height` with `aspect-ratio` on video.
