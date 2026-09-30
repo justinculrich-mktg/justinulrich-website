@@ -41,7 +41,14 @@ a:hover{color:#FFFFFF}
 [data-screen-label="3a Homepage"] [style*="font-size: 64px"] { font-size: 54px !important; }
 }
 @media (max-width: 900px) {
-[data-screen-label="3a Homepage"] [data-m="tile"] { height: auto !important; z-index: auto !important; }
+[data-screen-label="3a Homepage"] [data-m="tile"]:not(#_) { height: auto !important; z-index: auto !important; }
+[data-screen-label="3a Homepage"] [data-m="w6-collage"]:not(#_) { grid-template-columns: minmax(0,1fr) !important; grid-template-rows: minmax(0,1fr) !important; }
+[data-screen-label="3a Homepage"] [data-m="w6-collage"] > :not(:first-child) { display: none !important; }
+[data-screen-label="3a Homepage"] [data-work="6"][data-open="0"] [data-m="w6-collage"] a { pointer-events: none; }
+[data-screen-label="3a Homepage"] [data-work="6"][data-open="1"] [data-m="w6-hero"]:not(#_) { height: auto !important; display: flex; flex-direction: column; }
+[data-screen-label="3a Homepage"] [data-work="6"][data-open="1"] [data-m="w6-text"] { position: static !important; order: -1; padding: 64px 20px 0; }
+[data-screen-label="3a Homepage"] [data-work="6"][data-open="1"] [data-m="w6-fade"] { display: none !important; }
+[data-screen-label="3a Homepage"] [data-work="6"][data-open="1"] [data-m="w6-collage"] { position: relative !important; inset: auto !important; aspect-ratio: 16 / 9; transform: none !important; }
 [data-screen-label="3a Homepage"] [data-m="tile"] > div { position: relative !important; }
 [data-screen-label="3a Homepage"] [style*="grid-template-columns"]:not([style*="auto-fill"]):not([style*="86px"]) { grid-template-columns: minmax(0,1fr) !important; }
 [data-screen-label="3a Homepage"] [style*="grid-template-columns: repeat(2,"] { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
@@ -53,10 +60,60 @@ a:hover{color:#FFFFFF}
 [data-screen-label="3a Homepage"] [style*="px 48px"] { padding-left: 20px !important; padding-right: 20px !important; }
 [data-screen-label="3a Homepage"] [style*="padding: 112px"] { padding-top: 64px !important; padding-bottom: 64px !important; }
 [data-screen-label="3a Homepage"] [style*="min-height: 720px"] { min-height: 0 !important; }
-[data-screen-label="3a Homepage"] [data-m="hero-photo"] { min-height: 440px; }
+[data-screen-label="3a Homepage"] [data-m="hero-photo"] { min-height: 440px; order: -1; }
+[data-screen-label="3a Homepage"] [data-m="hero-copy"] { display: contents !important; }
+[data-screen-label="3a Homepage"] [data-m="hero-copy"] > *:not(#_) { position: relative; z-index: 2; margin: 0 20px 28px !important; }
+[data-screen-label="3a Homepage"] [data-m="hero-copy"] > :first-child:not(#_) { order: -2; margin: 28px 20px 0 !important; }
+[data-screen-label="3a Homepage"] [data-m="hero-copy"] > :nth-child(2):not(#_) { margin-top: 32px !important; }
+[data-screen-label="3a Homepage"] [data-m="hero-copy"] > :last-child:not(#_) { margin-bottom: 56px !important; }
+[data-screen-label="3a Homepage"] [data-m="cases"] { gap: 10px !important; }
+[data-screen-label="3a Homepage"] [data-m="about-grid"] { gap: 12px !important; }
+[data-screen-label="3a Homepage"] [data-m="vol-grid"] { gap: 12px !important; }
+[data-ju-modal] { padding: 12px !important; }
+[data-ju-modal] [data-m="modal-head"] { flex-wrap: wrap; row-gap: 12px !important; column-gap: 10px !important; padding: 14px !important; }
+[data-ju-modal] [data-m="modal-head"]::after { content: ""; order: 2; flex-basis: 100%; }
+[data-ju-modal] [data-m="modal-acts"] { display: contents !important; }
+[data-ju-modal] [data-m="modal-title"] { order: 0; flex: 1 1 0; min-width: 0; }
+[data-ju-modal] [data-m="modal-title"] > span:last-child { font-size: 18px !important; line-height: 1.2; }
+[data-ju-modal] [data-m="modal-x"] { order: 1; flex: none; align-self: flex-start; }
+[data-ju-modal] [data-m="modal-dl"], [data-ju-modal] [data-m="modal-open"] { order: 3; white-space: nowrap; }
+[data-ju-modal] [data-m="modal-open"] { margin-right: auto; }
+[data-screen-label="3a Homepage"] #volunteer { padding-bottom: 44px !important; }
+[data-screen-label="3a Homepage"] #references { padding-top: 44px !important; }
+[data-screen-label="3a Homepage"] [data-m="vol-tabs"] { display: contents !important; }
+[data-screen-label="3a Homepage"] [data-m="vol-panel"] { padding: 24px !important; margin-bottom: 8px; }
+[data-screen-label="3a Homepage"] [data-m="vol-panel"][data-closed="1"] { display: none !important; }
+[data-screen-label="3a Homepage"] [data-m="vol-panel"] > div:first-child > div:has(> img) { display: none !important; }
+[data-screen-label="3a Homepage"] [data-m="about-tabs"] { display: contents !important; }
+[data-screen-label="3a Homepage"] [data-m="about-panel"] { padding: 24px !important; margin-bottom: 8px; }
+[data-screen-label="3a Homepage"] [data-m="about-panel"][data-closed="1"] { display: none !important; }
+[data-screen-label="3a Homepage"] [data-about]:has(> [data-m="tile-trio"]) > div:first-child { display: none !important; }
+[data-screen-label="3a Homepage"] [data-m="tile-trio"]:not(#_) { display: grid !important; grid-template-columns: repeat(3, minmax(0,1fr)) !important; grid-template-rows: 120px; overflow: hidden; }
+[data-screen-label="3a Homepage"] [data-m="about-panel"] > div:has(img[src*="family-hike"]),
+[data-screen-label="3a Homepage"] [data-m="about-panel"] > div:has(img[src*="podcast-laughing-2"]),
+[data-screen-label="3a Homepage"] [data-m="about-panel"] > div:has(img[src*="21fe07_f8ec08c35bed4"]) { display: none !important; }
+[data-screen-label="3a Homepage"] [data-m="case-tabs"] { display: contents !important; }
+[data-screen-label="3a Homepage"] [data-m="case-panel"] { margin-bottom: 8px; }
+[data-screen-label="3a Homepage"] [data-m="case-panel"][data-closed="1"] { display: none !important; }
+[data-screen-label="3a Homepage"] [data-m="stats"]:not(#_) { grid-template-columns: repeat(3, minmax(0,1fr)) !important; }
+[data-screen-label="3a Homepage"] [data-m="stats"] > div:not(#_) { padding: 24px 8px !important; text-align: center; }
+[data-screen-label="3a Homepage"] [data-m="stats"] > div > div:first-child:not(#_) { font-size: 30px !important; }
+[data-screen-label="3a Homepage"] [data-m="stats"] > div > div + div:not(#_) { font-size: 12px !important; margin-top: 8px !important; }
+[data-screen-label="3a Homepage"] [data-m="stats"] > div:last-child { border-right: 0 !important; }
 [data-screen-label="3a Homepage"] [data-m="hero-photo"] img { width: 420px !important; right: 50% !important; margin-right: -210px; }
 [data-screen-label="3a Homepage"] [style*="writing-mode"] { display: none !important; }
-[data-screen-label="3a Homepage"] [data-m="navlinks"] > a:not([data-m="navcta"]) { display: none !important; }
+[data-screen-label="3a Homepage"] [data-ju-nav] { height: auto !important; flex-wrap: wrap; padding-top: 12px !important; padding-bottom: 0 !important; }
+[data-screen-label="3a Homepage"] [data-ju-nav]::after { content: ""; order: 2; flex-basis: 100%; }
+[data-screen-label="3a Homepage"] [data-m="navlinks"] { display: contents !important; }
+[data-screen-label="3a Homepage"] [data-m="navlinks"] > a:not([data-m="navcta"]) { order: 3; padding: 12px 0; font-family: Oswald, sans-serif; font-size: 13px; letter-spacing: 2px; }
+[data-screen-label="3a Homepage"] [data-m="navcta"] { order: 1; white-space: nowrap; font-family: Oswald, sans-serif; font-size: 14px; letter-spacing: 2px; }
+[data-screen-label="3a Homepage"] [data-m="dash-frame"] { height: calc(720px * var(--dash-s, .3)); }
+[data-screen-label="3a Homepage"] [data-m="dash-frame"] iframe:not(#_) { width: 1200px !important; height: 720px !important; transform: scale(var(--dash-s, .3)); transform-origin: 0 0; }
+[data-screen-label="3a Homepage"] [data-m="dash-head"] { flex-wrap: wrap; align-items: flex-start !important; gap: 20px !important; }
+[data-screen-label="3a Homepage"] [data-m="footer"] a { padding: 10px 0; }
+[data-screen-label="3a Homepage"] [data-m="footer"] a[data-contact] { background: transparent !important; color: #FFFFFF !important; border: 1.5px solid rgba(255,255,255,.9); box-shadow: none !important; }
+[data-screen-label="3a Homepage"] [data-m="hero-ctas"] { flex-wrap: wrap; }
+[data-screen-label="3a Homepage"] [data-m="hero-ctas"] > a { white-space: nowrap; }
 [data-screen-label="3a Homepage"] h1, [data-screen-label="3a Homepage"] h2, [data-screen-label="3a Homepage"] h2 *, [data-screen-label="3a Homepage"] [style*="font-size: 104px"] { white-space: normal !important; }
 [data-screen-label="3a Homepage"] [style*="font-size: 104px"] { font-size: 50px !important; }
 [data-screen-label="3a Homepage"] [style*="font-size: 94px"] { font-size: 50px !important; }
@@ -81,6 +138,10 @@ a:hover{color:#FFFFFF}
 [data-screen-label="3a Homepage"] [data-m="hero-photo"] { min-height: 360px; }
 [data-screen-label="3a Homepage"] [data-m="hero-photo"] img { width: 340px !important; margin-right: -170px; }
 #references [data-m="refs"] { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+[data-screen-label="3a Homepage"] [data-ju-nav] > a img { height: 24px !important; }
+[data-screen-label="3a Homepage"] [data-m="navcta"] { font-size: 13px; letter-spacing: 1.5px; padding: 9px 14px !important; }
+[data-screen-label="3a Homepage"] [data-m="navlinks"] > a:not([data-m="navcta"]) { font-size: 12px; letter-spacing: 1.5px; }
+[data-screen-label="3a Homepage"] [data-m="footer"] { flex-direction: column; gap: 8px !important; padding-top: 32px !important; padding-bottom: 32px !important; }
 }
 </style>
 </helmet>
@@ -103,7 +164,7 @@ a:hover{color:#FFFFFF}
 
 <div style="position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);min-height:720px;border-bottom:1px solid rgba(255,255,255,.08)">
 <div style="position:absolute;inset:0;pointer-events:none;z-index:0">{{ heroGlow }}</div>
-<div style="padding:88px 0 72px 48px;display:flex;flex-direction:column;gap:32px;position:relative;z-index:2">
+<div data-m="hero-copy" style="padding:88px 0 72px 48px;display:flex;flex-direction:column;gap:32px;position:relative;z-index:2">
 <div style="display:flex;align-items:center;gap:14px;font-family:Oswald,sans-serif;font-size:15px;letter-spacing:3px;color:#E8A765"><span style="width:40px;height:1px;background:#E08A2E;box-shadow:0 0 8px #E08A2E"></span>HI, I'M JUSTIN ULRICH</div>
 <h1 style="margin:0;font-family:Oswald,sans-serif;font-weight:700;font-size:94px;line-height:.92;letter-spacing:-1px;display:flex;flex-direction:column;white-space:nowrap">
 <span style="color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.85)">PART ARTIST.</span>
@@ -111,7 +172,7 @@ a:hover{color:#FFFFFF}
 <span style="color:#E08A2E;text-shadow:0 0 40px rgba(224,138,46,.6),0 0 90px rgba(224,138,46,.35)">ALL MARKETER.</span>
 </h1>
 <p style="margin:0;font-size:20px;line-height:1.55;color:#C4CEDA;max-width:560px;text-wrap:pretty">I build scalable B2B SaaS growth engines that drive pipeline, revenue, and market expansion. From a $2B off-road brand to SaaS demand gen built from scratch, I lead with strategy and execute with craft.</p>
-<div style="display:flex;gap:14px">
+<div data-m="hero-ctas" style="display:flex;gap:14px">
 <a href="#the-work" onClick="{{ goWork }}" style="font-family:Oswald,sans-serif;font-weight:500;font-size:15px;letter-spacing:1.5px;color:#0A0F16;background:#E08A2E;border-radius:8px;padding:16px 28px;box-shadow:0 0 32px rgba(224,138,46,.55)" style-hover="background:#E8A765;color:#0A0F16">SEE WHAT I'VE DONE</a>
 <a href="#about-me" onClick="{{ goAbout }}" style="font-family:Oswald,sans-serif;font-weight:500;font-size:15px;letter-spacing:1.5px;color:#FFFFFF;border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:16px 28px" style-hover="color:#FFFFFF;border-color:#E8A765;box-shadow:0 0 24px rgba(224,138,46,.35)">GET TO KNOW ME</a>
 </div>
@@ -124,7 +185,7 @@ a:hover{color:#FFFFFF}
 </div>
 </div>
 
-<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid rgba(255,255,255,.08);background:rgba(8,12,18,.8)">
+<div data-m="stats" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid rgba(255,255,255,.08);background:rgba(8,12,18,.8)">
 <div style="padding:36px 48px;border-right:1px solid rgba(255,255,255,.08)"><div style="font-family:Oswald,sans-serif;font-weight:600;font-size:64px;line-height:1;color:#E08A2E;text-shadow:0 0 24px rgba(224,138,46,.5)">15</div><div style="font-size:14px;color:#B7C2D0;margin-top:10px;line-height:1.45">Years building and leading marketing functions that actually move the needle.</div></div>
 <div style="padding:36px 32px;border-right:1px solid rgba(255,255,255,.08)"><div style="font-family:Oswald,sans-serif;font-weight:600;font-size:64px;line-height:1;color:transparent;-webkit-text-stroke:1.5px #E08A2E;filter:drop-shadow(0 0 10px rgba(224,138,46,.55)) drop-shadow(0 0 24px rgba(224,138,46,.35))">$840M+</div><div style="font-size:14px;color:#B7C2D0;margin-top:10px">Pipeline Generated</div></div>
 <div style="padding:36px 32px;border-right:1px solid rgba(255,255,255,.08)"><div style="font-family:Oswald,sans-serif;font-weight:600;font-size:64px;line-height:1;color:transparent;-webkit-text-stroke:1.5px #E08A2E;filter:drop-shadow(0 0 10px rgba(224,138,46,.55)) drop-shadow(0 0 24px rgba(224,138,46,.35))">$350M+</div><div style="font-size:14px;color:#B7C2D0;margin-top:10px">Revenue Generated</div></div>
@@ -166,16 +227,16 @@ a:hover{color:#FFFFFF}
 </div>
 <a href="#the-work" onClick="{{ goWork }}" style="flex:none;font-family:Oswald,sans-serif;font-size:14px;letter-spacing:1.5px;color:#FFFFFF;border:1px solid rgba(232,167,101,.55);border-radius:8px;padding:12px 24px" style-hover="color:#FFFFFF;box-shadow:0 0 24px rgba(224,138,46,.45)">ALL WORK →</a>
 </div>
-<div style="display:grid;grid-template-columns:260px minmax(0,1fr);gap:16px;align-items:stretch">
-<div style="display:flex;flex-direction:column;gap:10px">
+<div data-m="cases" style="display:grid;grid-template-columns:260px minmax(0,1fr);gap:16px;align-items:stretch">
+<div data-m="case-tabs" style="display:flex;flex-direction:column;gap:10px">
 <sc-for list="{{ caseTabs }}" as="t" hint-placeholder-count="3">
 <div style="display:contents">
-<sc-if value="{{ t.active }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ t.pick }}" style="text-align:left;cursor:pointer;border:1px solid #E08A2E;border-radius:14px;padding:18px 20px;background:rgba(224,138,46,.12);box-shadow:0 0 28px rgba(224,138,46,.3);color:#FFFFFF;display:flex;flex-direction:column;gap:4px"><span style="font-family:Oswald,sans-serif;font-size:24px">{{ t.brand }}</span><span style="font-family:Figtree,sans-serif;font-size:13px;color:#B7C2D0">{{ t.tag }}</span></button></sc-if>
-<sc-if value="{{ t.inactive }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ t.pick }}" style="text-align:left;cursor:pointer;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:18px 20px;background:rgba(15,23,34,.92);color:#8A939D;display:flex;flex-direction:column;gap:4px" style-hover="border-color:rgba(232,167,101,.5);color:#FFFFFF"><span style="font-family:Oswald,sans-serif;font-size:24px">{{ t.brand }}</span><span style="font-family:Figtree,sans-serif;font-size:13px;color:#6D8199">{{ t.tag }}</span></button></sc-if>
+<sc-if value="{{ t.active }}" hint-placeholder-val="{{ false }}"><button type="button" data-case="{{ t.n }}" onClick="{{ t.pick }}" style="order:{{ t.ord }};text-align:left;cursor:pointer;border:1px solid #E08A2E;border-radius:14px;padding:18px 20px;background:rgba(224,138,46,.12);box-shadow:0 0 28px rgba(224,138,46,.3);color:#FFFFFF;display:flex;flex-direction:column;gap:4px"><span style="font-family:Oswald,sans-serif;font-size:24px">{{ t.brand }}</span><span style="font-family:Figtree,sans-serif;font-size:13px;color:#B7C2D0">{{ t.tag }}</span></button></sc-if>
+<sc-if value="{{ t.inactive }}" hint-placeholder-val="{{ true }}"><button type="button" data-case="{{ t.n }}" onClick="{{ t.pick }}" style="order:{{ t.ord }};text-align:left;cursor:pointer;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:18px 20px;background:rgba(15,23,34,.92);color:#8A939D;display:flex;flex-direction:column;gap:4px" style-hover="border-color:rgba(232,167,101,.5);color:#FFFFFF"><span style="font-family:Oswald,sans-serif;font-size:24px">{{ t.brand }}</span><span style="font-family:Figtree,sans-serif;font-size:13px;color:#6D8199">{{ t.tag }}</span></button></sc-if>
 </div>
 </sc-for>
 </div>
-<div style="border:1px solid rgba(232,167,101,.35);border-radius:16px;background:rgba(15,23,34,.92);overflow:hidden;box-shadow:0 0 60px rgba(224,138,46,.14)">
+<div data-m="case-panel" data-closed="{{ csClosed }}" style="order:{{ csOrd }};border:1px solid rgba(232,167,101,.35);border-radius:16px;background:rgba(15,23,34,.92);overflow:hidden;box-shadow:0 0 60px rgba(224,138,46,.14)">
 <div style="height:260px;position:relative;background:#16202B;overflow:hidden">
 <sc-if value="{{ cs.hasImg }}" hint-placeholder-val="{{ false }}"><img loading="lazy" src="{{ cs.img }}" alt="{{ cs.brand }}" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></sc-if>
 <sc-if value="{{ cs.hasThumbs }}" hint-placeholder-val="{{ false }}"><div style="display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;padding:16px;height:100%;box-sizing:border-box"><sc-for list="{{ cs.thumbs }}" as="d" hint-placeholder-count="0"><button type="button" onClick="{{ d.open }}" title="{{ d.title }}" style="display:block;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.1);padding:0;background:transparent;cursor:pointer" style-hover="border-color:#E8A765;box-shadow:0 0 16px rgba(224,138,46,.5)"><img loading="lazy" src="{{ d.img }}" alt="{{ d.title }}" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></button></sc-for></div></sc-if>
@@ -218,7 +279,7 @@ a:hover{color:#FFFFFF}
 </div>
 <div style="display:flex;flex-direction:column;gap:16px">
 <div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px">
-<div data-m="tile" onMouseEnter="{{ W0.enter }}" onMouseLeave="{{ W0.leave }}" style="grid-column:span 7;position:relative;height:440px;z-index:{{ W0.z }};opacity:{{ W0.op }};transition:opacity .7s ease">
+<div data-m="tile" data-work="0" onClick="{{ W0.tap }}" onMouseEnter="{{ W0.enter }}" onMouseLeave="{{ W0.leave }}" style="grid-column:span 7;position:relative;height:440px;z-index:{{ W0.z }};opacity:{{ W0.op }};transition:opacity .7s ease">
 <div style="position:absolute;top:0;left:0;right:0;border-radius:16px;overflow:hidden;border:1px solid {{ W0.border }};background:rgba(12,18,27,.98);box-shadow:{{ W0.glow }};transition:border-color .5s ease,box-shadow .8s ease;cursor:pointer;display:flex;flex-direction:column">
 <div style="position:relative;height:440px;flex:none;overflow:hidden;background:#0F1722">
 <img src="/assets/pro-xp-cover.png" alt="{{ W0.title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:{{ W0.imgTf }};transition:transform 1.6s cubic-bezier(.22,1,.36,1)">
@@ -252,7 +313,7 @@ a:hover{color:#FFFFFF}
 </div>
 </div>
 <div style="grid-column:span 5;display:flex;flex-direction:column;gap:16px">
-<div data-m="tile" onMouseEnter="{{ W1.enter }}" onMouseLeave="{{ W1.leave }}" style="position:relative;height:212px;z-index:{{ W1.z }};opacity:{{ W1.op }};transition:opacity .7s ease">
+<div data-m="tile" data-work="1" onClick="{{ W1.tap }}" onMouseEnter="{{ W1.enter }}" onMouseLeave="{{ W1.leave }}" style="position:relative;height:212px;z-index:{{ W1.z }};opacity:{{ W1.op }};transition:opacity .7s ease">
 <div style="position:absolute;top:0;left:0;right:0;border-radius:16px;overflow:hidden;border:1px solid {{ W1.border }};background:rgba(12,18,27,.98);box-shadow:{{ W1.glow }};transition:border-color .5s ease,box-shadow .8s ease;cursor:pointer;display:flex;flex-direction:column">
 <div style="position:relative;height:212px;flex:none;overflow:hidden;background:#0F1722">
 <img src="/assets/bloodlines.png" alt="{{ W1.title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:{{ W1.imgTf }};transition:transform 1.6s cubic-bezier(.22,1,.36,1)">
@@ -285,7 +346,7 @@ a:hover{color:#FFFFFF}
 </div>
 </div>
 </div>
-<div data-m="tile" onMouseEnter="{{ W2.enter }}" onMouseLeave="{{ W2.leave }}" style="position:relative;height:212px;z-index:{{ W2.z }};opacity:{{ W2.op }};transition:opacity .7s ease">
+<div data-m="tile" data-work="2" onClick="{{ W2.tap }}" onMouseEnter="{{ W2.enter }}" onMouseLeave="{{ W2.leave }}" style="position:relative;height:212px;z-index:{{ W2.z }};opacity:{{ W2.op }};transition:opacity .7s ease">
 <div style="position:absolute;top:0;left:0;right:0;border-radius:16px;overflow:hidden;border:1px solid {{ W2.border }};background:rgba(12,18,27,.98);box-shadow:{{ W2.glow }};transition:border-color .5s ease,box-shadow .8s ease;cursor:pointer;display:flex;flex-direction:column">
 <div style="position:relative;height:212px;flex:none;overflow:hidden;background:#0F1722">
 <img src="/assets/screen-shot-2020-02-14-at-4_25_39-pm.png" alt="{{ W2.title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:{{ W2.imgTf }};transition:transform 1.6s cubic-bezier(.22,1,.36,1)">
@@ -321,7 +382,7 @@ a:hover{color:#FFFFFF}
 </div>
 </div>
 <div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px">
-<div data-m="tile" onMouseEnter="{{ W3.enter }}" onMouseLeave="{{ W3.leave }}" style="grid-column:span 4;position:relative;height:340px;z-index:{{ W3.z }};opacity:{{ W3.op }};transition:opacity .7s ease">
+<div data-m="tile" data-work="3" onClick="{{ W3.tap }}" onMouseEnter="{{ W3.enter }}" onMouseLeave="{{ W3.leave }}" style="grid-column:span 4;position:relative;height:340px;z-index:{{ W3.z }};opacity:{{ W3.op }};transition:opacity .7s ease">
 <div style="position:absolute;top:0;left:0;right:0;border-radius:16px;overflow:hidden;border:1px solid {{ W3.border }};background:rgba(12,18,27,.98);box-shadow:{{ W3.glow }};transition:border-color .5s ease,box-shadow .8s ease;cursor:pointer;display:flex;flex-direction:column">
 <div style="position:relative;height:340px;flex:none;overflow:hidden;background:#0F1722">
 <img src="/assets/six6469_0005.jpg" alt="{{ W3.title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:{{ W3.imgTf }};transition:transform 1.6s cubic-bezier(.22,1,.36,1)">
@@ -354,7 +415,7 @@ a:hover{color:#FFFFFF}
 </div>
 </div>
 </div>
-<div data-m="tile" onMouseEnter="{{ W4.enter }}" onMouseLeave="{{ W4.leave }}" style="grid-column:span 8;position:relative;height:340px;z-index:{{ W4.z }};opacity:{{ W4.op }};transition:opacity .7s ease">
+<div data-m="tile" data-work="4" onClick="{{ W4.tap }}" onMouseEnter="{{ W4.enter }}" onMouseLeave="{{ W4.leave }}" style="grid-column:span 8;position:relative;height:340px;z-index:{{ W4.z }};opacity:{{ W4.op }};transition:opacity .7s ease">
 <div style="position:absolute;top:0;left:0;right:0;border-radius:16px;overflow:hidden;border:1px solid {{ W4.border }};background:rgba(12,18,27,.98);box-shadow:{{ W4.glow }};transition:border-color .5s ease,box-shadow .8s ease;cursor:pointer;display:flex;flex-direction:column">
 <div style="position:relative;height:340px;flex:none;overflow:hidden;background:#0F1722">
 <img src="https://justinulrich.com/assets/carousel-one-pagers.jpg" alt="Avero one pagers" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:{{ W4.imgTf }};transition:transform 1.6s cubic-bezier(.22,1,.36,1)">
@@ -389,22 +450,22 @@ a:hover{color:#FFFFFF}
 </div>
 </div>
 <div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px">
-<div data-m="tile" onMouseEnter="{{ W6.enter }}" onMouseLeave="{{ W6.leave }}" style="grid-column:span 7;position:relative;height:440px;z-index:{{ W6.z }};opacity:{{ W6.op }};transition:opacity .7s ease">
+<div data-m="tile" data-work="6" data-open="{{ W6.openAttr }}" onClick="{{ W6.tap }}" onMouseEnter="{{ W6.enter }}" onMouseLeave="{{ W6.leave }}" style="grid-column:span 7;position:relative;height:440px;z-index:{{ W6.z }};opacity:{{ W6.op }};transition:opacity .7s ease">
 <div style="position:absolute;top:0;left:0;right:0;border-radius:16px;overflow:hidden;border:1px solid {{ W6.border }};background:rgba(12,18,27,.98);box-shadow:{{ W6.glow }};transition:border-color .5s ease,box-shadow .8s ease;display:flex;flex-direction:column">
-<div style="position:relative;height:440px;flex:none;overflow:hidden;background:#0F1722">
-<div style="position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1.1fr) repeat(3,minmax(0,1fr));grid-template-rows:minmax(0,1.3fr) minmax(0,1fr);gap:10px;padding:14px;transform:{{ W6.imgTf }};transition:transform 1.6s cubic-bezier(.22,1,.36,1)">
+<div data-m="w6-hero" style="position:relative;height:440px;flex:none;overflow:hidden;background:#0F1722">
+<div data-m="w6-collage" style="position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1.1fr) repeat(3,minmax(0,1fr));grid-template-rows:minmax(0,1.3fr) minmax(0,1fr);gap:10px;padding:14px;transform:{{ W6.imgTf }};transition:transform 1.6s cubic-bezier(.22,1,.36,1)">
 <div style="grid-column:2 / span 3;grid-row:1;position:relative"><a href="https://pub-bc8f6a2cf6154e4d90616851a25b359f.r2.dev/AI%20Marketing%20Director%20Hype%20Video.mp4" target="_blank" title="AI Marketing Director Hype Video" style="position:absolute;inset:0;display:block;border-radius:10px;overflow:hidden;background:#000;border:1px solid rgba(255,255,255,.12)" style-hover="border-color:#E08A2E;box-shadow:0 0 22px rgba(224,138,46,.45)"><video data-loop="" src="https://pub-bc8f6a2cf6154e4d90616851a25b359f.r2.dev/AI%20Marketing%20Director%20Hype%20Video.mp4" preload="auto" autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none"></video></a></div>
 <div style="position:relative"><a href="/assets/evo-success-smoothie-king.pdf?v=3" target="_blank" title="Success Story - Smoothie King" style="position:absolute;inset:0;display:block;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#0A0A12" style-hover="border-color:#E08A2E;box-shadow:0 0 22px rgba(224,138,46,.45)"><img src="/assets/evo-success-smoothie-king-thumb.png?v=3" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block"><span style="position:absolute;left:8px;top:8px;font-family:Oswald,sans-serif;font-size:11px;letter-spacing:1.5px;color:#FFFFFF;background:rgba(10,15,22,.75);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:3px 8px">SUCCESS STORY</span></a></div>
 <div style="grid-column:1;grid-row:1 / span 2;position:relative"><a href="https://evocalize.com/" target="_blank" title="Evocalize.com" style="position:absolute;inset:0;display:block;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#0A0A12" style-hover="border-color:#E08A2E;box-shadow:0 0 22px rgba(224,138,46,.45)"><img src="/assets/evocalize-website-full.png?v=3" alt="Evocalize website" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block"><span style="position:absolute;left:8px;top:8px;font-family:Oswald,sans-serif;font-size:11px;letter-spacing:1.5px;color:#FFFFFF;background:rgba(10,15,22,.7);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:3px 8px">WEBSITE ↗</span></a></div>
 <div style="position:relative"><a href="/assets/evo-one-pager-listing-lifecycle.pdf?v=3" target="_blank" title="One Pager - Listing Lifecycle" style="position:absolute;inset:0;display:block;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#0A0A12" style-hover="border-color:#E08A2E;box-shadow:0 0 22px rgba(224,138,46,.45)"><img src="/assets/evo-one-pager-listing-lifecycle-thumb.png?v=3" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block"><span style="position:absolute;left:8px;top:8px;font-family:Oswald,sans-serif;font-size:11px;letter-spacing:1.5px;color:#FFFFFF;background:rgba(10,15,22,.75);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:3px 8px">ONE PAGER</span></a></div>
 <div style="position:relative"><a href="/assets/evo-one-pager-tazikis-digital-ads.pdf?v=3" target="_blank" title="One Pager - Tazikis Digital Ads" style="position:absolute;inset:0;display:block;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#0A0A12" style-hover="border-color:#E08A2E;box-shadow:0 0 22px rgba(224,138,46,.45)"><img src="/assets/evo-one-pager-tazikis-digital-ads-thumb.png?v=3" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block"><span style="position:absolute;left:8px;top:8px;font-family:Oswald,sans-serif;font-size:11px;letter-spacing:1.5px;color:#FFFFFF;background:rgba(10,15,22,.75);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:3px 8px">ONE PAGER</span></a></div>
 </div>
-<div style="position:absolute;left:0;right:0;bottom:0;height:150px;background:linear-gradient(to top,rgba(10,15,22,.96) 20%,rgba(10,15,22,0));pointer-events:none"></div>
+<div data-m="w6-fade" style="position:absolute;left:0;right:0;bottom:0;height:150px;background:linear-gradient(to top,rgba(10,15,22,.96) 20%,rgba(10,15,22,0));pointer-events:none"></div>
 <div style="position:absolute;top:16px;right:16px;display:flex;align-items:center;gap:10px;pointer-events:none">
 <span style="font-size:12px;color:#FFFFFF;border:1px solid rgba(255,255,255,.22);border-radius:8px;padding:6px 10px;background:rgba(10,15,22,.55);backdrop-filter:blur(8px)">{{ W6.meta }}</span>
 <span style="width:36px;height:36px;border-radius:50%;border:1px solid rgba(232,167,101,.6);background:rgba(10,15,22,.55);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;color:#E8A765;font-size:20px;font-weight:300;transform:{{ W6.plusTf }};box-shadow:{{ W6.plusGlow }};transition:transform .8s cubic-bezier(.22,1,.36,1),box-shadow .6s ease">+</span>
 </div>
-<div style="position:absolute;left:24px;right:24px;bottom:22px;pointer-events:none">
+<div data-m="w6-text" style="position:absolute;left:24px;right:24px;bottom:22px;pointer-events:none">
 <div style="font-size:12px;letter-spacing:2px;color:#E8A765;text-transform:uppercase">{{ W6.label }}</div>
 <div style="font-family:Oswald,sans-serif;font-size:{{ W6.size }};line-height:1.05;margin-top:6px;color:#FFFFFF">{{ W6.title }}</div>
 </div>
@@ -425,7 +486,7 @@ a:hover{color:#FFFFFF}
 </div>
 
 <div style="grid-column:span 5;display:flex;flex-direction:column;gap:16px">
-<div data-m="tile" onMouseEnter="{{ W7.enter }}" onMouseLeave="{{ W7.leave }}" style="position:relative;height:212px;z-index:{{ W7.z }};opacity:{{ W7.op }};transition:opacity .7s ease">
+<div data-m="tile" data-work="7" onClick="{{ W7.tap }}" onMouseEnter="{{ W7.enter }}" onMouseLeave="{{ W7.leave }}" style="position:relative;height:212px;z-index:{{ W7.z }};opacity:{{ W7.op }};transition:opacity .7s ease">
 <div style="position:absolute;top:0;left:0;right:0;border-radius:16px;overflow:hidden;border:1px solid {{ W7.border }};background:rgba(12,18,27,.98);box-shadow:{{ W7.glow }};transition:border-color .5s ease,box-shadow .8s ease;cursor:pointer;display:flex;flex-direction:column">
 <div style="position:relative;height:212px;flex:none;overflow:hidden;background:#0F1722">
 <img src="/assets/avero-customer-journey.png?v=3" alt="Avero customer journey layers" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left top;background:#FFFFFF;transform:{{ W7.imgTf }};transform-origin:0 0;transition:transform 1.6s cubic-bezier(.22,1,.36,1)">
@@ -458,7 +519,7 @@ a:hover{color:#FFFFFF}
 </div>
 </div>
 </div>
-<div data-m="tile" onMouseEnter="{{ W5.enter }}" onMouseLeave="{{ W5.leave }}" style="position:relative;height:212px;z-index:{{ W5.z }};opacity:{{ W5.op }};transition:opacity .7s ease">
+<div data-m="tile" data-work="5" onClick="{{ W5.tap }}" onMouseEnter="{{ W5.enter }}" onMouseLeave="{{ W5.leave }}" style="position:relative;height:212px;z-index:{{ W5.z }};opacity:{{ W5.op }};transition:opacity .7s ease">
 <div style="position:absolute;top:0;left:0;right:0;border-radius:16px;overflow:hidden;border:1px solid {{ W5.border }};background:#0A0F16;box-shadow:{{ W5.glow }};transition:border-color .5s ease,box-shadow .8s ease;cursor:pointer;display:flex;flex-direction:column">
 <div style="position:relative;height:212px;flex:none;overflow:hidden;background:#0A0F16">
 <div style="position:absolute;inset:0;background:#0A0F16"></div>
@@ -506,7 +567,7 @@ a:hover{color:#FFFFFF}
 </div>
 
 <div style="padding:16px 48px 112px;display:flex;flex-direction:column;gap:36px">
-<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px">
+<div data-m="dash-head" style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px">
 <div style="display:flex;flex-direction:column;gap:14px">
 <div style="font-family:Oswald,sans-serif;font-size:14px;letter-spacing:3px;color:#E8A765">HOW I TRACK IT</div>
 <h2 style="margin:0;font-family:Oswald,sans-serif;font-weight:700;font-size:72px;line-height:.95">DATA DRIVES DECISIONS.<br><span style="color:transparent;-webkit-text-stroke:1.5px #FFFFFF">DECISIONS DRIVE GROWTH.</span></h2>
@@ -521,7 +582,9 @@ a:hover{color:#FFFFFF}
 </div>
 <span style="font-size:12px;color:#1BAF7A;border:1px solid #1BAF7A;border-radius:6px;padding:4px 10px">Demo · dummy data</span>
 </div>
+<div data-m="dash-frame" style="overflow:hidden">
 <iframe src="/assets/marketing-dashboard.html?v=3" title="Marketing Management Dashboard demo" loading="lazy" style="width:100%;height:720px;border:0;display:block;background:#0D0D0D"></iframe>
+</div>
 </div>
 </div>
 
@@ -541,26 +604,26 @@ a:hover{color:#FFFFFF}
 </div>
 <p style="margin:0;font-size:18px;line-height:1.6;color:#C4CEDA;text-wrap:pretty">I've led marketing for a $2B off-road brand and built demand gen from the ground up at three different SaaS companies. I've managed budgets up to $8.5M, led teams of 8+, and owned everything from brand and product marketing to paid media and partnerships. I care about the same thing every CXO does: does the work move the needle.</p>
 </div>
-<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:16px;align-items:stretch">
-<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-content:start">
+<div data-m="about-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:16px;align-items:stretch">
+<div data-m="about-tabs" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-content:start">
 <sc-for list="{{ aboutTopics }}" as="o" hint-placeholder-count="6">
 <div style="display:contents">
 <sc-if value="{{ o.active }}" hint-placeholder-val="{{ false }}">
-<button type="button" onMouseEnter="{{ o.pick }}" onClick="{{ o.pick }}" style="cursor:pointer;border:1px solid #E08A2E;border-radius:14px;padding:10px;background:rgba(224,138,46,.1);box-shadow:0 0 34px rgba(224,138,46,.35);display:flex;flex-direction:column;gap:10px;text-align:left;transform:translateY(-2px);transition:all .4s cubic-bezier(.22,1,.36,1)">
-<div style="height:120px;border-radius:10px;overflow:hidden;background:{{ o.bg }};display:flex;align-items:center;justify-content:center"><sc-if value="{{ o.isImg }}" hint-placeholder-val="{{ true }}"><img loading="lazy" src="{{ o.img }}" alt="{{ o.name }}" style="width:100%;height:100%;object-fit:{{ o.fit }};padding:{{ o.pad }};box-sizing:border-box;display:block"></sc-if><sc-if value="{{ o.isText }}" hint-placeholder-val="{{ false }}"><span style="font-family:Oswald,sans-serif;font-weight:700;font-size:64px;line-height:1;letter-spacing:2px;color:#E08A2E;text-shadow:0 0 30px rgba(224,138,46,.8)">{{ o.tileText }}</span></sc-if></div>
+<button type="button" data-about="{{ o.n }}" onMouseEnter="{{ o.pick }}" onClick="{{ o.pick }}" style="order:{{ o.ord }};cursor:pointer;border:1px solid #E08A2E;border-radius:14px;padding:10px;background:rgba(224,138,46,.1);box-shadow:0 0 34px rgba(224,138,46,.35);display:flex;flex-direction:column;gap:10px;text-align:left;transform:translateY(-2px);transition:all .4s cubic-bezier(.22,1,.36,1)">
+<div style="height:120px;border-radius:10px;overflow:hidden;background:{{ o.bg }};display:flex;align-items:center;justify-content:center"><sc-if value="{{ o.isImg }}" hint-placeholder-val="{{ true }}"><img loading="lazy" src="{{ o.img }}" alt="{{ o.name }}" style="width:100%;height:100%;object-fit:{{ o.fit }};padding:{{ o.pad }};box-sizing:border-box;display:block"></sc-if><sc-if value="{{ o.isText }}" hint-placeholder-val="{{ false }}"><span style="font-family:Oswald,sans-serif;font-weight:700;font-size:64px;line-height:1;letter-spacing:2px;color:#E08A2E;text-shadow:0 0 30px rgba(224,138,46,.8)">{{ o.tileText }}</span></sc-if></div><sc-if value="{{ o.hasTrio }}" hint-placeholder-val="{{ false }}"><div data-m="tile-trio" style="display:none;height:120px;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px"><sc-for list="{{ o.trio }}" as="p" hint-placeholder-count="0"><img loading="lazy" src="{{ p.src }}" alt="{{ p.alt }}" style="width:100%;height:100%;object-fit:cover;object-position:center 25%;border-radius:8px;display:block"></sc-for></div></sc-if>
 <span style="font-family:Oswald,sans-serif;font-size:16px;letter-spacing:1px;color:#FFFFFF;padding:0 4px 2px">{{ o.name }}</span>
 </button>
 </sc-if>
 <sc-if value="{{ o.inactive }}" hint-placeholder-val="{{ true }}">
-<button type="button" onMouseEnter="{{ o.pick }}" onClick="{{ o.pick }}" style="cursor:pointer;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:10px;background:rgba(10,15,22,.85);display:flex;flex-direction:column;gap:10px;text-align:left;transition:all .4s cubic-bezier(.22,1,.36,1)" style-hover="border-color:rgba(232,167,101,.55)">
-<div style="height:120px;border-radius:10px;overflow:hidden;background:{{ o.bg }};display:flex;align-items:center;justify-content:center;opacity:.5"><sc-if value="{{ o.isImg }}" hint-placeholder-val="{{ true }}"><img loading="lazy" src="{{ o.img }}" alt="{{ o.name }}" style="width:100%;height:100%;object-fit:{{ o.fit }};padding:{{ o.pad }};box-sizing:border-box;display:block;filter:grayscale(1)"></sc-if><sc-if value="{{ o.isText }}" hint-placeholder-val="{{ false }}"><span style="font-family:Oswald,sans-serif;font-weight:700;font-size:64px;line-height:1;letter-spacing:2px;color:#8A939D">{{ o.tileText }}</span></sc-if></div>
+<button type="button" data-about="{{ o.n }}" onMouseEnter="{{ o.pick }}" onClick="{{ o.pick }}" style="order:{{ o.ord }};cursor:pointer;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:10px;background:rgba(10,15,22,.85);display:flex;flex-direction:column;gap:10px;text-align:left;transition:all .4s cubic-bezier(.22,1,.36,1)" style-hover="border-color:rgba(232,167,101,.55)">
+<div style="height:120px;border-radius:10px;overflow:hidden;background:{{ o.bg }};display:flex;align-items:center;justify-content:center;opacity:.5"><sc-if value="{{ o.isImg }}" hint-placeholder-val="{{ true }}"><img loading="lazy" src="{{ o.img }}" alt="{{ o.name }}" style="width:100%;height:100%;object-fit:{{ o.fit }};padding:{{ o.pad }};box-sizing:border-box;display:block;filter:grayscale(1)"></sc-if><sc-if value="{{ o.isText }}" hint-placeholder-val="{{ false }}"><span style="font-family:Oswald,sans-serif;font-weight:700;font-size:64px;line-height:1;letter-spacing:2px;color:#8A939D">{{ o.tileText }}</span></sc-if></div><sc-if value="{{ o.hasTrio }}" hint-placeholder-val="{{ false }}"><div data-m="tile-trio" style="display:none;height:120px;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;opacity:.5;filter:grayscale(1)"><sc-for list="{{ o.trio }}" as="p" hint-placeholder-count="0"><img loading="lazy" src="{{ p.src }}" alt="{{ p.alt }}" style="width:100%;height:100%;object-fit:cover;object-position:center 25%;border-radius:8px;display:block"></sc-for></div></sc-if>
 <span style="font-family:Oswald,sans-serif;font-size:16px;letter-spacing:1px;color:#8A939D;padding:0 4px 2px">{{ o.name }}</span>
 </button>
 </sc-if>
 </div>
 </sc-for>
 </div>
-<div style="border:1px solid rgba(232,167,101,.45);border-radius:16px;padding:40px;background:radial-gradient(600px 300px at 100% 0%,rgba(224,138,46,.16),transparent 70%),rgba(12,18,27,.96);box-shadow:0 0 60px rgba(224,138,46,.16);display:flex;flex-direction:column;gap:22px;min-height:660px;box-sizing:border-box">
+<div data-m="about-panel" data-closed="{{ aboutClosed }}" style="order:{{ aboutOrd }};border:1px solid rgba(232,167,101,.45);border-radius:16px;padding:40px;background:radial-gradient(600px 300px at 100% 0%,rgba(224,138,46,.16),transparent 70%),rgba(12,18,27,.96);box-shadow:0 0 60px rgba(224,138,46,.16);display:flex;flex-direction:column;gap:22px;min-height:660px;box-sizing:border-box">
 <div style="display:flex;flex-direction:column;gap:6px">
 <div style="font-family:Oswald,sans-serif;font-size:13px;letter-spacing:2.5px;color:#E8A765">{{ about.n }}</div>
 <h3 style="margin:0;font-family:Oswald,sans-serif;font-weight:600;font-size:44px;line-height:1;color:#FFFFFF">{{ about.name }}</h3>
@@ -615,18 +678,18 @@ a:hover{color:#FFFFFF}
 <div style="font-size:14px;color:#9AA3AC">~ Dieter F. Uchtdorf</div>
 </div>
 </div>
-<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:16px;align-items:stretch">
-<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+<div data-m="vol-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:16px;align-items:stretch">
+<div data-m="vol-tabs" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
 <sc-for list="{{ volOrgs }}" as="o" hint-placeholder-count="8">
 <div style="display:contents">
 <sc-if value="{{ o.active }}" hint-placeholder-val="{{ false }}">
-<button type="button" onMouseEnter="{{ o.pick }}" onClick="{{ o.pick }}" style="position:relative;cursor:pointer;border:1px solid #E08A2E;border-radius:14px;padding:12px;background:rgba(224,138,46,.1);box-shadow:0 0 34px rgba(224,138,46,.35);display:flex;flex-direction:column;gap:10px;text-align:left;transform:translateY(-2px);transition:all .4s cubic-bezier(.22,1,.36,1)">
+<button type="button" data-vol="{{ o.n }}" onMouseEnter="{{ o.pick }}" onClick="{{ o.pick }}" style="order:{{ o.ord }};position:relative;cursor:pointer;border:1px solid #E08A2E;border-radius:14px;padding:12px;background:rgba(224,138,46,.1);box-shadow:0 0 34px rgba(224,138,46,.35);display:flex;flex-direction:column;gap:10px;text-align:left;transform:translateY(-2px);transition:all .4s cubic-bezier(.22,1,.36,1)">
 <div style="height:84px;border-radius:10px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;padding:10px"><img loading="lazy" src="{{ o.img }}" alt="{{ o.name }}" style="max-width:100%;max-height:64px;object-fit:contain;display:block"></div>
 <span style="font-family:Oswald,sans-serif;font-size:15px;letter-spacing:1px;color:#FFFFFF;padding:0 2px">{{ o.name }}</span>
 </button>
 </sc-if>
 <sc-if value="{{ o.inactive }}" hint-placeholder-val="{{ true }}">
-<button type="button" onMouseEnter="{{ o.pick }}" onClick="{{ o.pick }}" style="position:relative;cursor:pointer;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:12px;background:rgba(10,15,22,.85);display:flex;flex-direction:column;gap:10px;text-align:left;transition:all .4s cubic-bezier(.22,1,.36,1)" style-hover="border-color:rgba(232,167,101,.55)">
+<button type="button" data-vol="{{ o.n }}" onMouseEnter="{{ o.pick }}" onClick="{{ o.pick }}" style="order:{{ o.ord }};position:relative;cursor:pointer;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:12px;background:rgba(10,15,22,.85);display:flex;flex-direction:column;gap:10px;text-align:left;transition:all .4s cubic-bezier(.22,1,.36,1)" style-hover="border-color:rgba(232,167,101,.55)">
 <div style="height:84px;border-radius:10px;background:#E7EAED;display:flex;align-items:center;justify-content:center;padding:10px;opacity:.6"><img loading="lazy" src="{{ o.img }}" alt="{{ o.name }}" style="max-width:100%;max-height:64px;object-fit:contain;display:block;filter:grayscale(1)"></div>
 <span style="font-family:Oswald,sans-serif;font-size:15px;letter-spacing:1px;color:#8A939D;padding:0 2px">{{ o.name }}</span>
 </button>
@@ -634,7 +697,7 @@ a:hover{color:#FFFFFF}
 </div>
 </sc-for>
 </div>
-<div style="position:relative;border:1px solid rgba(232,167,101,.45);border-radius:16px;padding:40px;background:radial-gradient(600px 300px at 100% 0%,rgba(224,138,46,.16),transparent 70%),rgba(12,18,27,.96);box-shadow:0 0 60px rgba(224,138,46,.16);display:flex;flex-direction:column;gap:22px">
+<div data-m="vol-panel" data-closed="{{ volClosed }}" style="order:{{ volOrd }};position:relative;border:1px solid rgba(232,167,101,.45);border-radius:16px;padding:40px;background:radial-gradient(600px 300px at 100% 0%,rgba(224,138,46,.16),transparent 70%),rgba(12,18,27,.96);box-shadow:0 0 60px rgba(224,138,46,.16);display:flex;flex-direction:column;gap:22px">
 <div style="display:flex;align-items:center;justify-content:space-between;gap:24px">
 <div style="display:flex;flex-direction:column;gap:6px">
 <div style="font-family:Oswald,sans-serif;font-size:13px;letter-spacing:2.5px;color:#E8A765">{{ vol.n }}</div>
@@ -676,7 +739,7 @@ a:hover{color:#FFFFFF}
 <div style="font-family:Oswald,sans-serif;font-weight:700;font-size:104px;line-height:.92;letter-spacing:-1px;white-space:nowrap">BUILD YOUR ENGINE.<br><span style="color:#E08A2E;text-shadow:0 0 50px rgba(224,138,46,.6)">FUEL YOUR GROWTH.</span></div>
 <a href="#contact" data-contact="" style="font-family:Oswald,sans-serif;font-weight:500;font-size:16px;letter-spacing:1.5px;color:#0A0F16;background:#E08A2E;border-radius:8px;padding:18px 36px;box-shadow:0 0 40px rgba(224,138,46,.6)" style-hover="background:#E8A765;color:#0A0F16">LET'S CHAT.</a>
 </div>
-<div style="border-top:1px solid rgba(255,255,255,.08);padding:26px 48px;display:flex;align-items:center;justify-content:center;gap:56px;flex-wrap:wrap;background:#080C12">
+<div data-m="footer" style="border-top:1px solid rgba(255,255,255,.08);padding:26px 48px;display:flex;align-items:center;justify-content:center;gap:56px;flex-wrap:wrap;background:#080C12">
 <a href="https://www.linkedin.com/in/justinculrich" target="_blank" rel="noopener" data-modal-skip="" title="LinkedIn" style="display:flex;align-items:center;transition:filter .3s ease" style-hover="filter:drop-shadow(0 0 10px rgba(224,138,46,.7))"><img src="/assets/linkedrrin.png" alt="LinkedIn" style="height:30px;width:auto;display:block"></a>
 <div style="display:flex;align-items:center;gap:12px"><img src="/assets/r.png" alt="" style="height:24px;width:auto;display:block;opacity:.85"><a href="#contact" data-contact="" style="font-family:Oswald,sans-serif;font-weight:500;font-size:14px;letter-spacing:1.5px;color:#0A0F16;background:#E08A2E;border-radius:8px;padding:9px 20px;box-shadow:0 0 22px rgba(224,138,46,.45)" style-hover="background:#E8A765;color:#0A0F16">EMAIL</a></div>
 <div style="display:flex;align-items:center;gap:12px"><img src="/assets/phone.png" alt="" style="height:24px;width:auto;display:block;opacity:.85"><a href="tel:+17204220874" data-modal-skip="" style="font-family:Figtree,sans-serif;font-size:16px;color:#FFFFFF;text-decoration:none" style-hover="color:#E8A765">720.422.0874</a></div>
@@ -689,7 +752,7 @@ a:hover{color:#FFFFFF}
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { company: 0, caseIdx: 0, step: 0, modal: null, work: null, last: null, modalOn: false, vol: 0, about: 0, scrolled: false, podEps: [] };
+  state = { company: 0, caseIdx: 0, caseOpen: true, step: 0, modal: null, work: null, last: null, modalOn: false, vol: 0, volOpen: true, about: 0, aboutOpen: true, scrolled: false, podEps: [] };
   Counter = ({ to, prefix, suffix, dur }) => {
     const [v, setV] = React.useState(0);
     React.useEffect(() => {
@@ -881,15 +944,62 @@ class Component extends DCLogic {
         items: [{ title: "Customer Journey", url: "/assets/avero-customer-journey.pdf?v=3", kind: "pdf" }, { title: "Customer Personas", url: "/assets/avero-customer-personas.pdf?v=3", kind: "pdf" }] }
     ];
   }
-  hoverWork(i) { clearTimeout(this._wt); if (this.state.work === i) return; this._wt = setTimeout(() => this.setState({ work: i, last: i }), this.state.work == null ? 90 : 160); }
-  leaveWork() { clearTimeout(this._wt); this._wt = setTimeout(() => this.setState({ work: null }), 200); }
+  hoverWork(i) { if (window.matchMedia("(max-width: 900px)").matches) return; clearTimeout(this._wt); if (this.state.work === i) return; this._wt = setTimeout(() => this.setState({ work: i, last: i }), this.state.work == null ? 90 : 160); }
+  tapWork(i, e) {
+    // Mobile: tap a work tile to open it, tap again to close. Links inside the open tile still work.
+    if (!window.matchMedia("(max-width: 900px)").matches || (e && e.target.closest && e.target.closest("a"))) return;
+    clearTimeout(this._wt);
+    const sel = '[data-work="' + i + '"]', b = document.querySelector(sel), top = b ? b.getBoundingClientRect().top : null;
+    this.setState(this.state.work === i ? { work: null } : { work: i, last: i });
+    if (top == null) return;
+    // The tile above collapses with a ~0.9s animation, so hold the tapped tile in place every frame until it settles (or the user scrolls).
+    const t0 = performance.now(); let stop = false;
+    const quit = () => { stop = true; };
+    window.addEventListener("touchstart", quit, { once: true, passive: true }); window.addEventListener("wheel", quit, { once: true, passive: true });
+    const hold = () => {
+      const nb = document.querySelector(sel);
+      if (nb && !stop) { const d = nb.getBoundingClientRect().top - top; if (Math.abs(d) > 0.5) window.scrollBy(0, d); }
+      if (!stop && performance.now() - t0 < 1200) requestAnimationFrame(hold);
+      else { window.removeEventListener("touchstart", quit); window.removeEventListener("wheel", quit); }
+    };
+    requestAnimationFrame(hold);
+  }
+  leaveWork() { if (window.matchMedia("(max-width: 900px)").matches) return; clearTimeout(this._wt); this._wt = setTimeout(() => this.setState({ work: null }), 200); }
+  pickVol(i, e) {
+    const mobile = window.matchMedia("(max-width: 900px)").matches;
+    if (!mobile) { if (this.state.vol !== i || !this.state.volOpen) this.setState({ vol: i, volOpen: true }); return; }
+    // Mobile: same accordion as About Me — taps only, tap the open org to collapse, tapped tile stays put.
+    if (!e || e.type !== "click") return;
+    const sel = '[data-vol="' + i + '"]', b = document.querySelector(sel), top = b ? b.getBoundingClientRect().top : null;
+    this.setState({ vol: i, volOpen: !(this.state.volOpen && this.state.vol === i) });
+    if (top != null) requestAnimationFrame(() => requestAnimationFrame(() => { const nb = document.querySelector(sel); if (nb) window.scrollBy(0, nb.getBoundingClientRect().top - top); }));
+  }
+  pickAbout(i, e) {
+    const mobile = window.matchMedia("(max-width: 900px)").matches;
+    if (!mobile) { if (this.state.about !== i || !this.state.aboutOpen) this.setState({ about: i, aboutOpen: true }); return; }
+    // Mobile: taps only (a tap also fires mouseenter); tapping the open topic collapses it, and the tapped tile stays put.
+    if (!e || e.type !== "click") return;
+    const sel = '[data-about="' + i + '"]', b = document.querySelector(sel), top = b ? b.getBoundingClientRect().top : null;
+    this.setState({ about: i, aboutOpen: !(this.state.aboutOpen && this.state.about === i) });
+    if (top != null) requestAnimationFrame(() => requestAnimationFrame(() => { const nb = document.querySelector(sel); if (nb) window.scrollBy(0, nb.getBoundingClientRect().top - top); }));
+  }
+  pickCase(i) {
+    // Mobile: the case panel sits under the tapped tab, so keep that tab from jumping as the old panel above it closes.
+    const sel = '[data-case="0' + (i + 1) + '"]', b = document.querySelector(sel), top = b ? b.getBoundingClientRect().top : null;
+    const mobile = window.matchMedia("(max-width: 900px)").matches;
+    // Mobile: tapping the open tab again collapses it.
+    this.setState({ caseIdx: i, caseOpen: !(mobile && this.state.caseOpen && this.state.caseIdx === i) });
+    if (top == null || !mobile) return;
+    requestAnimationFrame(() => requestAnimationFrame(() => { const nb = document.querySelector(sel); if (nb) window.scrollBy(0, nb.getBoundingClientRect().top - top); }));
+  }
   scrollToId(e, id) {
     e.preventDefault();
     const t = document.getElementById(id); if (!t) return;
     let sc = t.parentElement;
     while (sc && sc !== document.body) { const cs = getComputedStyle(sc); if (/(auto|scroll)/.test(cs.overflowY) && sc.scrollHeight > sc.clientHeight) break; sc = sc.parentElement; }
-    if (!sc || sc === document.body) { window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" }); return; }
-    sc.scrollTo({ top: sc.scrollTop + t.getBoundingClientRect().top - sc.getBoundingClientRect().top - 80, behavior: "smooth" });
+    const nav = document.querySelector("[data-ju-nav]"), off = Math.max(80, nav ? nav.offsetHeight + 12 : 0);
+    if (!sc || sc === document.body) { window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - off, behavior: "smooth" }); return; }
+    sc.scrollTo({ top: sc.scrollTop + t.getBoundingClientRect().top - sc.getBoundingClientRect().top - off, behavior: "smooth" });
   }
   closeDomModal() {
     if (this._ov) { const v = this._ov.querySelector("video"); if (v) { v.pause(); v.removeAttribute("src"); v.load(); } this._ov.remove(); this._ov = null; if (this.state.modalOn) this.setState({ modalOn: false }); }
@@ -976,15 +1086,15 @@ class Component extends DCLogic {
     }
     const box = el("div", "width:min(1040px,100%);max-height:100%;display:flex;flex-direction:column;border:1px solid rgba(232,167,101,.55);border-radius:16px;background:#0A0F16;box-shadow:0 0 80px rgba(224,138,46,.35);overflow:hidden");
     if (/^https:\/\/evocalize\.com\/?$/.test(url)) box.style.width = "min(1140px,100%)";
-    const head = el("div", "display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.08)");
-    const tWrap = el("div", "display:flex;flex-direction:column;gap:2px");
+    const head = el("div", "display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.08)", { "data-m": "modal-head" });
+    const tWrap = el("div", "display:flex;flex-direction:column;gap:2px", { "data-m": "modal-title" });
     if (brand) { const b = el("span", "font-family:Oswald,sans-serif;font-size:12px;letter-spacing:2px;color:#E8A765"); b.textContent = brand.toUpperCase(); tWrap.appendChild(b); }
     const t = el("span", "font-family:Oswald,sans-serif;font-size:22px;color:#FFFFFF"); t.textContent = title; tWrap.appendChild(t);
-    const acts = el("div", "display:flex;align-items:center;gap:10px");
-    const open = el("a", "font-family:Figtree,sans-serif;font-size:13px;color:#B7C2D0;border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:7px 12px;text-decoration:none", { href: url, target: "_blank", rel: "noopener", "data-modal-skip": "" }); open.textContent = "Open in new tab ↗";
-    const x = el("button", "width:36px;height:36px;border-radius:8px;border:1px solid rgba(232,167,101,.5);background:transparent;color:#FFFFFF;font-size:18px;cursor:pointer", { type: "button", "aria-label": "Close" }); x.textContent = "✕";
+    const acts = el("div", "display:flex;align-items:center;gap:10px", { "data-m": "modal-acts" });
+    const open = el("a", "font-family:Figtree,sans-serif;font-size:13px;color:#B7C2D0;border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:7px 12px;text-decoration:none", { href: url, target: "_blank", rel: "noopener", "data-modal-skip": "", "data-m": "modal-open" }); open.textContent = "Open in new tab ↗";
+    const x = el("button", "width:36px;height:36px;border-radius:8px;border:1px solid rgba(232,167,101,.5);background:transparent;color:#FFFFFF;font-size:18px;cursor:pointer", { type: "button", "aria-label": "Close", "data-m": "modal-x" }); x.textContent = "✕";
     if (/\.pdf($|\?)/i.test(url)) {
-      const dl = el("a", "display:flex;align-items:center;gap:6px;font-family:Oswald,sans-serif;font-size:13px;letter-spacing:1.5px;color:#0A0F16;background:#E08A2E;border-radius:8px;padding:8px 14px;text-decoration:none;box-shadow:0 0 18px rgba(224,138,46,.5)", { href: url, download: (url.split("/").pop() || "download.pdf").split("?")[0], "data-modal-skip": "" });
+      const dl = el("a", "display:flex;align-items:center;gap:6px;font-family:Oswald,sans-serif;font-size:13px;letter-spacing:1.5px;color:#0A0F16;background:#E08A2E;border-radius:8px;padding:8px 14px;text-decoration:none;box-shadow:0 0 18px rgba(224,138,46,.5)", { href: url, download: (url.split("/").pop() || "download.pdf").split("?")[0], "data-modal-skip": "", "data-m": "modal-dl" });
       dl.textContent = "DOWNLOAD ↓";
       dl.addEventListener("click", async e => { try { e.preventDefault(); const b = await (await fetch(url)).blob(); const u = URL.createObjectURL(b); const t = document.createElement("a"); t.href = u; t.download = dl.getAttribute("download"); document.body.appendChild(t); t.click(); t.remove(); setTimeout(() => URL.revokeObjectURL(u), 4000); } catch (err) { window.open(url, "_blank"); } });
       acts.append(dl);
@@ -1086,8 +1196,11 @@ class Component extends DCLogic {
     document.body.appendChild(ov); this._ov = ov; this.setState({ modalOn: true });
     setTimeout(() => name.i.focus(), 50);
   }
-  componentWillUnmount() { clearInterval(this._stepT); clearInterval(this._dashT); clearInterval(this._loopT); document.removeEventListener("scroll", this._onScroll, true); window.removeEventListener("scroll", this._onScroll); document.removeEventListener("click", this._modalClick, true); document.removeEventListener("keydown", this._esc); this.closeDomModal(); }
+  componentWillUnmount() { if (this._dashRO) this._dashRO.disconnect(); clearInterval(this._stepT); clearInterval(this._dashT); clearInterval(this._loopT); document.removeEventListener("scroll", this._onScroll, true); window.removeEventListener("scroll", this._onScroll); document.removeEventListener("click", this._modalClick, true); document.removeEventListener("keydown", this._esc); this.closeDomModal(); }
   componentDidMount() {
+    // Mobile: the dashboard iframe renders at desktop width and is scaled down to fit (see [data-m="dash-frame"] CSS).
+    const df = document.querySelector('[data-m="dash-frame"]');
+    if (df && window.ResizeObserver) { this._dashRO = new ResizeObserver(() => df.style.setProperty("--dash-s", String(df.clientWidth / 1200))); this._dashRO.observe(df); }
     this._modalClick = e => {
       const c = e.target.closest && e.target.closest("a[data-contact]");
       if (c) { e.preventDefault(); e.stopPropagation(); this.openContact(c.getAttribute("data-contact")); return; }
@@ -1130,11 +1243,13 @@ class Component extends DCLogic {
   }
   renderVals() {
     const { companies, avero, help, L, cases, steps } = this.data();
-    const ci = this.state.caseIdx, si = this.state.step;
+    const ci = this.state.caseIdx, co = this.state.caseOpen, si = this.state.step;
     const C = (to, prefix, suffix) => React.createElement(this.Counter, { to, prefix, suffix });
     const turn2 = {
       cases,
-      caseTabs: cases.map((c, i) => ({ brand: c.brand, tag: c.tag, n: "0" + (i + 1), active: i === ci, inactive: i !== ci, pick: () => this.setState({ caseIdx: i }) })),
+      caseTabs: cases.map((c, i) => ({ brand: c.brand, tag: c.tag, n: "0" + (i + 1), ord: i * 2, active: co && i === ci, inactive: !(co && i === ci), pick: () => this.pickCase(i) })),
+      csOrd: ci * 2 + 1,
+      csClosed: co ? "0" : "1",
       cs: { ...cases[ci], links: cases[ci].links.map(l => ({ ...l, open: () => this.openModal(cases[ci].brand, l.label, l.url) })), thumbs: cases[ci].thumbs.map(d => ({ ...d, open: () => this.openModal(cases[ci].brand, d.title, d.pdf) })) },
       modalOpen: !!this.state.modal,
       modal: this.state.modal || { brand: "", title: "", url: "", frameUrl: "", isVideo: false, isFrame: false },
@@ -1150,9 +1265,10 @@ class Component extends DCLogic {
           ["SUNGATEKIDS", "21fe07_cf0f53b41d454.png", ["SungateKids is a child-focused facility-based program in which representatives from many disciplines, including law enforcement, child protection, prosecution, mental health, medical and victim advocacy work together to conduct interviews and make team decisions about investigation, treatment, management and prosecution of child abuse cases.", "I helped raise thousands of dollars for an annual charity event, and helped generate awareness for the organization amongst our partner community."]],
           ["SCOUTS BSA", "21fe07_1ef8055fa1c44.png", ["For over four years, I served as an Assistant Scoutmaster for the Scouts BSA Troop 502, leading, mentoring and teaching young men the importance of things like setting attainable goals, being active in their community, and serving others. The character that the Scouting program instills in these youth is something that will benefit them for the rest of their lives, and I feel honored to know that I could be a part of helping them realize their potential.", "I also served as an Eagle Project Coordinator for 3 years, where I help young men reach their goal of achieving their Eagle Scout. It's both very fun and quite rewarding, as each project we embark on is geared toward giving back to the community. I've helped the kids come up with some pretty creative ideas that made the process both fun and engaging."]]
         ];
-        const vi = this.state.vol;
+        const vi = this.state.vol, vo = this.state.volOpen;
         return {
-          volOrgs: orgs.map(([name, img], i) => ({ name, img: A + img, active: i === vi, inactive: i !== vi, pick: () => { if (this.state.vol !== i) this.setState({ vol: i }); } })),
+          volOrgs: orgs.map(([name, img], i) => ({ name, img: A + img, n: String(i), ord: i * 2, active: vo && i === vi, inactive: !(vo && i === vi), pick: e => this.pickVol(i, e) })),
+          volOrd: vi * 2 + 1, volClosed: vo ? "0" : "1",
           vol: { n: String(vi + 1).padStart(2, "0") + " / " + String(orgs.length).padStart(2, "0"), name: orgs[vi][0], img: A + orgs[vi][1], paras: orgs[vi][2] }
         };
       })(),
@@ -1171,7 +1287,7 @@ class Component extends DCLogic {
             quote: "\"THE MOST DANGEROUS PHRASE IN THE ENGLISH LANGUAGE IS 'WE'VE ALWAYS DONE IT THIS WAY.'\"", by: "~Grace Hopper",
             paras: ["I'm not comfortable defaulting to \"because we've always done it that way.\" Most of my career has been building the function from scratch, where there was no playbook to inherit. That forces you to find best practices fast, test new channels before they're obvious, and build the muscle of figuring it out rather than falling back on habit."],
             media: [m("1six6469_0353.jpg")] },
-          { name: "LESS IS MORE", tile: "21fe07_0a60fac521e44.jpg", bg: "#16202B", fit: "cover", pad: "0", kind: "photos", cols: 3, h: "150px",
+          { name: "LESS IS MORE", tile: "21fe07_0a60fac521e44.jpg", trio: true, bg: "#16202B", fit: "cover", pad: "0", kind: "photos", cols: 3, h: "150px",
             quote: "\"MANY ATTEMPTS TO COMMUNICATE ARE NULLIFIED BY SAYING TOO MUCH.\"", by: "~Robert Greenleaf",
             paras: ["I tell my daughters beauty comes from within — I think about messaging the same way. The best communications aren't the loudest, they're the clearest. I lean into visual appeal to earn attention and ruthless simplicity to keep it, which is what lets a message cut through industry clutter instead of adding to it."],
             media: [m("21fe07_0a60fac521e44.jpg"), m("21fe07_f8ec08c35bed4.jpg"), m("21fe07_56d0504bee654.jpg")] },
@@ -1183,9 +1299,10 @@ class Component extends DCLogic {
             paras: ["Life's too short not to have fun — you'll find me off-roading, on the lake, hiking, and having fun with the family most weekends.", "That carries into how I lead. Fun builds camaraderie, camaraderie keeps the creativity alive, and creativity is contagious across a team."],
             media: [["skills-icons-20.png", "BIKING"], ["skills-icons-18.png", "HIKING"], ["skills-icons-16.png", "CAMPING"], ["skills-icons-17.png", "ROCK CLIMBING"], ["skills-icons-19.png", "RAFTING"]].map(([s, l]) => ({ ...m(s, l), label: l })) }
         ];
-        const ai = this.state.about, t = T[ai];
+        const ai = this.state.about, ao = this.state.aboutOpen, t = T[ai];
         return {
-          aboutTopics: T.map((o, i) => ({ name: o.name, img: o.tile ? (o.tile === "podcast-laughing-2.png" ? "/assets/podcast-laughing-2.png?v=3" : o.tile.startsWith("/assets/") ? o.tile : A + o.tile) : "", isImg: !!o.tile, isText: !o.tile, tileText: o.tileText || "", bg: o.bg, fit: o.fit, pad: o.pad, active: i === ai, inactive: i !== ai, pick: () => { if (this.state.about !== i) this.setState({ about: i }); } })),
+          aboutTopics: T.map((o, i) => ({ name: o.name, img: o.tile ? (o.tile === "podcast-laughing-2.png" ? "/assets/podcast-laughing-2.png?v=3" : o.tile.startsWith("/assets/") ? o.tile : A + o.tile) : "", isImg: !!o.tile, isText: !o.tile, tileText: o.tileText || "", bg: o.bg, fit: o.fit, pad: o.pad, hasTrio: !!o.trio, trio: o.trio ? o.media : [], n: String(i), ord: i * 2, active: ao && i === ai, inactive: !(ao && i === ai), pick: e => this.pickAbout(i, e) })),
+          aboutOrd: ai * 2 + 1, aboutClosed: ao ? "0" : "1",
           about: { n: String(ai + 1).padStart(2, "0") + " / " + String(T.length).padStart(2, "0"), name: t.name, hasQuote: !!t.quote, quote: t.quote || "", by: t.by || "", paras: t.paras, media: t.media,
             isLogos: t.kind === "logos", isPoints: t.kind === "points", isPhotos: t.kind === "photos", isIcons: t.kind === "icons", cols: t.cols || 1, h: t.h || "200px", ih: t.h === "auto" ? "auto" : "100%" }
         };
@@ -1221,7 +1338,7 @@ class Component extends DCLogic {
         groups.forEach((g, i) => {
           const open = w === i;
           out["W" + i] = { label: g.label, title: g.title, meta: g.meta, size: sizes[i], min: mins[i], ratio: g.ratio,
-            enter: () => this.hoverWork(i), leave: () => this.leaveWork(),
+            enter: () => this.hoverWork(i), leave: () => this.leaveWork(), tap: e => this.tapWork(i, e), openAttr: open ? "1" : "0",
             z: open ? 30 : (last === i ? 20 : 1), rows: open ? "1fr" : "0fr",
             op: w != null && !open ? 0.45 : 1, border: open ? "rgba(232,167,101,.8)" : "rgba(255,255,255,.1)", glow: open ? "0 0 60px rgba(224,138,46,.35),0 30px 80px rgba(0,0,0,.6)" : "none",
             imgTf: open ? "scale(1.06)" : "scale(1)", dOp: open ? 1 : 0, dTf: open ? "translateY(0)" : "translateY(14px)", plusTf: open ? "rotate(45deg)" : "rotate(0deg)", plusGlow: open ? "0 0 22px rgba(224,138,46,.6)" : "none",
