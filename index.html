@@ -238,7 +238,7 @@ a:hover{color:#FFFFFF}
 </div>
 <div data-m="case-panel" data-closed="{{ csClosed }}" style="order:{{ csOrd }};border:1px solid rgba(232,167,101,.35);border-radius:16px;background:rgba(15,23,34,.92);overflow:hidden;box-shadow:0 0 60px rgba(224,138,46,.14)">
 <div style="height:260px;position:relative;background:#16202B;overflow:hidden">
-<sc-if value="{{ cs.hasImg }}" hint-placeholder-val="{{ false }}"><img loading="lazy" src="{{ cs.img }}" alt="{{ cs.brand }}" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></sc-if>
+<sc-if value="{{ cs.hasImg }}" hint-placeholder-val="{{ false }}"><img loading="lazy" src="{{ cs.img }}" alt="{{ cs.brand }}" style="width:100%;height:100%;object-fit:cover;object-position:{{ cs.pos }};display:block"></sc-if>
 <sc-if value="{{ cs.hasThumbs }}" hint-placeholder-val="{{ false }}"><div style="display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;padding:16px;height:100%;box-sizing:border-box"><sc-for list="{{ cs.thumbs }}" as="d" hint-placeholder-count="0"><button type="button" onClick="{{ d.open }}" title="{{ d.title }}" style="display:block;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.1);padding:0;background:transparent;cursor:pointer" style-hover="border-color:#E8A765;box-shadow:0 0 16px rgba(224,138,46,.5)"><img loading="lazy" src="{{ d.img }}" alt="{{ d.title }}" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></button></sc-for></div></sc-if>
 <div style="position:absolute;inset:auto 0 0 0;height:90px;background:linear-gradient(to top,rgba(15,23,34,.92),rgba(15,24,40,0));pointer-events:none"></div>
 </div>
@@ -273,7 +273,7 @@ a:hover{color:#FFFFFF}
 <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px">
 <div style="display:flex;flex-direction:column;gap:14px">
 <div style="font-family:Oswald,sans-serif;font-size:14px;letter-spacing:3px;color:#E8A765">THE WORK</div>
-<h2 style="margin:0;font-family:Oswald,sans-serif;font-weight:700;font-size:84px;line-height:.92;flex:1;min-width:0"><span style="white-space:nowrap">FROM PLANS TO EXECUTION -</span><br><span style="color:#E08A2E;text-shadow:0 0 40px rgba(224,138,46,.5)">I DO IT ALL.</span></h2>
+<h2 style="margin:0;font-family:Oswald,sans-serif;font-weight:700;font-size:72px;line-height:.95;flex:1;min-width:0"><span style="white-space:nowrap">FROM PLANS TO EXECUTION -</span><br><span style="color:#E08A2E;text-shadow:0 0 40px rgba(224,138,46,.5)">I DO IT ALL.</span></h2>
 </div>
 
 </div>
@@ -880,7 +880,7 @@ class Component extends DCLogic {
       { brand: "Avero", tag: "Restaurant SaaS", challenge: "Hired to build a demand gen engine. Ended up owning all of marketing: brand, demand gen and customer marketing.",
         did: ["Built the marketing organization from the ground up", "Expanded from demand gen to owning all of marketing: brand, demand gen, customer and partner marketing", "Led a company-wide rebrand", "Set a 3-year roadmap that turned marketing from a support function into a revenue engine"],
         result: st(["$4M", "Marketing-Sourced Pipeline"], ["$2M", "Marketing-Sourced Revenue"], ["0→1", "Marketing Org Built From Scratch"]),
-        hasImg: false, hasThumbs: true, img: "", thumbs: avero.slice(0, 8),
+        hasImg: true, hasThumbs: false, img: "/assets/avero-dining-room.webp", pos: "center 55%", thumbs: [],
         links: [{ label: "Brand video", url: L.avero }, { label: "Case study", url: avero[3].pdf }, { label: "White paper", url: avero[4].pdf }] }
     ];
     const steps = [
@@ -1250,7 +1250,7 @@ class Component extends DCLogic {
       caseTabs: cases.map((c, i) => ({ brand: c.brand, tag: c.tag, n: "0" + (i + 1), ord: i * 2, active: co && i === ci, inactive: !(co && i === ci), pick: () => this.pickCase(i) })),
       csOrd: ci * 2 + 1,
       csClosed: co ? "0" : "1",
-      cs: { ...cases[ci], links: cases[ci].links.map(l => ({ ...l, open: () => this.openModal(cases[ci].brand, l.label, l.url) })), thumbs: cases[ci].thumbs.map(d => ({ ...d, open: () => this.openModal(cases[ci].brand, d.title, d.pdf) })) },
+      cs: { pos: "center top", ...cases[ci], links: cases[ci].links.map(l => ({ ...l, open: () => this.openModal(cases[ci].brand, l.label, l.url) })), thumbs: cases[ci].thumbs.map(d => ({ ...d, open: () => this.openModal(cases[ci].brand, d.title, d.pdf) })) },
       modalOpen: !!this.state.modal,
       modal: this.state.modal || { brand: "", title: "", url: "", frameUrl: "", isVideo: false, isFrame: false },
       ...(() => {
